@@ -209,3 +209,35 @@ curl -X POST "https://accounts.shopify.com/oauth/token" \
 # Com flow real, verificar se dest= aceita URLs externas
 # Potencial open redirect pós-login
 ```
+
+---
+
+### S6 — shop.app: Cookie Essencial com SameSite=None
+
+**URL:** `https://shop.app/accounts/login`  
+**Severidade Estimada:** MEDIUM (se CSRF possível em endpoints autenticados)
+
+**Observação:**
+- `accounts.shopify.com` → `_merchant_essential`: `SameSite=Lax; Domain=.shopify.com` ✅
+- `shop.app` → `_shop_app_essential`: `SameSite=None; Domain=.shop.app` ⚠️
+
+O cookie de sessão "essential" do `shop.app` é definido com `SameSite=None` (ao contrário do `accounts.shopify.com` que usa `SameSite=Lax`). Isso significa que o cookie `_shop_app_essential` será enviado em TODOS os requests cross-origin para qualquer `.shop.app`, potencialmente habilitando CSRF se não houver proteção adicional.
+
+**Status:** Endpoint bloqueado por Cloudflare — verificação com conta real necessária.
+
+---
+
+## Resumo Executivo de Findings
+
+| ID | Severidade | Confirmado? | Target | Issue |
+|----|-----------|-------------|--------|-------|
+| S1 | HIGH (potencial) | Parcial | accounts.shopify.com | Pre-auth session fixation |
+| S2 | LOW/INFO | Sim | session-service JWKS | 3 chaves Ed25519 sem campo `alg` |
+| S3 | INFO | Sim | accounts.shopify.com | CSP com `unsafe-inline`+`unsafe-eval` |
+| S4 | MEDIUM (design) | Sim | shopify-api-js | HS256 session token — forjável com apiSecretKey |
+| S6 | MEDIUM (potencial) | Parcial | shop.app | `_shop_app_essential` SameSite=None vs Lax |
+
+**Prioridade para próxima sessão com conta real:**
+1. S1 — verificar rotação do _identity_session pós-login
+2. Employee scope via token exchange
+3. S6 — verificar CSRF em endpoints autenticados do shop.app
