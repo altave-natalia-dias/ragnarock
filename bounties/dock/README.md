@@ -2,7 +2,7 @@
 
 **Programa:** Bugpay  
 **Alvo:** Dock Tecnologia — infraestrutura BaaS, issuing, acquiring e Open Finance Brasil  
-**Status:** 4 findings documentados; `*.caradhras.io` + `*.conductor.com.br` inexplorados  
+**Status:** 5 findings documentados (D1-D5); `*.caradhras.io` ainda inexplorado  
 
 ---
 
@@ -12,7 +12,7 @@
 |----------|-----------|--------|
 | `*.dock.tech` | Plataforma principal Dock | 🔍 Explorado (314 hosts) |
 | `*.caradhras.io` | Open Finance Brasil (Caradhras) | ⏳ Pendente |
-| `*.conductor.com.br` | IRIS/Pier — card issuer (Conductor) | ⏳ Pendente |
+| `*.conductor.com.br` | IRIS/Pier — card issuer (Conductor) | ✅ D5 encontrado (pierflex + pierpro takeover) |
 
 **OOS automático:** qualquer subdomínio com `dev`, `hml`, `sandbox`, `staging`, `homolog`, `qa`.
 
@@ -47,6 +47,12 @@
 2. Express `corsOptions.js:30` usa `throw new Error(...)` em vez de `callback(err)` → HTTP 500 com stack trace Node.js completo. Kong adiciona `ACAO: *` ao 500 → browser lê o stack trace cross-origin.  
 PoC: qualquer site faz `fetch()` à URL e lê `file:///app/helpers/corsOptions.js` + `@opentelemetry/instrumentation-express` paths.  
 **Arquivo:** `reports/D4_openbanking_cors_bypass_and_500.md`
+
+### D5 — Dual Subdomain Takeover via ReadMe (pierflex + pierpro)
+**Severidade:** HIGH (CVSS 8.1) | **CWE:** CWE-350  
+**Escopo originário:** `*.conductor.com.br` → `pierflex.conductor.com.br` + `pierpro.conductor.com.br`  
+**Resumo:** Ambos os subdomínios possuem CNAME ativo para `ssl.readmessl.com` (ReadMe custom domain endpoint via Cloudflare). Os domínios nunca foram registrados na plataforma ReadMe — Cloudflare retorna 409 + error 1001. Qualquer conta ReadMe pode registrar esses domínios e servir conteúdo arbitrário com **HTTPS válido** (Cloudflare emite SSL automaticamente). Superior ao D1 porque HTTPS funciona. Pier Flex e Pier Pro são os produtos de cartão flagship da Conductor.  
+**Arquivo:** `reports/D5_readme_subdomain_takeover_pierflex_pierpro.md`
 
 ---
 
