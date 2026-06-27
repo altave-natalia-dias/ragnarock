@@ -1,0 +1,19 @@
+# ChromaDB — banco vetorial local (pesado, ~37MB, rebuild com: rag build)
+rag/data/chroma_db/
+
+# Cache de fontes externas (writeups, ATT&CK raw JSONs)
+rag/data/raw/
+
+# Retroalimentação log (privado)
+rag/data/retroalimentacao.jsonl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db

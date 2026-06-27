@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# BountyRAG CLI wrapper
+# Usage: bountyrag <command> [args]
+# Commands: build, update, query, plan, add-report, technique, stats, retro
+
+RAG_PYTHON="/home/altave/venv/bin/python3"
+RAG_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+export PYTHONPATH="$RAG_DIR/.."
+
+case "$1" in
+  build|update|query|plan|stats|technique|add-report)
+    exec "$RAG_PYTHON" -m rag.cli "$@"
+    ;;
+  retro|retroalimentar)
+    shift
+    exec "$RAG_PYTHON" -m rag.retroalimentar "$@"
+    ;;
+  "")
+    echo "Usage: bountyrag <command>"
+    echo "  build          Full build (MITRE + writeups + KB)"
+    echo "  update         Refresh writeups from live sources"
+    echo "  query <text>   Semantic search"
+    echo "  plan <domain>  Attack plan for domain"
+    echo "  technique <ID> Look up ATT&CK technique"
+    echo "  stats          Collection counts"
+    echo "  retro          Retroalimentação (add new bounty)"
+    ;;
+  *)
+    echo "Unknown command: $1"
+    exit 1
+    ;;
+esac
