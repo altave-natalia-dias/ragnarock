@@ -1,0 +1,44 @@
+# Shopify HackerOne Bug Bounty — Scope
+# https://hackerone.com/shopify
+# Last updated: June 5, 2026
+
+## CORE — Critical, Eligible (HIGH PRIORITY)
+your-store.myshopify.com         # Dev store *.myshopify.com (precisa criar em partners.shopify.com)
+shopify.plus                     # Shopify Plus platform
+shop.app                         # Consumer shop app
+partners.shopify.com             # Partner portal
+Authentication & ATO             # NOVO (Jun 5, 2026) — Auth & Account Takeover
+arrive-server.shopifycloud.com   # Arrive delivery tracking
+admin.shopify.com                # Merchant admin panel
+accounts.shopify.com             # Accounts / login
+*.shopifycs.com                  # PCI credit card processing
+*.pci.shopifyinc.com             # PCI scope
+
+## NON-CORE — Critical/Medium, Eligible
+Shopify Mobile (Android+iOS)     # https://play.google.com/store/apps/dev?id=8929232438554100687
+shopifyinbox.com                 # Shopify Inbox (Medium)
+Shopify Developed Apps           # https://apps.shopify.com/collections/made-by-shopify (Medium)
+linkpop.com                      # Link-in-bio (Medium)
+https://github.com/Shopify/*    # Public repos (Medium)
+*.shopifykloud.com               # Internal apps, careful with test subdomains (Medium)
+*.shopifycloud.com               # Internal apps, careful with test subdomains (Medium)
+*.shopify.io                     # Internal apps, careful with test subdomains (Medium)
+*.shopify.com                    # Per-case basis (Medium)
+
+## OUT OF SCOPE / INELIGIBLE
+supplier-portal.shopifycloud.com
+livechat.shopify.com
+investors.shopify.com
+community.shopify.dev
+community.shopify.com
+cdn.shopify.com                  # File uploads are INTENTIONAL, not a vuln
+academy.shopify.com
+*.email.shopify.com
+
+## OOS COMPORTAMENTOS
+- File upload to cdn.shopify.com (intentional)
+- Third party stores/apps without proof of impact on Shopify users
+- Self-XSS
+- Clickjacking
+- Missing security headers (sem impacto demonstrável)
+- Rate limiting em endpoints não-sensíveis
