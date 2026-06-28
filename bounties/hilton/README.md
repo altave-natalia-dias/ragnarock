@@ -99,6 +99,7 @@ bounties/hilton/
 | HT-011 | CORS Wildcard + Allow-Credentials on CMS Editorial Backend (stories-editor.hilton.com) | stories-editor.hilton.com | HIGH | 8.0 | Ready to submit |
 | HT-012 | Unauthenticated Mass Subscription Opt-Out — Any Email or GuestID Without Auth | hilton.com/graphql/customer | HIGH | 7.5 | Ready to submit |
 | HT-013 | CRITICAL: Unauth GraphQL Mutations — Username Change, 2FA Remove, Data Destruction | hilton.com/graphql/customer | CRITICAL | 9.1 | Ready to submit |
+| HT-014 | Unauthenticated GDPR/CCPA Privacy Request Submission — Mass Account Deletion via Compliance | hilton.com/graphql/customer | HIGH | 7.5 | Ready to submit |
 
 ### Detalhes por Finding
 
