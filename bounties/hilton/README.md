@@ -96,6 +96,8 @@ bounties/hilton/
 | HT-008 | Unauthenticated ASMX Web Service Returns Internal CMS Data + IdentityIQ URL | suppliersconnection.hilton.com | MEDIUM | 5.3 | Ready to submit |
 | HT-009 | GraphQL amexSessionToken Returns Real Amex JWT Without Authentication | hilton.com/graphql/customer | HIGH | 7.5 | Ready to submit |
 | HT-010 | digitalPaymentSession Query Executes Without guestId/Auth (Apple Pay session endpoint) | hilton.com/graphql/customer | LOW | 3.7 | Informational (null response) |
+| HT-011 | CORS Wildcard + Allow-Credentials on CMS Editorial Backend (stories-editor.hilton.com) | stories-editor.hilton.com | HIGH | 8.0 | Ready to submit |
+| HT-012 | Unauthenticated Mass Subscription Opt-Out — Any Email or GuestID Without Auth | hilton.com/graphql/customer | HIGH | 7.5 | Ready to submit |
 
 ### Detalhes por Finding
 

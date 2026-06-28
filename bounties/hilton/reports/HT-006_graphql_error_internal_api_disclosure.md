@@ -106,7 +106,9 @@ curl -s "https://www.hilton.com/graphql/customer" \
 | Unresolved template | `{realm}` → URL-encoded `%7Brealm%7D` in guest/password errors (config bug) |
 | Gateway product | WSO2 API Manager (error code 900902 is WSO2-specific) |
 | Misconfigured header | Header name resolves to `null` instead of `Authorization` |
-| Internal microservices | `dx-guests-gql`, `dx-offers-gql`, `dx-reservations-gql` |
+| Internal microservices | `dx-guests-gql`, `dx-offers-gql`, `dx-reservations-gql`, `dx-stays-gql`, `dx-shop-gql` |
+| B2B accounts path | `GET /hospitality-customer/v2/guests/{guestId}/businesses/{accountId}` |
+| Shopping/rates path | `GET /hospitality-customer/v2/shop/props` |
 
 ---
 
