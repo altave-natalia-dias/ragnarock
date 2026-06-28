@@ -18,12 +18,17 @@ The most critical confirmed operations without authentication:
 | Mutation | Impact | CVSS Contribution |
 |----------|--------|-------------------|
 | `updateGuestUsername` | **Change any account's username** → block legitimate login | I:H, A:H |
+| `updateGuestPassword` | **Attempt password change for any guestId** — no session token required | I:H |
 | `deleteGuest2FA` | **Remove any account's 2FA** → weaken authentication | I:H |
 | `deleteGuestPaymentMethod` | **Delete any saved payment method** | I:H |
 | `deleteGuestTravelDoc` | **Delete any passport/travel document** | I:H, A:H |
 | `deleteGuestAddress` | **Delete any saved address** | I:H |
 | `deleteGuestFavoriteHotel` | **Remove any saved favorite hotel** | I:L |
 | `updateGuestRoomPreferences` | **Overwrite any guest's room preferences** | I:L |
+| `createGuestAddress` | **Add fake addresses to any guest profile** | I:H |
+| `createGuestTravelDoc` | **Inject forged passport/travel docs into any profile** | I:H |
+| `deleteHotelDiningMenu` | **Delete hotel dining menus** (hotel ops data) | I:H, A:H |
+| `deleteHotelDigitalKeyGuides` | **Delete hotel digital key guides** (hotel ops data) | I:H, A:H |
 
 An unauthenticated attacker who knows or enumerates a `guestId` (sequential integer, confirmed via HT-006 path disclosure) can:
 1. **Change the victim's Hilton Honors username** → victim cannot log in
@@ -158,6 +163,13 @@ All mutations tested **without authentication cookies, authorization headers, or
 | `deleteGuestTravelDoc` | `guestId=100000000, tvlDocId=1` | **1** | null | ❌ NO |
 | `deleteGuestFavoriteHotel` | `guestId=100000000, ctyhocn=NYFLNHI` | **1** | null | ❌ NO |
 | `updateGuestRoomPreferences` | `guestId=100000000, smoking=false` | **1** | null | ❌ NO |
+| `updateGuestPassword` | `guestId=100000000, password=x, newPassword=y` | **1** | null | ❌ NO |
+| `createGuestAddress` | `guestId=100000000, country=US, preferred=true` | **1** | null | ❌ NO |
+| `createGuestTravelDoc` | `guestId=100000000, travelDocId=TEST, travelDocType=passport` | **1** | null | ❌ NO |
+| `deleteHotelDiningMenu` | `ctyhocn=NYFLNHI, hotelDiningMenuName=test, hotelRestaurantId=test` | **1** | null | ❌ NO |
+| `deleteHotelDigitalKeyGuides` | `ctyhocn=NYFLNHI` | **1** | null | ❌ NO |
+| `updateGuestEmail` | `guestId=100000000, emailAddress=x, preferred=true` | 0 | — | ✅ YES (blocked) |
+| `updateGuestAddress` | `guestId=100000000, country=US, preferred=true` | 0 | — | ✅ YES (blocked) |
 
 ---
 
