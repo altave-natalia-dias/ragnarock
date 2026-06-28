@@ -33,6 +33,8 @@ The most critical confirmed operations without authentication:
 | `updateGuestTermResponses` | **Accept/reject T&C on behalf of any guest** | I:H (legal/compliance) |
 | `createGuestGdpr` | **Submit GDPR deletion/access requests for any email** | I:H, A:H (account deletion via compliance) |
 | `createGuestSharePersonalInfoOptOut` | **Submit CCPA Do-Not-Sell for any email** | I:H (data rights abuse) |
+| `createWebHelpBillingDispute` | **File billing disputes for any hotel without auth** | I:M (support abuse) |
+| `createWebHelpHonorsAccountInquiry` | **Submit Honors account inquiries without auth** | I:M (support abuse) |
 
 An unauthenticated attacker who knows or enumerates a `guestId` (sequential integer, confirmed via HT-006 path disclosure) can:
 1. **Change the victim's Hilton Honors username** → victim cannot log in
@@ -176,6 +178,8 @@ All mutations tested **without authentication cookies, authorization headers, or
 | `updateGuestTermResponses` | `guestId=100000000, input=[{termId: ..., response: true}]` | **1** | null | ❌ NO |
 | `createGuestGdpr` | `emailAddress=any, requestToDelete=true` | **1** | null | ❌ NO |
 | `createGuestSharePersonalInfoOptOut` | `requesterEmailAddress=any, nosell=true` | **1** | null | ❌ NO |
+| `createWebHelpBillingDispute` | `ctyhocn=NYFLNHI, guestName=any, stayComments=any` | **1** | null | ❌ NO |
+| `createWebHelpHonorsAccountInquiry` | `guestEmail=any, hhonorsNumber=any, stayComments=any` | **1** | null | ❌ NO |
 | `updateGuestEmail` | `guestId=100000000, emailAddress=x, preferred=true` | 0 | — | ✅ YES (blocked) |
 | `updateGuestAddress` | `guestId=100000000, country=US, preferred=true` | 0 | — | ✅ YES (blocked) |
 
