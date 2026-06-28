@@ -29,6 +29,7 @@ The most critical confirmed operations without authentication:
 | `createGuestTravelDoc` | **Inject forged passport/travel docs into any profile** | I:H |
 | `deleteHotelDiningMenu` | **Delete hotel dining menus** (hotel ops data) | I:H, A:H |
 | `deleteHotelDigitalKeyGuides` | **Delete hotel digital key guides** (hotel ops data) | I:H, A:H |
+| `deleteGuestBenefitPreference` | **Remove any guest's benefit preferences** | I:M |
 
 An unauthenticated attacker who knows or enumerates a `guestId` (sequential integer, confirmed via HT-006 path disclosure) can:
 1. **Change the victim's Hilton Honors username** → victim cannot log in
@@ -168,6 +169,7 @@ All mutations tested **without authentication cookies, authorization headers, or
 | `createGuestTravelDoc` | `guestId=100000000, travelDocId=TEST, travelDocType=passport` | **1** | null | ❌ NO |
 | `deleteHotelDiningMenu` | `ctyhocn=NYFLNHI, hotelDiningMenuName=test, hotelRestaurantId=test` | **1** | null | ❌ NO |
 | `deleteHotelDigitalKeyGuides` | `ctyhocn=NYFLNHI` | **1** | null | ❌ NO |
+| `deleteGuestBenefitPreference` | `guestId=100000000, benefitId=1` | **1** | null | ❌ NO |
 | `updateGuestEmail` | `guestId=100000000, emailAddress=x, preferred=true` | 0 | — | ✅ YES (blocked) |
 | `updateGuestAddress` | `guestId=100000000, country=US, preferred=true` | 0 | — | ✅ YES (blocked) |
 
