@@ -84,9 +84,39 @@ bounties/hilton/
 
 ## Findings
 
-| ID | Arquivo | Sev | CVSS | Status |
-|----|---------|-----|------|--------|
-| *(em branco)* | | | | Iniciando recon |
+| ID | Título | Asset | Sev | CVSS | Status |
+|----|--------|-------|-----|------|--------|
+| HT-001 | PingFederate Heartbeat — Internal IP/Azure Tenant Disclosure | fd.hilton.com | MEDIUM | 5.3 | Ready to submit |
+| HT-002 | LearningLounge Admin Interface Exposed Without Auth | suppliersconnection.hilton.com | MEDIUM | 5.3 | Ready to submit |
+| HT-003 | Unauthenticated File Upload Handler (no magic byte check) | suppliersconnection.hilton.com | MEDIUM | 5.3 | Ready to submit |
+| HT-004 | GraphQL Introspection Enabled in Production (103 mutations!) | hilton.com/graphql/customer | HIGH | 7.5 | Ready to submit |
+| HT-005 | window.__ENV Exposes Internal App Architecture + Microservice Names | hilton.com | LOW | 3.7 | Informational |
+| HT-006 | GraphQL Errors Expose Internal REST API Paths + WSO2 Misconfiguration | hilton.com/graphql/customer | MEDIUM | 5.3 | Ready to submit |
+| HT-007 | Staging Environment (suppliersconnectionstage) Publicly Accessible | suppliersconnectionstage.hilton.com | MEDIUM | 5.3 | Ready to submit |
+| HT-008 | Unauthenticated ASMX Web Service Returns Internal CMS Data + IdentityIQ URL | suppliersconnection.hilton.com | MEDIUM | 5.3 | Ready to submit |
+| HT-009 | GraphQL amexSessionToken Returns Real Amex JWT Without Authentication | hilton.com/graphql/customer | HIGH | 7.5 | Ready to submit |
+| HT-010 | digitalPaymentSession Query Executes Without guestId/Auth (Apple Pay session endpoint) | hilton.com/graphql/customer | LOW | 3.7 | Informational (null response) |
+
+### Detalhes por Finding
+
+**HT-001** (`fd.hilton.com/pf/heartbeat.ping`):
+- 8 cluster IPs (10.72.40.x, 10.80.40.x)
+- Azure tenant ID: `660292d2-cfd5-4a3d-b7a7-e8f7ee458a0a`
+- Tenants: `hilton.onmicrosoft.com`, `hiltonprod.onmicrosoft.com`
+- Adapter names: HTMLPasswordProd, IdentifyFirst, OTP, kerberosadapter
+- Unauthenticated, CVSS 5.3
+
+**HT-002** (`suppliersconnection.hilton.com/learninglounge/home.aspx`):
+- Acessível sem autenticação, ?r= não validado
+- Campos admin expostos: textAnnouncement, txtClickActionURL, chkEnabled, chkEveryone, fileUploadAnnouncement, textTemplate1/2
+- 61 inputs visíveis sem login
+- ViewState não criptografado
+
+**HT-003** (`suppliersconnection.hilton.com/Handlers/FileUpload.ashx`):
+- Upload sem auth: .jpg, .png aceitos
+- SVG com .jpg extension: aceito (sem magic byte check)
+- GIFAR payload: aceito
+- Possível stored XSS chain se storage for persistente
 
 ---
 

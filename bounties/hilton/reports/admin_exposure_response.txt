@@ -1,0 +1,1379 @@
+HTTP/2 200 
+cache-control: private
+content-type: text/html; charset=utf-8
+server: 
+set-cookie: ASP.NET_SessionId=owqusqcogmggjhis2zgtn12p; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: __RequestVerificationToken=AKzIlGTNQdQkcqxB0ET9fYtL9TOCWI46OJ2-g1H9NkZy0niIyLqYej501GlWCGOINf_fhRaFyJd0jmsGDmOZ0TMMGa3_02pMUldfJcchgrg1; path=/; secure; HttpOnly
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-ua-compatible: IE=edge
+x-content-type-options: nosniff
+content-security-policy: script-src 'self' 'unsafe-inline' 'unsafe-eval' *.tinymce.com *.tiny.cloud https://www.google-analytics.com http://www.google-analytics.com https://www.googletagmanager.com https://www.google.com/ https://www.gstatic.com https://www.google.com/recaptcha/api.js;       img-src 'self' *.tinymce.com *.tiny.cloud data: blob: https://www.google-analytics.com http://www.google-analytics.com https://www.googletagmanager.com;       style-src 'self' 'unsafe-inline' *.tinymce.com *.tiny.cloud https://fonts.googleapis.com;       font-src 'self' *.tinymce.com *.tiny.cloud https://fonts.gstatic.com;
+x-xss-protection: 1; mode=block
+date: Sun, 28 Jun 2026 16:12:38 GMT
+content-length: 82480
+
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" /><title>
+
+</title><link href="/LearningLounge/css/bootstrap.min.css" rel="stylesheet" /><link href="/LearningLounge/css/bootstrap-formhelpers.min.css" rel="stylesheet" /><link href="/LearningLounge/css/font-awesome.min.css" rel="stylesheet" /><link href="/LearningLounge/css/animate.min.css" rel="stylesheet" /><link href="/LearningLounge/css/styles.css" rel="stylesheet" /><link href="/LearningLounge/css/bootstrap-datepicker.min.css" rel="stylesheet" /><link href="/LearningLounge/css/bootstrap-select.min.css" rel="stylesheet" /><link href="/LearningLounge/css/toggles.css" rel="stylesheet" /><link href="/LearningLounge/css/toggles-light.css" rel="stylesheet" />
+    <script src="/LearningLounge/js/moment.min.js"></script>
+    <script src="/LearningLounge/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="/LearningLounge/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/LearningLounge/js/masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/LearningLounge/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/LearningLounge/js/packery.pkgd.min.js" type="text/javascript"></script>
+    <script src="/LearningLounge/js/respond.min.js"></script>
+    <script src="/LearningLounge/js/bootstrap-formhelpers.min.js"></script>
+    <script src="/LearningLounge/js/jquery-toggles/toggles.min.js"></script>
+    <script src="../Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="js/LearningLoungeMaster.js"></script>
+    <script type="text/javascript" src="../Scripts/ajaxfileupload.js"></script>
+    <script src="../Scripts/jquery.characterlimiter.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../Scripts/thickbox.js"></script>
+          <script src="../Scripts/purify.min.js" type="text/javascript"></script>
+    <link type="text/css" href="../Styles/thickbox.css" rel="stylesheet" />
+    <style type="text/css">
+        .no-spinner::-webkit-inner-spin-button, .no-spinner::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .no-spinner {
+            -moz-appearance: textfield; /* For Firefox */
+        }
+    </style>
+    
+    <script src="js/home.js"></script>
+    <script src="../Scripts/tinymce/tinymce.min.js"></script>
+
+    <script>
+        var _userTypeId = -1;
+      
+        var _isAdminModeToggledOn = false;
+
+        function navigateMyAccount() {
+            if (_userTypeId == 2) {             //Partner
+                window.open("/Account/ApprovedCategories.aspx");
+
+            } else if (_userTypeId == 3 || _userTypeId == 4) {      //Owner or Consultant
+                window.open("/Account/ProjectList.aspx");
+
+            } else if (_userTypeId == 5) {     //Administrator
+                /*changes for SC-613*/
+                var _AdminUrl = '';
+                _AdminUrl = '  ';
+                var _trimUrl = _AdminUrl.trim().substring(1);
+                window.open(_trimUrl);
+                /*changes for SC-613*/
+            } else {
+                //window.open("/About/GetAnAccount.aspx");
+                $('#myaccount-modal').modal('show');
+            }
+        }
+
+        function htmlEncode(value) {
+            //create a in-memory div, set it's inner text(which jQuery automatically encodes)
+            //then grab the encoded contents back out.  The div never exists on the page.
+            return $('<div/>').text(value).html();
+        }
+
+        function isUserAdmin() {
+            return (_userTypeId == 5);
+        }
+
+        function setFormTarget() {
+            //set the target and action of the form so that the page posts back to itself.
+            //This is required for the login link button.
+            $('#form1').attr("target", "_self");
+            $('#form1').attr("action", document.location.href);
+        }
+
+
+        function ajaxFileUpload(control, fileType, imagecontainer, previewimg) {
+
+
+
+            $.ajaxFileUpload
+                (
+                    {
+                        url: '../Handlers/FileUpload.ashx?op=showLLimg&fileType=' + fileType,
+                        secureuri: false,
+                        fileElementId: control,
+                        dataType: 'json',
+                        //data: { name: 'login', id: 'id' },
+                        success: function (response) {
+                            var data = response.responseText;
+                            var JsonResponse = JSON.parse(data);
+                            $("#imghiddenLLWidth").val(JsonResponse["ImageLLWidth"]);
+                            $("#imghiddenLLHeight").val(JsonResponse["ImageLLHeight"]);
+                            $("#imgLLextension").val(JsonResponse["InvalidImageExtension"]);
+                            $("#imgLLSize").val(JsonResponse["InvalidImageSize"]);
+                            if (previewimg == 'previewimage') {
+                                PreviewImage(control, imagecontainer);
+                            }
+
+                        },
+                        error: function (data, status, e) {
+                        }
+                    }
+                )
+            return false;
+
+        };
+
+        function ajaxFileUploadDoc(control, fileType, imagecontainer, previewimg) {
+
+            $.ajaxFileUpload
+                (
+                    {
+                        url: '../Handlers/FileUpload.ashx?op=SHOWMEETINGAGENDA&fileType=' + fileType,
+                        secureuri: false,
+                        fileElementId: control,
+                        dataType: 'json',
+                        success: function (response) {
+                            var data = response.responseText;
+                            var JsonResponse = JSON.parse(data);
+                            $("#hiddenMeetingAgenda").val(JsonResponse["MeetingAgendaMessage"]);
+
+                        },
+                        error: function (data, status, e) {
+                        }
+                    }
+                )
+            return false;
+
+        };
+    </script>
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-66328623-1', 'auto');
+        ga('send', 'pageview');
+
+
+        $(document).ready(function () {
+            $('textarea#txtMeetNGreetProducts').limiter(2000, $('#remainingCharacters'));
+            $('textarea#txtLunchNLearnProducts').limiter(2000, $('#remainingCharacter'));
+
+            //send menu click events to google analytics
+            $("#navigation-panel a").on("click", function (e) {
+                var action = Analytics.convertURLtoReadableAction(this.href);
+                Analytics.sendEvent("Navigation Menu Click", action);
+            });
+
+            //send menu click events to google analytics
+            $(".badgeLink").on("click", function (e) {
+                Analytics.sendEvent("HSM Badge Click", "Learn about HSM");
+            });
+
+            $(".support-center-info a").on("click", function (e) {
+                var action = Analytics.convertURLtoReadableAction(this.href);
+                Analytics.sendEvent("Support Center", "Contact Info Clicked", action);
+            });
+
+        });
+
+        var Analytics = {
+            sendEvent: function (category, action, label) {
+                ga('send', 'event', category, action, label);
+            },
+            convertURLtoReadableAction: function (url) {
+                if (url.includes("id.hilton.com")) {
+                    return "Lost Your Password";
+                } else if (url.includes("BecomeSupplier")) {
+                    return "Become a Supplier";
+                }
+                //else if (url.includes("LearnAboutHSM.aspx")) {
+                //    return "Learn About HSM";
+                //}
+                else if (url.includes("CheckOutOurNewLook.aspx")) {
+                    return "Check Out Our New Look";
+                } else if (url.includes("BrowsePartner.aspx")) {
+                    return "Browse Suppliers";
+                } else if (url.includes("adcdirectors.aspx")) {
+                    return "ADC Contacts";
+                } else if (url.includes("meetNGreetTileClicked")) {
+                    return "Meet and Greet";
+                } else if (url.includes("navigateMyAccount")) {
+                    return "My Account";
+                } else if (url.includes("calendar.aspx")) {
+                    return "Calendar";
+                } else if (url.includes("ceucredits.aspx")) {
+                    return "CEU Credits";
+                } else if (url.includes("supportcenter.aspx")) {
+                    return "Support Center";
+                } else if (url.includes("designinformation")) {
+                    return "Design Information";
+                } else if (url.includes("refId=19")) {
+                    return "HSM Contacts";
+                } else if (url.includes("OpenFeedbackPopupAdmin")) {
+                    return "Add Feedback";
+                } else {
+                    return url;
+                }
+            }
+        }
+
+
+
+    </script>
+
+</head>
+<body id="bodyTag" class="home">
+    <form method="post" action="./home.aspx" id="form1" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="+bWqSZsDtDNUHTLyxgB8USgZ4tzg+T1TpX25ZK+ICjrA58pNM4+n9qR5wX9L7as+01xaHp+vnk3fcfaPEiog8G/9FJvq/+eHJdcg4+K7YzlimsG+dkfaKerY+XQhRXqYxUAseWXJZeQTMBnKZVaLkiBhzynr9TwRJjCWdzpE0BxeIdFwHU4diTwmxBH4OpkEMc27ZXOTCMxLnE0NokWk9cbUisFsSGqTe2ZJ5nc2ZZr+b4/UlskNwFf1snC+ITpf50OHBsY4+0kuwjX/htoO2/WwoBF+Y7OiyXyt+P2AEBIfGeZcUJBLsGJQaBINjFQS+L+7atCF33qYAPOyr0hZX8yYms3rGOEQxvZ+o3XXNj5eiIIVe8LrSiTqeQFy2gYkyBl9zHU13zrMKdLwjaFg77aq5JGjkX/6LCwqEyQR3klb7kTb5ERHXr6rW9s+44gD755/N1XB/7B2D0Paz26i4zrkqARx6ZpDaw3kNR9AVRXbqMrUV+WD9LRoNHlBL9ldO6GFLB0t1EoRcJs4eIb8e030BB4Dy51AT3VYkEY4FQsbQYnpMzp71n3kg9F5gaEs4a5Pn7+A28D8FeJT9oPxYQ==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=EkqscSr-X_CytFBxbiF2TLScJk-LdNQPervgTxXyJVDyKqqLG3Nmnv9MugKeQiyQiZgRxsRVB-iZ0bp3Dhitmdg8qaFPdkpCNMchetKqmEo1&amp;t=638970989659887652" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=AQMUax8-sys0r1eWc9qS53i14WGR5QVkXYFHwgcT6D6UCrehIflj7IPiPbAbrfP7vQ8_JYPb88cQ7-TpwnN6gWn3rn_jWQK6vpXnNljXWXXs4w1TqcUQASwm8lYf4ZiHJre_HyP_2l0yWPGxy-v8pWc43KK9Nrq1cJkJOBn7nHw1&amp;t=345ad968" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=EYaIXZbTjU_eBLKZ1nFAYWq_phqP2OKoYrPn_ZyJf-Zoq9PBRyijkva9v5B6nGxbdJ-4qupX5xR6l9VS1HFBw0OWP-WPlFy3djkiqDSRVKGOG8tDzWMEWRisKN_M7TunWrvEV7n346dtRkSVawTy3tLDCtUD3-71-b-pp3jis5VJw7yJ-YQjxugDZ8C4Gh350&amp;t=345ad968" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1245FCA7" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+</div>
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager', 'form1', ['tctl00$dropDownUpdatePanel','dropDownUpdatePanel'], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+        <div id="meet-and-greet-modal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-border">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span></button>
+                            <div class="modal-header-col col1">
+                                &nbsp;
+                            </div>
+                            <div class="modal-header-col col2">
+                                <h4 class="modal-title">
+                                    <span>Virtual Meet & Greet</span></h4>
+                            </div>
+                            <div class="modal-header-col col3">
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                                    <div class="meet-and-greet-intro">
+                                        <p>
+                                            As a Suppliers' Connection Recommended Supplier, you can request a meeting with the
+                                        Hilton AD&C Team to present your product/services.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="meet-and-greet-tab-wrapper">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="meet-greet active"><a href="#meet-and-greet-tab" aria-controls="meet-and-greet"
+                                        role="tab" data-toggle="tab">Virtual Meet & Greet</a>
+                                        <div class="row">
+                                            <div class="hidden-xs hidden-sm tab-description">
+                                                <div class="icon-share">
+                                                    <img src="images/home/share-product-service.png" alt="Share Your Product or Service" />
+                                                </div>
+                                                <div class="intro">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <!-- meet and greet tab -->
+                                    <div role="tabpanel" class="tab-pane active" id="meet-and-greet-tab">
+                                        <div class="row">
+                                            <div class="visible-xs visible-sm hidden-md tab-description">
+                                                <div class="icon-share">
+                                                    <img src="images/home/share-presentation.png" alt="Share Your CE Presentation" />
+                                                </div>
+                                                <div class="intro">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-form-wrapper">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0">
+                                                    <h4>Request Form</h4>
+                                                    <div class="form-group">
+                                                        <input id="txtMeetNGreetCompany" name="txtMeetNGreetCompany" type="text" class="form-control"
+                                                            placeholder="COMPANY" maxlength="100" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="txtMeetNGreetContact" name="txtMeetNGreetContact" type="text" class="form-control"
+                                                            placeholder="CONTACT" maxlength="100" />
+                                                    </div>
+                                                    <div class="row" style="margin-left: -15px;">
+                                                        <div class="col-xs-12 col-sm-6">
+                                                            <div class="form-group">
+                                                                <input id="txtMeetNGreetPhone" name="txtMeetNGreetPhone" type="number" class="form-control no-spinner"
+                                                                    placeholder="PHONE NUMBER" maxlength="32" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        
+                                                        <textarea name="txtMeetNGreetProducts" id="txtMeetNGreetProducts" placeholder="PRODUCTS TO BE PRESENTED"
+                                                            rows="5" cols="75" style="resize: none"></textarea>
+                                                    </div>
+                                                    <div class="errorText">
+                                                        <span id="remainingCharacters"></span>
+                                                        <span id="remainingCharacterLabel">characters remaining</span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>
+                                                            Does product comply with brand standards?</label>
+                                                        <label class="radio-inline">
+                                                            <input name="meet-and-greet-brand-standards" type="radio" value="yes" />
+                                                            Yes
+                                                        </label>
+                                                        <label class="radio-inline">
+                                                            <input name="meet-and-greet-brand-standards" type="radio" checked="checked" value="no" />
+                                                            No
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="txtMeetNGreetEmail" name="txtMeetNGreetEmail" type="text" class="form-control"
+                                                            placeholder="Supplier Contact Email Address" style="width: 400px" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="file" size="5px" id="fileMAG" class="form-control" name="fileMAG"
+                                                            onchange="return ajaxFileUpload('fileMAG','image');" accept=".jpg, .jpeg, .png"  />
+
+                                                        <label>
+                                                            Select an image to be uploaded to your request. Acceptable image formats are .jpg or .png & the recommended image size is 600 x 600 pixels. Maximum file size allowed is 2 MB.</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="file" size="5px" id="fileMAGMeetingAgenda" class="form-control" name="fileMAGMeetingAgenda"
+                                                            onchange="return ajaxFileUploadDoc('fileMAGMeetingAgenda','doc');" accept=".doc,.docx,.ppt,.pptx,.pdf" />
+
+                                                        <label>
+                                                            Upload proposed presentation or meeting agenda. Acceptable formats are PDF, Microsoft Word or Powerpoint. Maximum file size must not exceed 2 MB.</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <select name="MAG-region" id="MAG-region" class="full-width-select region-of-meeting">
+                                                            <option value="1" selected="selected">North America</option>
+                                                           
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button id="btnMeetNGreetSubmit" type="submit" onclick="return btnMeetNGreetSubmit_Click();"
+                                                            class="btn btn-light-orange">
+                                                            Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="meet-and-greet-questions">
+                                <h4>Questions?</h4>
+                                <h3>For North America</h3>
+                                <p>
+                                    <a id="lnkNorthAmericaEmail" href="mailto:suppliersconnection@hilton.com">NA</a>
+                                </p>
+                                <input id="txtNorthAmericaEmail" type="text" />
+                                                                                             
+                                <button id="btnSaveRegionEmails" onclick="btnSaveRegionEmails_click(); return false;"
+                                    class="btn btn-light-orange">
+                                    Save Email</button>
+                            </div>
+                            <div class="admin-region-emails">
+                                <a href="javascript:showRegionAdmin();">Click here to edit this info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Meet n Greet/Lunch n Learn-->
+        <div id="lunch-and-learn-modal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-border">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span></button>
+                            <div class="modal-header-col col1">
+                                &nbsp;
+                            </div>
+                            <div class="modal-header-col col2">
+                                <h4 class="modal-title">
+                                    <span>Lunch & Learn</span></h4>
+                            </div>
+                            <div class="modal-header-col col3">
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                                    <div class="meet-and-greet-intro">
+                                        <p>
+                                            As a Suppliers' Connection Recommended Supplier, you can request a meeting with the
+                                        Hilton AD&C Team to present your product/service.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="meet-and-greet-tab-wrapper">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="lunch-learn active"><a href="#lunch-and-learn-tab" aria-controls="lunch-and-learn"
+                                        role="tab" data-toggle="tab">Lunch & Learn</a>
+                                        <div class="row">
+                                            <div class="hidden-xs hidden-sm tab-description">
+                                                <div class="icon-share">
+                                                    <img src="images/home/share-presentation.png" alt="Share Your CE Presentation" />
+                                                </div>
+                                                <div class="intro">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="lunch-and-learn-tab">
+                                        <div class="row">
+                                            <div class="visible-xs visible-sm hidden-md tab-description">
+                                                <div class="icon-share">
+                                                    <img src="images/home/share-product-service.png" alt="Share Your CE Presentation" />
+                                                </div>
+                                                <div class="intro">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-form-wrapper">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0">
+                                                    <h4>Request Form</h4>
+                                                    <div class="form-group">
+                                                        <input id="txtLunchNLearnCompany" name="txtLunchNLearnCompany" type="text" class="form-control"
+                                                            placeholder="COMPANY" maxlength="100" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="txtLunchNLearnContact" name="txtLunchNLearnContact" type="text" class="form-control"
+                                                            placeholder="CONTACT" maxlength="100" />
+                                                    </div>
+                                                    <div class="row" style="margin-left: -15px;">
+                                                        <div class="col-xs-12 col-sm-6">
+                                                            <div class="form-group">
+                                                                <input id="txtLunchNLearnPhone" name="txtLunchNLearnPhone" type="number" class="form-control no-spinner"
+                                                                    placeholder="PHONE NUMBER" maxlength="32" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <textarea name="txtLunchNLearnProducts" id="txtLunchNLearnProducts" placeholder="PRODUCTS TO BE PRESENTED"
+                                                            rows="5" cols="75" style="resize: none"></textarea>
+                                                    </div>
+                                                    <div class="errorText">
+                                                        <span id="remainingCharacter"></span>
+                                                        <span id="remainingCharacterLabe">characters remaining</span>
+                                                    </div>
+                                                    <div class="form-group radio">
+                                                        <label class="radio-main">
+                                                            Does product comply with brand standards?</label>
+                                                        <label class="radio-inline">
+                                                            <input name="lunch-and-learn-brand-standards" type="radio" value="yes" />
+                                                            Yes
+                                                        </label>
+                                                        <label class="radio-inline">
+                                                            <input name="lunch-and-learn-brand-standards" type="radio" checked="checked" value="no" />
+                                                            No
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <select name="LAL-region" id="LAL-region" class="full-width-select">
+                                                            <option value="1" selected="selected">North America</option>
+                                                        </select>
+                                                    </div>                                                    
+                                                    <div class="form-group">
+                                                        <input id="txtLunchNLearnEmail" name="txtLunchNLearnEmail" type="text" class="form-control"
+                                                            placeholder="SUPPLIER CONTACT EMAIL ADDRESS" style="width: 400px" />
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <input type="file" size="5px" id="fileLAL" class="form-control" name="fileLAL"
+                                                            onchange="return ajaxFileUpload('fileLAL','image');" accept=".jpg, .jpeg, .png" />
+                                                        <label>
+                                                            Select an image to be uploaded to your request. Acceptable image formats are .jpg or .png & the recommended image size is 600 x 600 pixels. Maximum file size allowed is 2 MB.</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="file" size="5px" id="fileLALMeetingAgenda" class="form-control" name="fileLALMeetingAgenda"
+                                                            onchange="return ajaxFileUploadDoc('fileLALMeetingAgenda','doc');" accept=".doc,.docx,.ppt,.pptx,.pdf" />
+
+                                                        <label>
+                                                            Upload proposed presentation or meeting agenda. Acceptable formats are PDF, Microsoft Word or Powerpoint. Maximum file size must not exceed 2 MB.</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button id="btnLunchNLearnSubmit" type="submit" onclick="return btnLunchNLearnSubmit_Click();"
+                                                            class="btn btn-light-orange">
+                                                            Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="meet-and-greet-questions">
+                                <h4>Questions?</h4>
+                                <h3>For North America</h3>
+                                <p>
+                                    <a id="lnkNorthAmericaEmailLL" href="mailto:suppliersconnection@hilton.com">NA</a>
+                                </p>
+                                <input id="txtNorthAmericaEmailLL" type="text" />
+                                <button id="btnSaveRegionEmailsLL" onclick="btnSaveRegionEmails_click(); return false;"
+                                    class="btn btn-light-orange">
+                                    Save Email</button>
+                            </div>
+                            <div class="admin-region-emails">
+                                <a href="javascript:showRegionAdmin();">Click here to edit this info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div id="partner-login-modal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-border">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span></button>
+                            <div class="modal-header-col col1">
+                                &nbsp;
+                            </div>
+                            <div class="modal-header-col col2">
+                                <h4 class="modal-title">
+                                    <span>Virtual Meet & Greet &nbsp;&nbsp;|&nbsp;&nbsp; Lunch & Learn</span></h4>
+                            </div>
+                            <div class="modal-header-col col3">
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                This section is for Hilton's Suppliers to share their products and certified education
+                            units (CEU) courses with Hilton staff.
+                            </p>
+                            <p>
+                                If you are a supplier, please
+                            <a onclick="setFormTarget(); return true;" id="LinkButton1" href="javascript:__doPostBack(&#39;ctl00$LinkButton1&#39;,&#39;&#39;)">Login</a>.<br>
+                                To learn how to become a supplier, <a href="../../Partners/PreApplicationPage.aspx"
+                                    target="_blank">click here</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="partner-login-modalLocation" class="modal fade" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content modal-font">
+                    <div class="modal-border">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span></button>
+                            <div class="modal-header-col col1">
+                                &nbsp;
+                            </div>
+                            <div class="modal-header-col col2">
+                                <h4 class="modal-title">
+                                    <span>Please select a Region and Country</span>
+                                </h4>
+                            </div>
+                            <div class="modal-header-col col3">
+                                &nbsp;
+                            </div>
+                            <div class="modal-header-col col3">
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="form-group modal-form-margin-top">
+                            <div class="col-md-6">
+                                <span id="selectRegion">Please select a Region</span>
+                            </div>
+                            <div class="col-md-6">
+                                <span id="selectCountry">Please select a Country</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div id="dropDownUpdatePanel">
+	
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <select name="ctl00$regionDropDown" id="regionDropDown" class="select-modal-color" onchange="javascript:UpdateTextArea()" style="width:250px;">
+
+	</select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="submit" name="ctl00$dummybutton1" value="" onclick="setFormTarget(); return true;" id="dummybutton1" style="display: none;" />
+                                            <select name="ctl00$countryDropDown" id="countryDropDown" class="select-modal-color" style="width:250px;">
+
+	</select>
+                                        </div>
+                                    </div>
+                                
+</div>
+                            <div class="modal-header-col col3">
+                                &nbsp;
+                            </div>
+                            <div class="col-md-10">
+                                <p>
+                                    <input id="setDefaultCheckBox" type="checkbox" name="ctl00$setDefaultCheckBox" /><label for="setDefaultCheckBox">  Set Region/Country selection as default location</label>
+                                </p>
+                            </div>
+                            <p>
+                                <a onclick="setFormTarget(); return true;" id="LinkButton3" href="javascript:__doPostBack(&#39;ctl00$LinkButton3&#39;,&#39;&#39;)">Continue</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <input type="hidden" name="ctl00$hdnProcess" id="hdnProcess" value="0" />
+        <div id="myaccount-modal" class="modal fade has-top-border utility-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-border">
+                        <div class="modal-body">
+                            <p>
+                                If you have credentials, click the Log In link below.<br />
+                                <br />
+                                If you need credentials, please <a href="SupportCenter.aspx" target="_blank">click here</a>
+                                and
+                            <br />
+                                read the FAQ item titled "How do I get an account?".
+                            </p>
+                            <div class="modal-row blue">
+                                <a onclick="setFormTarget(); return true;" id="LinkButton2" class="modal-row blue" href="javascript:__doPostBack(&#39;ctl00$LinkButton2&#39;,&#39;&#39;)">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /#password-modal -->
+        <div style="width: 100%; background: url(../Images/header-bg.gif) repeat-x 0 0;">
+            <div class="mainHeader">
+                
+                <div id="hdr-print" style="display: none">
+                    <img src="../Images/header-img.jpg" />
+                </div>
+                <h1>
+                    <a id="homeHyperlink" href="Home.aspx">Hilton</a>
+                </h1>
+                <div class="h-right">
+                    
+                    <span>
+                        
+                    </span>
+                    <a onclick="setFormTarget(); return true;" id="loginLinkButton" href="javascript:__doPostBack(&#39;ctl00$loginLinkButton&#39;,&#39;&#39;)">Login</a>
+                </div>
+                <div class="welcome">
+                    <h2>
+                        <span id="userNameLabel"></span>
+                    </h2>
+                    
+                    
+                </div>
+                
+            </div>
+            <!-- header -->
+            <header>
+                
+                <div class="container">
+                   <img src="images/home/SC-Logo.png" style="height:150px;" />
+                    <div id="nav-trigger">
+                        <i class="fa fa-bars"></i>
+                    </div>
+                    <div id="search" style="display: none">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </div>
+            </header>
+            <!-- /header -->
+            <div class="content">
+                <div class="wrapper">
+                     <div id="CSRFTokenDiv"><input name="__RequestVerificationToken" type="hidden" value="tZSxdtTFs2HLTNnqBQnTVuhIvmPQP6fAn4JKLKM8CE96NAleCrECyHcFDerxyqDj2SnC1JG5bqwzOhSyeIduYsjynujD6O4EIkHeqkGZPb41" /></div>
+                    
+    <!-- modals -->
+
+    <section id="edit-slider-image" class="modal fade">
+        <section class="modal-dialog">
+            <section class="modal-content">
+                <section class="modal-border">
+                    <section class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                        <section class="modal-header-col col1">&nbsp;</section>
+                        <section class="modal-header-col col2">
+                            <h4 class="modal-title"><span id="lblCreateEditDupTitle" class="light">Create/Edit</span><span style="margin-left: 10px">Slider Image</span></h4>
+                        </section>
+                        <section class="modal-header-col col3">&nbsp;</section>
+                    </section>
+                    <section class="modal-body">
+                        <p class="body-description">Fill out the form below to edit this image.</p>
+                        <section class="row">
+                            <section role="form">
+                                <section id="slider-image-container" style="border: 1px dotted #666666; min-height: 300px; background-size: 800px; background-repeat: no-repeat;"></section>
+                                <section id="image-upload-wrapper">
+                                    <section id="uploader_text"></section>
+                                    <p class="input-p centered">Select an image to be uploaded to your request. Acceptable image formats are .jpg or .png & the recommended image size is at least 1170 x 372 pixels. Maximum file size allowed is 2 MB.</p>
+                                    <input id="fileUpload" type="file" class="form-control" name="fileUpload" value="fileUpload" onchange="PreviewImage('fileUpload','slider-image-container');" />
+
+                                </section>
+                                <div class="form-group">
+                                    <select id="selectClickType" name="selectClickType" style="height: 35px; color: black;" onchange="cboSliderClickActionType_change(this);return false;">
+                                        <option value="1">URL</option>
+                                        <option value="3">Show Template</option>
+                                    </select>
+                                </div>
+                                <div id="divSliderTemplateContainer" class="form-group" style="display: none;">
+                                    <select id="cboSliderTemplate" name="cboSliderTemplate" style="height: 35px; color: black;" onchange="cboSliderTemplate_change();">
+                                        <option value="1">Template 1</option>
+                                        <option value="2">Template 2</option>
+                                    </select>
+                                    <a href="javascript:showTemplateForm();" style="margin-left: 5px;">Set Template Content</a>
+                                    <img id="sliderTemplateThumb" src="images/home/template1-thumbnail.jpg" alt="" style="margin-left: 5px;" width="150" />
+                                </div>
+                                <div id="divSliderURLContainer" class="form-group">
+                                    <input id="txtClickActionURL" type='text' class="form-control" placeholder="URL" name="txtClickActionURL" style="width: 600px" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label>
+                                        <input id="optNewWindow" type="radio" value="_blank" name="target" />New Window</label>
+                                    <label>
+                                        <input id="optSameWindow" type="radio" value="_self" name="target" style="margin-left: 10px;" />Same Window</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <input id="chkEnabled" name="chkEnabled" type="checkbox" value="enabled" />Enabled</label>
+                                </div>
+                            </section>
+                        </section>
+                    </section>
+                    <div class="modal-footer">
+                        <button id="btnSubmit" type="submit" class="btn btn-primary submit" onclick="return btnSubmit_Click();">Submit</button>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </section>
+    <section id="edit-slider-Announcement" class="modal fade">
+    <section class="modal-dialog">
+        <section class="modal-content">
+            <section class="modal-border">
+                <section class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    <section class="modal-header-col col1">&nbsp;</section>
+                    <section class="modal-header-col col2">
+                        <h4 class="modal-title"><span id="lblCreateEditAnnouncementTitle" class="light">Create/Edit</span><span style="margin-left: 10px">Announcement Slider</span></h4>
+                    </section>
+                    <section class="modal-header-col col3">&nbsp;</section>
+                </section>
+                <section class="modal-body">
+                    <p class="body-description">Fill out the form below to edit this image.</p>
+                    <section class="row">
+                        <section role="form">
+                            <section id="announcement-image-container" style="border: 1px dotted #666666; min-height: 300px; background-size: 800px; background-repeat: no-repeat;"></section>
+                            <section id="image-upload-wrapper-announcement">
+                                <section id="uploader_text-announcement"></section>
+                                <p class="input-p centered">Select an image to be uploaded to your request. Acceptable image formats are .jpg or .png & the recommended image size is at least 360 x 340 pixels. Minimum file size allowed is 500 KB and Maximum file size allowed is 2 MB.</p>
+                                <input id="fileUploadAnnouncement" type="file" class="form-control" name="fileUploadAnnouncement" value="fileUploadAnnouncement" onchange="PreviewImage('fileUploadAnnouncement','announcement-image-container');" />
+                            </section>
+
+                            <div>
+                                <div class="edit-content-title">Supplier's Description</div>
+                                <div id="divAnnouncement">
+                                    <textarea id="textAnnouncement" name="textAnnouncement" maxlength="500"></textarea>
+                                </div>
+                                <span id="char_count"></span><span id="char_countremaining"> characters remaining</span>                            
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    <input id="chkEnabledAnnouncement" name="chkEnabledAnnouncement" type="checkbox" value="enabled" />Enabled</label>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+                <div class="modal-footer">
+                    <button id="btnSubmitAnnouncement" type="submit" class="btn btn-primary submit" onclick="return btnSubmitAnnouncement_Click();">Submit</button>
+                </div>
+            </section>
+        </section>
+    </section>
+</section>
+
+    <div id="edit-tile-image" class="modal fade">
+        <div class="modal-dialog" style="height: 600px;">
+            <div class="modal-content">
+                <div class="modal-border">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                        <div class="modal-header-col col1">&nbsp;</div>
+                        <div class="modal-header-col col2">
+                            <h4 class="modal-title"><span id="lblCreateEditTileTitle" class="light">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create/Edit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin-left: 10px">Tile</span></h4>
+                        </div>
+                        <div class="modal-header-col col3">&nbsp;</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-col col1" style="margin-top: 200px;">
+                            <p class="body-description">Fill out the form below to edit this image.</p>
+                            <div class="row">
+                                <div role="form">
+                                    <div class="form-group">
+                                        <select id="cboTileClickActionType" name="cboTileClickActionType" style="height: 35px; color: black;" onchange="cboTileClickActionType_change(this);return false;">
+                                            <option value="1">URL</option>
+                                            <option value="3">Show Template</option>
+                                        </select>
+                                    </div>
+                                    <div id="divTileTemplateContainer" class="form-group" style="display: none;">
+                                        <select id="cboTileTemplate" name="cboTileTemplate" style="height: 35px; color: black;" onchange="cboTileTemplate_change();">
+                                            <option value="1">Template 1</option>
+                                            <option value="2">Template 2</option>
+                                        </select>
+                                        <a href="javascript:showTemplateForm();">Set Template Content</a>
+                                        <img id="tileTemplateThumb" src="images/home/template1-thumbnail.jpg" alt="" style="margin-left: 5px;" width="150" />
+                                    </div>
+                                    <div id="divTileURLContainer" class="form-group">
+                                        <input id="txtTileClickActionURL" name="txtTileClickActionURL" type='text' class="form-control" placeholder="URL" style="width: 375px" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <input id="optTileNewWindow" type="radio" value="_blank" name="tileTarget" />New Window</label>
+                                        <label>
+                                            <input id="optTileSameWindow" type="radio" value="_self" name="tileTarget" style="margin-left: 10px;" />Same Window</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <input id="chkTileEnabled" name="chkTileEnabled" type="checkbox" value="enabled" />Enabled</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="event-users-container" class="row">
+                                <div class="input-header">Permissions:</div>
+                                <p class="input-p">Please select who will be allowed to see this event.</p>
+                                <div class="input-group checkbox">
+                                    <span class="input-group-addon">
+                                        <label>
+                                            <input type="checkbox" id="chkEveryone" name="chkEveryone" aria-label="Everyone" />Everyone</label>
+                                        <label>
+                                            <input type="checkbox" id="chkPartners" name="chkPartners" aria-label="Suppliers" />Suppliers</label>
+                                        <label>
+                                            <input type="checkbox" id="chkOwnersConsultants" name="chkOwnersConsultants" aria-label="Owners/Consultants" checked />Owners/Consultants</label>
+                                        <label>
+                                            <input type="checkbox" id="chkEmployeesOnly" name="chkEmployeesOnly" aria-label="Hilton Employees Only" />Hilton Employees Only</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-col col2">
+                            <div id="tile-image-container" style="border: 1px dotted #666666; min-height: 600px; background-size: 300px; background-repeat: no-repeat; background-position: center"></div>
+                            <div id="tileImage-upload-wrapper">
+                                <div id="tile-uploader-text"></div>
+                                <p class="input-p centered">Select an image to be uploaded to your request. Acceptable image formats are .jpg or .png & the recommended image size is 600 x 600 pixels. Maximum file size allowed is 2 MB.</p>
+
+                                <input id="fileTileImage" type="file" class="form-control" name="fileTileImage" onchange="PreviewImage('fileTileImage','tile-image-container');" />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnSubmitTile" type="submit" class="btn btn-primary submit" onclick=" return btnSubmitTile_Click();">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-template-modal" class="modal fade" data-backdrop="false" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color:darkgray">
+                <div class="modal-border">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" onclick="return CloseTemplateModel()"><span aria-hidden="true">&times;</span></button>
+                        <div class="modal-header-col col1">&nbsp;</div>
+                        <div class="modal-header-col col2">
+                            <h4 class="modal-title"><span>&nbsp;&nbsp;&nbsp;Edit Page Content&nbsp;&nbsp;&nbsp;</span></h4>
+                        </div>
+                        <div class="modal-header-col col3">&nbsp;</div>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="tab-wrapper">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#t1-tab" id="t1" aria-controls="t1" role="tab" data-toggle="tab">Template 1</a></li>
+                                <li role="presentation"><a href="#t2-tab" id="t2" aria-controls="t2" role="tab" data-toggle="tab">Template 2</a></li>
+                            </ul>
+                            <div class="tab-content">
+
+                                <!-- template 1 -->
+                                <div role="tabpanel" class="tab-pane active" id="t1-tab">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+
+                                            <!-- image uploader - hero -->
+                                            <div id="t1-hero-uploader-wrapper" class="uploader hero">
+                                                <div class="edit-content-title">Hero Image</div>
+                                                <div class="image-wrapper"></div>
+                                                <div class="image-upload-wrapper">
+                                                    <div id="uploader-text"></div>
+                                                    <p class="input-p centered">Acceptable image formats are .jpg or .png & the recommended image dimensions are 1150px by 360px.</p>
+                                                    <label class="btn btn-secondary btn-file">
+                                                        Browse
+                                                        <input name="ctl00$mainContent$fileTemplate1Hero" type="file" id="mainContent_fileTemplate1Hero" class="fileUpload" style="display: none;" data-container="#t1-hero-uploader-wrapper" onchange="previewSelectedImage($(this));" />
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- main paragraph -->
+                                        <div class="col-xs-12 col-xs-offset-0 col-sm-7">
+                                            <div class="edit-content-copy partial">
+                                                <div class="edit-content-title">Main Copy</div>
+                                                <div id="div" style="border: thin solid red; height: 380px; width: 100%;">
+                                                    <textarea id="textTemplate1" name="textTemplate1"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- image uploader - callout -->
+                                        <div class="col-xs-12 col-xs-offset-0 col-sm-5">
+                                            <div id="t1-callout-uploader-wrapper" class="uploader callout">
+                                                <div class="edit-content-title">Callout Image</div>
+                                                <div class="image-wrapper"></div>
+                                                <div class="image-upload-wrapper">
+                                                    <div id="uploader-text"></div>
+                                                    <p class="input-p centered">Acceptable image formats are .jpg or .png & the recommended image dimensions are 600px by 600px.</p>
+                                                    <label class="btn btn-secondary btn-file">
+                                                        Browse
+                                                        <input name="ctl00$mainContent$fileTemplate1Callout" type="file" id="mainContent_fileTemplate1Callout" class="fileUpload" style="display: none;" data-container="#t1-callout-uploader-wrapper" onchange="previewSelectedImage($(this));" />
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- template 2 -->
+                                <div role="tabpanel" class="tab-pane" id="t2-tab">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+
+                                            <!-- image uploader - hero -->
+                                            <div id="t2-hero-uploader-wrapper" class="uploader hero">
+                                                <div class="edit-content-title">Hero Image</div>
+                                                <div class="image-wrapper"></div>
+                                                <div class="image-upload-wrapper">
+                                                    <div id="uploader-text"></div>
+                                                    <p class="input-p centered">Acceptable image formats are .jpg or .png & the recommended image dimensions are 1150px by 360px.</p>
+                                                    <label class="btn btn-secondary btn-file">
+                                                        Browse
+                                                        <input name="ctl00$mainContent$fileTemplate2Hero" type="file" id="mainContent_fileTemplate2Hero" class="fileUpload" style="display: none;" data-container="#t2-hero-uploader-wrapper" onchange="previewSelectedImage($(this));" />
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- main paragraph -->
+                                        <div class="col-xs-12">
+                                            <div class="edit-content-copy full">
+                                                <div class="edit-content-title">Main Copy</div>
+                                                <div style="border: thin solid red; height: 280px; width: 100%;">
+                                                    <textarea id="textTemplate2" name="textTemplate2"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- image uploader - callout -->
+                                        <div class="col-xs-12 col-sm-4">
+                                            <div id="t2-callout-1-uploader-wrapper" class="uploader callout">
+                                                <div class="edit-content-title">Callout Image</div>
+                                                <div class="image-wrapper"></div>
+                                                <div class="image-upload-wrapper">
+                                                    <div id="uploader-text"></div>
+                                                    <p class="input-p centered">Acceptable image formats are .jpg or .png & the recommended image dimensions are 600px by 600px.</p>
+                                                    <label class="btn btn-secondary btn-file">
+                                                        Browse
+                                                        <input name="ctl00$mainContent$fileTemplate2Callout1" type="file" id="mainContent_fileTemplate2Callout1" class="fileUpload" style="display: none;" data-container="#t2-callout-1-uploader-wrapper" onchange="previewSelectedImage($(this));" />
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4">
+                                            <div id="t2-callout-2-uploader-wrapper" class="uploader callout">
+                                                <div class="edit-content-title">Callout Image</div>
+                                                <div class="image-wrapper"></div>
+                                                <div class="image-upload-wrapper">
+                                                    <div id="uploader-text"></div>
+                                                    <p class="input-p centered">Acceptable image formats are .jpg or .png & the recommended image dimensions are 600px by 600px.</p>
+                                                    <label class="btn btn-secondary btn-file">
+                                                        Browse
+                                                        <input name="ctl00$mainContent$fileTemplate2Callout2" type="file" id="mainContent_fileTemplate2Callout2" class="fileUpload" style="display: none;" data-container="#t2-callout-2-uploader-wrapper" onchange="previewSelectedImage($(this));" />
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4">
+                                            <div id="t2-callout-3-uploader-wrapper" class="uploader callout">
+                                                <div class="edit-content-title">Callout Image</div>
+                                                <div class="image-wrapper"></div>
+                                                <div class="image-upload-wrapper">
+                                                    <div id="uploader-text"></div>
+                                                    <p class="input-p centered">Acceptable image formats are .jpg or .png & the recommended image dimensions are 600px by 600px.</p>
+                                                    <label class="btn btn-secondary btn-file">
+                                                        Browse
+                                                        <input name="ctl00$mainContent$fileTemplate2Callout3" type="file" id="mainContent_fileTemplate2Callout3" class="fileUpload" style="display: none;" data-container="#t2-callout-3-uploader-wrapper" onchange="previewSelectedImage($(this));" />
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnSubmitTemplate" type="submit" class="btn btn-primary submit" onclick=" return btnSubmitTemplate_Click();">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- .container -->
+    <div class="container home">
+
+        <!-- .navigation-panel -->
+        <div id="navigation-panel-wrapper" class="navigation-panel-mask">
+            <div id="navigation-panel">
+                <div class="wrapper">
+                    <ul>
+                        <li><a href="Home.aspx" rel="noopener noreferrer" target="_blank">Home</a></li>
+                        <li><a href="../Partners/BrowsePartner.aspx" rel="noopener noreferrer" target="_blank">Browse Suppliers</a></li>
+                        <li><a href="javascript:navigateMyAccount();">My Account</a></li>
+                        <li><a href="calendar.aspx" rel="noopener noreferrer" target="_blank">Events Calendar</a></li>
+                        <li><a href="javascript:meetNGreetTileClicked();">Virtual Meet & Greet</a></li>
+                        <li><a href="adcdirectors.aspx" rel="noopener noreferrer" target="_blank">AD&C Contacts</a></li>
+                        <li><a href="designinformation.aspx" rel="noopener noreferrer" target="_blank">Explore Design Information</a></li>
+                        <li><a href="CEUCredits.aspx" rel="noopener noreferrer" target="_blank">CEU Credits</a></li>
+                        <li><a href="supportcenter.aspx" rel="noopener noreferrer" target="_blank">Support Center</a></li>
+                        <li><a href="CustomTemplate.aspx?refId=19" rel="noopener noreferrer" target="_blank">HSM Contacts</a></li>
+                    </ul>
+
+                    <div class="toggle-wrapper" style="display: none;">
+                        <div class="toggle-title">Admin Tools</div>
+                        <div class="state active" data-toggle-state="on">OFF</div>
+                        <div class="toggle toggle-light"></div>
+                    </div>
+
+                    <div id="close-navigation-panel"><a href="javascript:void(0);"><i class="fa fa-times"></i>CLOSE</a></div>
+                </div>
+            </div>
+        </div>
+        <!-- /.navigation-panel -->
+
+        <div id="divCreateSliderLink" style="display: none;"><a href="javascript:showCreateSlider();" target="_self">Create Slider Image</a></div>
+        <div id="divCreateSliderAnnouncementLink" style="display: none;"><a href="javascript:showCreateAnnouncement();" target="_self">Create Announcement Slider</a></div>
+
+        <!-- #carousel-home -->
+        <div id="carousel-home" class="carousel slide">
+
+            <!-- .carousel-inner -->
+            <div id="divCarouselInner" class="carousel-inner">
+            </div>
+            <!-- /.carousel-inner -->
+
+            <!-- .carousel-control -->
+
+            <a class="left carousel-control" href="#carousel-home" data-slide="prev">
+                <span class="icon-prev">
+                    <img src="images/global/chevron-left.png" /></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-home" data-slide="next">
+                <span class="icon-next">
+                    <img src="images/global/chevron-right.png" /></span>
+            </a>
+            <!-- /.carousel-control -->
+
+        </div>
+        <!-- /#carousel-home -->
+
+
+
+        <!-- .grid -->
+        <div id="divTileContainter" class="grid">
+            <div id="divGridSizer" class="grid-sizer"></div>
+            <div id="divRecommendedPartners" class="grid-item grid-item--width2 top-left">
+                <!-- #carousel-partners -->
+                <div id="carousel-partners" class="carousel slide">
+                    <!-- .carousel-inner -->
+                    <div id="recommendedPartnerDiv" class="carousel-inner">
+                    </div>
+                    <!-- /.carousel-inner -->
+
+                    <!-- .carousel-control -->
+                    <a class="left carousel-control" href="#carousel-partners" data-slide="prev">
+                        <span class="icon-prev">
+                            <img src="images/global/chevron-left.png" /></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-partners" data-slide="next">
+                        <span class="icon-next">
+                            <img src="images/global/chevron-right.png" /></span>
+                    </a>
+                    <!-- /.carousel-control -->
+                </div>
+                <!-- /#carousel-partners -->
+                <a href="../Partners/BrowsePartner.aspx" target="_blank">
+                    <img src="images/home/browse-recommended-partners.jpg" alt="Browse Recommended Suppliers" /></a>
+            </div>
+
+        </div>
+        <!-- /.grid -->
+
+        <div id="divCreateTileLink" class="row" style="display: none; margin-top: 30px;"><a href="javascript:showCreateTile();" target="_self">Create Tile</a></div>
+
+    </div>
+    <!-- /.container -->
+
+    <input type="hidden" id="txtEditId" name="txtEditId" />
+    
+    <input name="ctl00$mainContent$txtPartnerId" type="hidden" id="mainContent_txtPartnerId" />
+    
+    <input type="hidden" id="txtTemplate1text" name="txtTemplate1text" />
+    <input type="hidden" id="txtTemplate2text" name="txtTemplate2text" />
+
+    
+    <a id="mainContent_lnkPartnerIcon" href="javascript:__doPostBack(&#39;ctl00$mainContent$lnkPartnerIcon&#39;,&#39;&#39;)"></a>
+
+    <!-- global js include -->
+    <script src="js/scripts.js"></script>
+
+    <iframe id="upload-iframe" name="upload-iframe" src="" style="display: none;" onload="uploadComplete();"></iframe>
+
+    <!-- js -->
+    <script>
+
+
+        (function ($) {
+            var navPanel = $('#navigation-panel');
+            var navPanelState = 'closed';
+            var naPanelClosedPos = -300;
+            var naPanelOpenPos = 0;
+            _txtPartnerIdClientId = 'mainContent_txtPartnerId';
+            _lnkPartnerIconClientId = 'mainContent_lnkPartnerIcon';
+            // main navigation -->
+            $('#nav-trigger').on('click', function () {
+                manageNavigationPanel();
+            })
+
+            // close main navigation -->
+            $('#close-navigation-panel').on('click', function () {
+                manageNavigationPanel();
+            })
+
+            $('body').on('click', function (event) {
+                if (navPanelState == 'open') {
+                    var t = $(event.target);
+                    if (t.closest('#navigation-panel-wrapper, #nav-trigger').length == 0 && !t.is('#navigation-panel-wrapper') && !t.is('#nav-trigger')) {
+                        manageNavigationPanel();
+                    }
+                }
+
+            })
+
+            function manageNavigationPanel() {
+                if (navPanelState == 'closed') {
+                    navPanelState = 'open';
+
+                    $(navPanel).animate({
+                        marginLeft: naPanelOpenPos,
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+                } else {
+                    navPanelState = 'closed';
+
+                    $(navPanel).animate({
+                        marginLeft: naPanelClosedPos,
+                    }, 500, function () {
+                        // Animation complete.
+                    });
+                }
+            }
+
+            documentReady();
+
+        })(jQuery);
+
+
+    </script>
+    <!-- /js -->
+
+
+
+                    <div class="clear">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="wrapper">
+                </div>
+            </div>
+        </div>
+        <div style="display: none">
+            <a href="javascript:void(0);" id="hprlnkRegion" class="thickbox"></a>
+        </div>
+        <input type="hidden" id="txtUploadType" name="txtUploadType" value="" />
+        <input type="hidden" id="hiddenMeetingType" name="hiddenMeetingType" value="" />
+        <input type="hidden" id="txtRegions" name="txtRegions" />
+        <input type="hidden" id="imghiddenLLHeight" name="imghiddenLLHeight" value="" />
+        <input type="hidden" id="imghiddenLLWidth" name="imghiddenLLWidth" value="" />
+        <input type="hidden" id="imgLLextension" name="imgLLextension" value="" />
+        <input type="hidden" id="imgLLSize" name="imgLLSize" value="" />
+        <input type="hidden" id="hiddenMeetingAgenda" name="hiddenMeetingAgenda" value="" />
+
+        <script>
+            $(document).ready(function () {
+                $("#hprlnkRegion").attr("href", "../Admin/AddFeedBackPopup.aspx?keepThis=true&TB_iframe=true&height=550&width=900");
+
+            });
+            function closeIframe() {
+                $('#TB_closeWindowButton').click();
+            }
+
+            $(document).ready(function () {
+
+                if (document.getElementById("hdnProcess").value == 0) {
+                    $('#partner-login-modalLocation').modal('hide');
+                }
+                else {
+                    var delayMillis = 3000; //3 second
+
+                    setTimeout(function () {
+                        $('#partner-login-modalLocation').modal('show');
+                    }, delayMillis);
+
+
+                }
+            }
+            );
+
+
+            function UpdateTextArea() {
+
+                //   alert("adf");
+                document.getElementById("dummybutton1").click();
+
+
+            }
+
+            // admin tools toggle switch -->
+            $('.toggle').on('toggle', function (e, active) {
+                if (active) {
+                    console.log('active');
+                    $('.toggle-wrapper .state').html('ON');
+                    _isAdminModeToggledOn = true;
+                    adminToolsToggled();
+
+                } else {
+                    console.log('inactive');
+                    $('.toggle-wrapper .state').html('OFF');
+                    _isAdminModeToggledOn = false;
+                    adminToolsToggled();
+                }
+            });
+
+            // admin tool - edit -->
+            $('.admin-icon').on('click', function (e) {
+                e.stopPropagation();
+            });
+
+            if (isUserAdmin()) {
+                $('.toggle-wrapper').show();
+            }
+
+            populateIntroCopy();
+
+            $(document).on("keypress", 'form', function (e) {
+                var code = e.keyCode || e.which;
+                if (code == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            $('#meet-and-greet-modal').modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: false
+            });
+
+            $('#lunch-and-learn-modal').modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: false
+            });
+
+
+
+            //set the target and action of the form to handle document uploads.
+            $('#form1').attr("target", "upload-iframe");
+            $('#form1').attr("action", "file-upload.ashx");
+        </script>
+    </form>
+</body>
+</html>

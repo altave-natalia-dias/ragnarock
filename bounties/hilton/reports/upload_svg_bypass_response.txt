@@ -1,0 +1,15 @@
+HTTP/2 200 
+cache-control: no-cache
+pragma: no-cache
+content-length: 0
+expires: -1
+server: 
+set-cookie: ASP.NET_SessionId=b5z0fujzhwyrtiekqydfqvnb; path=/; secure; HttpOnly; SameSite=Lax
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-ua-compatible: IE=edge
+x-content-type-options: nosniff
+content-security-policy: script-src 'self' 'unsafe-inline' 'unsafe-eval' *.tinymce.com *.tiny.cloud https://www.google-analytics.com http://www.google-analytics.com https://www.googletagmanager.com https://www.google.com/ https://www.gstatic.com https://www.google.com/recaptcha/api.js;       img-src 'self' *.tinymce.com *.tiny.cloud data: blob: https://www.google-analytics.com http://www.google-analytics.com https://www.googletagmanager.com;       style-src 'self' 'unsafe-inline' *.tinymce.com *.tiny.cloud https://fonts.googleapis.com;       font-src 'self' *.tinymce.com *.tiny.cloud https://fonts.gstatic.com;
+x-xss-protection: 1; mode=block
+date: Sun, 28 Jun 2026 16:12:40 GMT
+
