@@ -35,6 +35,8 @@ Isso foi confirmado na prática enviando requisições diretas ao Braze com a ch
 
 A limitação da PoC é que o `external_id` usado nos testes foi um valor sintético — não temos acesso ao painel Braze da SmartFit para confirmar visualmente a alteração de um cliente real. O que está tecnicamente provado (e já é suficiente para caracterizar CWE-862) é que **a API aceita qualquer `external_id`, sem checar vínculo com a sessão de origem** — resposta HTTP 201 idêntica independente do valor enviado.
 
+**Confirmação adicional por engenharia reversa do client-side:** analisando os bundles JS de `espacodocliente.smartfit.com.br`, localizei o ponto exato onde o `external_id` é definido — `user.personal.id.toString()`, disparado via `changeUser()` logo após autenticação bem-sucedida (código: `var r = eS.user.personal.id; r && ek && ew(r.toString())`). Isso remove a ambiguidade sobre *qual* dado vira `external_id`. O único ponto em aberto é o *formato* de `personal.id` (UUID vs. numérico/CPF) — não confirmável sem uma sessão autenticada. Mesmo no cenário mais defensável (UUID imprevisível), a falha de design permanece: o endpoint Braze aceita escrita para qualquer `external_id` sem exigir prova de posse de sessão, o que a própria Braze resolve nativamente via **SDK Authentication** — recurso que a SmartFit não está usando (ver recomendação #1).
+
 ---
 
 ## Passo a passo de reprodução
@@ -60,11 +62,11 @@ A limitação da PoC é que o `external_id` usado nos testes foi um valor sinté
 
 ## Recomendação de correção
 
-1. **Imediato:** revogar/rotacionar a chave `4a0a6c8c-27bc-486d-a08e-ab144b7d5864` no painel Braze
-2. **Imediato:** remover `brazeApiKey` do `window.__RUNTIME_CONFIG__` renderizado server-side
-3. **Curto prazo:** mover a inicialização do Braze SDK para um fluxo que não exponha a chave em HTML público
-4. **Curto prazo:** auditar logs do Braze em busca de escrita anômala nas últimas semanas
-5. **Longo prazo:** avaliar CSP restringindo chamadas não autorizadas ao domínio do Braze
+1. **Imediato (correção real, não cosmética):** habilitar **Braze SDK Authentication** — o backend passa a emitir um JWT assinado por usuário que o SDK do Braze valida antes de aceitar `changeUser()`/escrita para aquele `external_id`. Isso invalida o vetor demonstrado (escrita cross-user arbitrária) sem precisar esconder a chave — esconder/ofuscar a `brazeApiKey` no HTML não resolve nada, já que qualquer proxy (Burp, DevTools) intercepta a chave durante a inicialização legítima do SDK.
+2. **Imediato:** revogar/rotacionar a chave `4a0a6c8c-27bc-486d-a08e-ab144b7d5864` no painel Braze enquanto a SDK Authentication não sobe.
+3. **Mitigação temporária:** rate limit / bloqueio de IP no WAF para chamadas anômalas direto a `sdk.iad-07.braze.com/api/v3/data`.
+4. **Curto prazo:** auditar logs do Braze em busca de escrita anômala nas últimas semanas.
+5. **Curto prazo:** confirmar internamente o formato de `personal.id` — se for sequencial/numérico ou derivado de CPF, o risco sobe para Critical (ATO de perfil CRM em massa) e deve ser tratado com essa prioridade.
 
 ---
 

@@ -191,20 +191,35 @@ window.__RUNTIME_CONFIG__ = {
 
 ---
 
-## Limitação da Prova de Conceito
+## Confirmação do `external_id` real via engenharia reversa do client-side (2026-07-01)
 
-O `external_id` usado no PoC (`TARGET_USER_ID`) é um valor de teste — não temos acesso ao painel Braze da SmartFit para confirmar visualmente que o perfil de um cliente real específico foi alterado. O que está tecnicamente confirmado é o mais importante: **o endpoint aceita qualquer `external_id` fornecido pelo chamador, sem nenhuma verificação de que ele corresponde ao usuário da sessão que originou a chamada** (HTTP 201 idêntico independentemente do valor enviado). Isso já configura a falha de autorização (CWE-862) — se um atacante souber ou enumerar o `external_id` real de um cliente (formato provavelmente numérico ou baseado em CPF, usado internamente pela SmartFit), o mesmo request escreve no perfil real desse cliente.
+Para não depender de suposição, os bundles JS servidos por `espacodocliente.smartfit.com.br` (`/_next/static/chunks/pages/_app-*.js`) foram baixados e analisados. O ponto exato de inicialização do usuário no Braze foi localizado:
+
+```javascript
+// dentro do componente _app, useEffect disparado após login:
+(0, O.useEffect)(function () {
+  var r = eS.user.personal.id;
+  r && ek && ew(r.toString());
+}, [eS.user.personal.id, ek]);
+// onde ew = wrapper que chama diretamente $.changeUser(o), o SDK do Braze
+```
+
+Isso **confirma no código-fonte** (não mais por suposição) que o `external_id` usado pela SmartFit no `changeUser()` do Braze é `user.personal.id.toString()` — o ID interno do cliente, populado a partir da resposta autenticada de `/api/v1/user-session` / `/api/v1/user`.
+
+**O que ainda não está confirmado:** o *formato* desse `personal.id` (UUID imprevisível vs. numérico/sequencial vs. baseado em CPF). Os endpoints `/api/v1/user` e `/api/v1/user-session` retornam `401`/`405` genéricos sem autenticação, sem leak de schema (`{"isLoggedIn":false,"status":"Session doesn't exists!"}`), e não há um token/sessão de teste capturado para decodificar. Determinar isso exigiria uma conta autenticada real (fora do escopo desta rodada de teste).
+
+**Por que isso já é suficiente para caracterizar Missing Authorization (CWE-862) independente do formato do ID:** mesmo que `personal.id` seja um UUIDv4 imprevisível (cenário mais defensável para a SmartFit), o endpoint Braze `/api/v3/data` continua aceitando escrita para **qualquer** `external_id` fornecido, sem nenhuma prova de posse de sessão — isso por si só já é uma falha de design do lado da integração (ausência de Braze SDK Authentication, ver recomendação #1 abaixo), mesmo que o *impacto prático contra clientes reais* dependa da previsibilidade do ID. Reportamos os dois cenários com transparência: se o ID for previsível/vazado em algum outro ponto, o achado é **Critical** (ATO de perfil CRM em massa); se for um UUID robusto, o achado permanece **High** por Data Poisoning + custo financeiro direto (Braze cobra por volume de eventos/data points — escrita em massa não autenticada gera custo operacional real e polui métricas de negócio) + ausência de controle de autorização que a Braze disponibiliza nativamente e a SmartFit não usa.
 
 ---
 
 ## Recomendações
 
-1. **Imediato (CRÍTICO):** Revogar e rotacionar a chave `4a0a6c8c-27bc-486d-a08e-ab144b7d5864` no painel Braze
-2. **Imediato:** Remover `brazeApiKey` do `window.__RUNTIME_CONFIG__` injetado server-side
-3. **Curto prazo:** Implementar inicialização do Braze SDK via variável de ambiente server-side, sem expor a chave no HTML
-4. **Curto prazo:** Auditar logs do Braze para atividade suspeita nas últimas semanas/meses
-5. **Longo prazo:** Implementar Content Security Policy (CSP) que restrinja chamadas não autorizadas ao SDK do Braze
-6. **Longo prazo:** Avaliar se atributos Braze são usados para decisões de negócio na aplicação SmartFit (alta prioridade se sim)
+1. **Imediato (CRÍTICO) — correção real, não mitigação cosmética:** habilitar **Braze SDK Authentication**. Esconder ou ofuscar a `brazeApiKey` no HTML não resolve nada — qualquer proxy (Burp, DevTools) intercepta a chave durante a inicialização legítima do SDK, já que ela precisa estar acessível no client-side por design. A correção correta é o backend da SmartFit emitir um **JWT assinado por usuário** que o SDK do Braze valida antes de aceitar `changeUser()`/escrita para aquele `external_id` — isso invalida exatamente o vetor demonstrado neste relatório (escrita cross-user arbitrária), sem exigir remover a chave do client-side.
+2. **Imediato:** revogar e rotacionar a chave `4a0a6c8c-27bc-486d-a08e-ab144b7d5864` no painel Braze enquanto a SDK Authentication não está implementada.
+3. **Mitigação enquanto o fix definitivo não sai:** rate limit / bloqueio de IP no WAF para chamadas anômalas diretamente a `sdk.iad-07.braze.com/api/v3/data` originadas fora do fluxo normal do app.
+4. **Curto prazo:** auditar logs do Braze para atividade de escrita anômala nas últimas semanas/meses (volume de eventos fora do padrão, IPs não correspondentes a tráfego mobile/web legítimo).
+5. **Curto prazo:** confirmar internamente o formato de `personal.id` — se for sequencial/numérico ou derivado de CPF, o risco real é Critical e deve ser tratado com essa prioridade mesmo antes da SDK Authentication estar pronta.
+6. **Longo prazo:** avaliar se atributos/eventos do Braze alimentam decisões de negócio automatizadas na SmartFit (Canvas, campanhas por evento) — se sim, esse é o vetor de maior custo real do achado.
 
 ---
 
