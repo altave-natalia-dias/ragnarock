@@ -1,0 +1,17 @@
+HTTP/2 403 
+mime-version: 1.0
+content-length: 169
+x-reference-error: 18.35fa3f17.1782667594.27bac38
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+expires: 0
+content-type: application/json
+expires: Sun, 28 Jun 2026 17:26:34 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Sun, 28 Jun 2026 17:26:34 GMT
+alt-svc: h3=":443"; ma=93600
+set-cookie: akacd_ohw_prd_external=3960120393~rv=90~id=c356d78079462b23d48eb232f907c6c4; path=/; Secure; SameSite=None
+strict-transport-security: max-age=31536000
+
+{"errors":[{"context":"dx-gql","code":403,"message":"Forbidden","reference-error":"0.35fa3f17.1782667594.27bac38","client-IP":"2804:7f0:90c1:4efb:177a:eb39:d9d9:7fe0"}]}
