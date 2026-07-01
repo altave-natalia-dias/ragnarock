@@ -1,0 +1,92 @@
+skills lang:Python
+claude-code lang:Python
+claude-cookbooks lang:Jupyter Notebook
+prompt-eng-interactive-tutorial lang:Jupyter Notebook
+financial-services lang:Python
+claude-plugins-official lang:Python
+knowledge-work-plugins lang:Python
+courses lang:Jupyter Notebook
+claude-quickstarts lang:Python
+claude-for-legal lang:Python
+claude-code-action lang:TypeScript
+claude-agent-sdk-python lang:Python
+defending-code-reference-harness lang:Python
+claude-code-security-review lang:Python
+original_performance_takehome lang:Python
+anthropic-sdk-python lang:Python
+claudes-c-compiler lang:Rust
+claude-agent-sdk-demos lang:TypeScript
+claude-desktop-buddy lang:C++
+anthropic-sdk-typescript lang:TypeScript
+hh-rlhf [ARCHIVED] lang:None
+claude-agent-sdk-typescript lang:Shell
+cwc-workshops lang:TypeScript
+anthropic-sdk-go lang:Go
+claude-code-base-action lang:TypeScript
+buffa lang:Rust
+anthropic-cli lang:Go
+launch-your-agent lang:HTML
+life-sciences lang:Python
+cwc-long-running-agents lang:Shell
+connect-rust lang:Rust
+evals lang:None
+anthropic-tools [ARCHIVED] lang:Python
+claude-ai-mcp lang:None
+anthropic-sdk-ruby lang:Ruby
+anthropic-sdk-java lang:Kotlin
+claude-code-monitoring-guide lang:None
+healthcare lang:JavaScript
+anthropic-sdk-csharp lang:C#
+devcontainer-features lang:Shell
+ConstitutionalHarmlessnessPaper [ARCHIVED] lang:None
+ClaudeForFoundationModels lang:Swift
+PySvelte [ARCHIVED] lang:Python
+claude-plugins-community lang:None
+html-effectiveness lang:HTML
+anthropic-retrieval-demo [ARCHIVED] lang:Python
+anthropic-sdk-php lang:PHP
+toy-models-of-superposition [ARCHIVED] lang:Jupyter Notebook
+sleeper-agents-paper [ARCHIVED] lang:None
+political-neutrality-eval lang:Python
+github-mcp-server [FORK] lang:Go
+anthropic-tokenizer-typescript lang:TypeScript
+claude-constitution lang:None
+attribution-graphs-frontend [ARCHIVED] lang:JavaScript
+riv2025-long-horizon-coding-agent-demo [ARCHIVED] lang:Python
+anthropic-bedrock-python lang:None
+orjson [FORK] lang:Python
+swift-markdown-ui [FORK] lang:None
+agent-sdk-workshop lang:Python
+s5cmd lang:Go
+headvis lang:Svelte
+rclone [FORK] lang:None
+DecompositionFaithfulnessPaper [ARCHIVED] lang:Python
+scone-bench lang:Python
+cargo-nix-plugin lang:Rust
+anthropic-bedrock-typescript lang:None
+sycophancy-to-subterfuge-paper [ARCHIVED] lang:None
+triton [FORK] lang:C++
+apitools [FORK] lang:Python
+model-cards lang:None
+homebrew-tap lang:Ruby
+tokio [FORK] lang:Rust
+hypercorn [FORK] lang:Python
+tailscale-hint-extension lang:HTML
+maestro [FORK] lang:None
+httpcore [FORK] lang:Python
+redis-py lang:Python
+rogue-deploy-eval [ARCHIVED] lang:Python
+beam [FORK] lang:Java
+argo-cd [FORK] lang:None
+terragrunt [FORK] lang:None
+python-tblib [FORK] lang:Python
+cfaulthandler [FORK] lang:None
+blobfile lang:Python
+torchtyping [FORK] lang:Python
+homebrew-claude lang:None
+swift-markdown [FORK] lang:None
+sse-starlette [FORK] lang:None
+claude-tag-plugins lang:Shell
+nix-eval-jobs [FORK] lang:None
+riegeli-rs [FORK] lang:None
+leptos-chartistry [FORK] lang:None

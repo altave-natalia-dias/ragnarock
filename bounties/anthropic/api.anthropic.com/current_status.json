@@ -1,0 +1,12 @@
+{
+  "current_message": "🔧 Iniciando ferramenta: masscan",
+  "event_type": {
+    "tool_name": "masscan",
+    "type": "ToolStarted"
+  },
+  "last_update": "2026-06-29T01:22:48.757505388Z",
+  "progress": 0.0,
+  "scan_id": "3f011a53-9626-4a5f-b044-a8d3a79a53bd",
+  "target": "api.anthropic.com",
+  "total_events": 17
+}

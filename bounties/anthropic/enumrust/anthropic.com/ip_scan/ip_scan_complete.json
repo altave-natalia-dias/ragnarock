@@ -1,0 +1,556 @@
+[
+  {
+    "ip": "198.202.211.1",
+    "open_ports": [
+      {
+        "ip": "198.202.211.1",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "198.202.211.1",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "52.84.80.85",
+    "open_ports": [
+      {
+        "ip": "52.84.80.85",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "52.84.80.85",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "34.160.232.196",
+    "open_ports": [
+      {
+        "ip": "34.160.232.196",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "34.160.232.196",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "3.92.40.42",
+    "open_ports": [
+      {
+        "ip": "3.92.40.42",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "160.79.104.10",
+    "open_ports": [
+      {
+        "ip": "160.79.104.10",
+        "port": 8880,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "160.79.104.10",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "160.79.104.10",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "104.18.35.156",
+    "open_ports": [
+      {
+        "ip": "104.18.35.156",
+        "port": 2087,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "104.18.35.156",
+        "port": 2082,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "104.18.35.156",
+        "port": 8080,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "104.18.35.156",
+        "port": 8880,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "104.18.35.156",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "104.18.35.156",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "34.123.83.248",
+    "open_ports": [
+      {
+        "ip": "34.123.83.248",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "34.123.83.248",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [
+      {
+        "url": "http://34.123.83.248:80/healthz",
+        "status_code": 200,
+        "content_length": 2,
+        "content_type": "text/plain; charset=utf-8",
+        "title": null,
+        "redirect_url": null
+      }
+    ],
+    "total_paths_found": 1
+  },
+  {
+    "ip": "172.64.152.100",
+    "open_ports": [
+      {
+        "ip": "172.64.152.100",
+        "port": 8443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "172.64.152.100",
+        "port": 2083,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "172.64.152.100",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "172.64.152.100",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "199.60.103.254",
+    "open_ports": [
+      {
+        "ip": "199.60.103.254",
+        "port": 8880,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "199.60.103.254",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "199.60.103.254",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "2.18.20.145",
+    "open_ports": [
+      {
+        "ip": "2.18.20.145",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "2.18.20.145",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "199.60.103.2",
+    "open_ports": [
+      {
+        "ip": "199.60.103.2",
+        "port": 2082,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "199.60.103.2",
+        "port": 8080,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "199.60.103.2",
+        "port": 8880,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "199.60.103.2",
+        "port": 2087,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "199.60.103.2",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "199.60.103.2",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "52.84.80.120",
+    "open_ports": [
+      {
+        "ip": "52.84.80.120",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "52.84.80.120",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "136.113.71.169",
+    "open_ports": [
+      {
+        "ip": "136.113.71.169",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "136.113.71.169",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [
+      {
+        "url": "http://136.113.71.169:80/healthz",
+        "status_code": 200,
+        "content_length": 2,
+        "content_type": "text/plain; charset=utf-8",
+        "title": null,
+        "redirect_url": null
+      }
+    ],
+    "total_paths_found": 1
+  },
+  {
+    "ip": "34.36.57.103",
+    "open_ports": [
+      {
+        "ip": "34.36.57.103",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [
+      {
+        "url": "https://34.36.57.103:443/soap",
+        "status_code": 200,
+        "content_length": 0,
+        "content_type": "",
+        "title": null,
+        "redirect_url": null
+      }
+    ],
+    "total_paths_found": 1
+  },
+  {
+    "ip": "100.50.194.64",
+    "open_ports": [
+      {
+        "ip": "100.50.194.64",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "52.84.80.112",
+    "open_ports": [
+      {
+        "ip": "52.84.80.112",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "52.84.80.112",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "34.107.201.223",
+    "open_ports": [
+      {
+        "ip": "34.107.201.223",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "34.107.201.223",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "35.239.79.203",
+    "open_ports": [
+      {
+        "ip": "35.239.79.203",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "35.239.79.203",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [
+      {
+        "url": "http://35.239.79.203:80/healthz",
+        "status_code": 200,
+        "content_length": 2,
+        "content_type": "text/plain; charset=utf-8",
+        "title": null,
+        "redirect_url": null
+      }
+    ],
+    "total_paths_found": 1
+  },
+  {
+    "ip": "2.18.20.133",
+    "open_ports": [
+      {
+        "ip": "2.18.20.133",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "2.18.20.133",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "34.54.194.141",
+    "open_ports": [
+      {
+        "ip": "34.54.194.141",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "34.54.194.141",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "52.84.80.88",
+    "open_ports": [
+      {
+        "ip": "52.84.80.88",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      },
+      {
+        "ip": "52.84.80.88",
+        "port": 80,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  },
+  {
+    "ip": "3.221.57.21",
+    "open_ports": [
+      {
+        "ip": "3.221.57.21",
+        "port": 443,
+        "protocol": "tcp",
+        "service": null,
+        "is_http": true
+      }
+    ],
+    "discovered_paths": [],
+    "total_paths_found": 0
+  }
+]

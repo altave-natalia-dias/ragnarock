@@ -1,0 +1,616 @@
+═══════════════════════════════════════════════════════════════
+  ███████╗███╗   ██╗██╗   ██╗███╗   ███╗██████╗ ██╗   ██╗███████╗████████╗
+  ██╔════╝████╗  ██║██║   ██║████╗ ████║██╔══██╗██║   ██║██╔════╝╚══██╔══╝
+  █████╗  ██╔██╗ ██║██║   ██║██╔████╔██║██████╔╝██║   ██║███████╗   ██║   
+  ██╔══╝  ██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██╗██║   ██║╚════██║   ██║   
+  ███████╗██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║╚██████╔╝███████║   ██║   
+  ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   
+═══════════════════════════════════════════════════════════════
+  EnumRust v2.3.0 - Advanced Security Reconnaissance
+  Offensive Security | OSINT | Vulnerability Assessment
+═══════════════════════════════════════════════════════════════
+
+[+] Tools validated (cached) - PATH configured.
+
+🔍 Detectado scan CLI - Iniciando em modo TMUX persistente...
+   Isso garante que o scan continue mesmo se você desconectar SSH!
+
+⚠️  AVISO: tmux não está instalado!
+   O scan rodará normalmente, mas será interrompido se desconectar SSH.
+   Instale tmux com: apt-get install tmux
+
+[*] Starting domain scan for: claude.ai
+[*] Output directory: claude.ai/
+[*] Scan ID: bba68f8e-8a17-4ed7-a1cd-02670eddc1cb
+
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║  🤖 AI ENGINE: Ollama Auto-Setup                                              ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+[AI] Ollama binario encontrado
+[AI] Ollama server ja esta rodando
+[AI] Modelo 'llama3' disponivel
+[AI] Filtro inteligente ATIVO | Modelo: llama3 | URL: http://localhost:11434
+
+
+═══════════════════════════════════════════════════════════════
+  STAGE 2: SUBDOMAIN ENUMERATION (5-30%)
+═══════════════════════════════════════════════════════════════
+[*] Running subfinder for subdomain discovery...
+a-cdn.claude.ai
+assets.claude.ai
+downloads.claude.ai
+a.preview.claude.ai
+www.claude.ai
+api.claude.ai
+a.claude.ai
+console.claude.ai
+pivot.claude.ai
+preview.claude.ai
+downloads.preview.claude.ai
+staging.claude.ai
+status.claude.ai
+livepreview.claude.ai
+[+] Subfinder results added (total: 14)
+[*] Extracting certificate SANs with tlsx...
+claude.ai
+[+] Certificate SANs extracted
+[*] Enriching subdomains with native passive sources (crt.sh, bufferover)...
+[+] Native passive sources added 0 unique subdomains
+[*] Mining subdomains from historical URL archives (gau, waybackurls)...
+[+] Archive sources added 0 unique subdomains
+[+] Total unique subdomains found: 15
+
+═══════════════════════════════════════════════════════════════
+  STAGE 3: DNS RESOLUTION (30-40%)
+═══════════════════════════════════════════════════════════════
+[*] Resolving subdomains to IPs with dnsx...
+160.79.104.10
+160.79.104.10
+35.190.46.17
+160.79.104.10
+160.79.104.10
+34.120.108.227
+160.79.104.10
+160.79.104.10
+160.79.104.10
+34.50.145.103
+35.190.119.221
+160.79.104.10
+13.224.252.60
+13.224.252.55
+13.224.252.12
+13.224.252.28
+[+] Resolved 16 unique IP addresses
+
+═══════════════════════════════════════════════════════════════
+  STAGE 4: DOMAIN VALIDATION (48-52%)
+═══════════════════════════════════════════════════════════════
+[*] Validating domains with trust-dns-resolver...
+[+] Validated 15 domains: 5 resolvable, 10 non-resolvable
+[+] Results saved to: claude.ai/validated_hosts.json
+
+═══════════════════════════════════════════════════════════════
+  STAGE 5: PORT SCANNING (48-60%)
+═══════════════════════════════════════════════════════════════
+[*] Scanning ports with masscan (this may take a while)...
+[+] Masscan completed: 9 port entries found
+[*] Validating open ports with httpx...
+Usage: httpx [OPTIONS] URL
+
+Error: No such option: -s
+[!] Port validation failed
+
+═══════════════════════════════════════════════════════════════
+  STAGE 6: HTTP VALIDATION (60-70%)
+═══════════════════════════════════════════════════════════════
+[*] Resolving alive hosts with httpx...
+Usage: httpx [OPTIONS] URL
+
+Error: No such option: -s
+[!] HTTP validation failed
+[*] Discovering URLs with URLFinder...
+
+═══════════════════════════════════════════════════════════════
+  STAGE 6.5: JS FILE DISCOVERY (68-70%)
+═══════════════════════════════════════════════════════════════
+[*] Discovering JavaScript files with ffuf...
+[+] ffuf discovered 0 JS files
+
+═══════════════════════════════════════════════════════════════
+  STAGE 7: JAVASCRIPT ANALYSIS (70-79%)
+═══════════════════════════════════════════════════════════════
+[*] Crawling and analyzing JavaScript files...
+[*] Phase 1: Extracting JS from ffuf discovery...
+[+] Found 0 JS files via ffuf
+[*] Phase 2: Extracting JS from URLFinder...
+[+] Found 0 JS files in URLFinder
+[*] Phase 3: Extracting JS from HTTP200...
+[+] Found 0 JS files in HTTP200
+[*] Phase 4: Discovering JS from HTML pages...
+[+] Discovered 0 additional JS files from HTML
+[*] Total unique JS files to analyze: 0
+[*] Phase 5: Analyzing JS files for secrets and endpoints...
+[*] Extracting S3 buckets from JavaScript files...
+[*] Scanning JavaScript files for S3 buckets...
+[+] Total S3 buckets discovered: 0
+[+] Discovered 0 JavaScript files
+[+] Found 0 secrets in JS files
+[+] Extracted 0 API endpoints
+[+] Found 0 cloud storage URLs
+[+] Discovered 0 S3 buckets
+
+═══════════════════════════════════════════════════════════════
+  STAGE 7.5: ADMIN PANEL DISCOVERY (79-81%)
+═══════════════════════════════════════════════════════════════
+[*] Discovering administrative panels across multiple ports...
+[*] Starting admin panel discovery...
+    Checking 15 ports per host
+    Checking 90 admin paths
+    Baseline 404 detection: status=200, size=10557 bytes
+    Baseline title: "Claude"
+[*] Testing 8100 unique URLs...
+    Using 30 concurrent workers for faster scanning
+    Progress: 50/8100 URLs checked (0%)
+    Progress: 100/8100 URLs checked (1%)
+    Progress: 150/8100 URLs checked (1%)
+    Progress: 200/8100 URLs checked (2%)
+    Progress: 250/8100 URLs checked (3%)
+    Progress: 300/8100 URLs checked (3%)
+    Progress: 350/8100 URLs checked (4%)
+    Progress: 400/8100 URLs checked (4%)
+    Progress: 450/8100 URLs checked (5%)
+    Progress: 500/8100 URLs checked (6%)
+    Progress: 550/8100 URLs checked (6%)
+    Progress: 600/8100 URLs checked (7%)
+    Progress: 650/8100 URLs checked (8%)
+    Progress: 700/8100 URLs checked (8%)
+    Progress: 750/8100 URLs checked (9%)
+    Progress: 800/8100 URLs checked (9%)
+    Progress: 850/8100 URLs checked (10%)
+    Progress: 900/8100 URLs checked (11%)
+    Progress: 950/8100 URLs checked (11%)
+    Progress: 1000/8100 URLs checked (12%)
+    Progress: 1050/8100 URLs checked (12%)
+    Progress: 1100/8100 URLs checked (13%)
+    Progress: 1150/8100 URLs checked (14%)
+    Progress: 1200/8100 URLs checked (14%)
+    Progress: 1250/8100 URLs checked (15%)
+    Progress: 1300/8100 URLs checked (16%)
+    Progress: 1350/8100 URLs checked (16%)
+    Progress: 1400/8100 URLs checked (17%)
+    Progress: 1450/8100 URLs checked (17%)
+    Progress: 1500/8100 URLs checked (18%)
+    Progress: 1550/8100 URLs checked (19%)
+    Progress: 1600/8100 URLs checked (19%)
+    Progress: 1650/8100 URLs checked (20%)
+    Progress: 1700/8100 URLs checked (20%)
+    Progress: 1750/8100 URLs checked (21%)
+    Progress: 1800/8100 URLs checked (22%)
+    Progress: 1850/8100 URLs checked (22%)
+    Progress: 1900/8100 URLs checked (23%)
+    Progress: 1950/8100 URLs checked (24%)
+    Progress: 2000/8100 URLs checked (24%)
+    Progress: 2050/8100 URLs checked (25%)
+    Progress: 2100/8100 URLs checked (25%)
+    Progress: 2150/8100 URLs checked (26%)
+    Progress: 2200/8100 URLs checked (27%)
+    Progress: 2250/8100 URLs checked (27%)
+    Progress: 2300/8100 URLs checked (28%)
+    Progress: 2350/8100 URLs checked (29%)
+    Progress: 2400/8100 URLs checked (29%)
+    Progress: 2450/8100 URLs checked (30%)
+    Progress: 2500/8100 URLs checked (30%)
+    Progress: 2550/8100 URLs checked (31%)
+    Progress: 2600/8100 URLs checked (32%)
+    Progress: 2650/8100 URLs checked (32%)
+    Progress: 2700/8100 URLs checked (33%)
+    Progress: 2750/8100 URLs checked (33%)
+    Progress: 2800/8100 URLs checked (34%)
+    Progress: 2850/8100 URLs checked (35%)
+    Progress: 2900/8100 URLs checked (35%)
+    Progress: 2950/8100 URLs checked (36%)
+    Progress: 3000/8100 URLs checked (37%)
+    Progress: 3050/8100 URLs checked (37%)
+    Progress: 3100/8100 URLs checked (38%)
+    Progress: 3150/8100 URLs checked (38%)
+    Progress: 3200/8100 URLs checked (39%)
+    Progress: 3250/8100 URLs checked (40%)
+    Progress: 3300/8100 URLs checked (40%)
+    Progress: 3350/8100 URLs checked (41%)
+    Progress: 3400/8100 URLs checked (41%)
+    Progress: 3450/8100 URLs checked (42%)
+    Progress: 3500/8100 URLs checked (43%)
+    Progress: 3550/8100 URLs checked (43%)
+    Progress: 3600/8100 URLs checked (44%)
+    Progress: 3650/8100 URLs checked (45%)
+    Progress: 3700/8100 URLs checked (45%)
+    Progress: 3750/8100 URLs checked (46%)
+    Progress: 3800/8100 URLs checked (46%)
+    Progress: 3850/8100 URLs checked (47%)
+    Progress: 3900/8100 URLs checked (48%)
+    Progress: 3950/8100 URLs checked (48%)
+    Progress: 4000/8100 URLs checked (49%)
+    Progress: 4050/8100 URLs checked (50%)
+    [!] Found likely admin: http://preview.claude.ai/admin/panel [200]
+    [!] Found likely admin: http://preview.claude.ai/admin [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/admin.php [200]
+    [!] Found likely admin: http://preview.claude.ai/admin.php [200]
+    [!] Found likely admin: http://preview.claude.ai/administrator [200]
+    [!] Found likely admin: http://preview.claude.ai/admin.html [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/dashboard [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/login.php [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/ [200]
+    [!] Found likely admin: http://preview.claude.ai/wordpress/wp-admin [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/login.html [200]
+    [!] Found likely admin: http://preview.claude.ai/wp-login.php [200]
+    [!] Found likely admin: http://preview.claude.ai/adminarea/ [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/index.php [200]
+    [!] Found likely admin: http://preview.claude.ai/wp-admin/ [200]
+    [!] Found likely admin: http://preview.claude.ai/administrator/index.php [200]
+    [!] Found likely admin: http://preview.claude.ai/admin_area/ [200]
+    [!] Found likely admin: http://preview.claude.ai/wp-admin [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/cp [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/controlpanel [200]
+    [!] Found likely admin: http://preview.claude.ai/admin_login.html [200]
+    [!] Found likely admin: http://preview.claude.ai/adminpanel.html [200]
+    [!] Found likely admin: http://preview.claude.ai/admin_login.php [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/index.html [200]
+    [!] Found likely admin: http://preview.claude.ai/manager [200]
+    [!] Found likely admin: http://preview.claude.ai/panel/ [200]
+    [!] Found likely admin: http://preview.claude.ai/adminLogin/ [200]
+    [!] Found likely admin: http://preview.claude.ai/backend/ [200]
+    [!] Found likely admin: http://preview.claude.ai/login.html [200]
+    [!] Found likely admin: http://preview.claude.ai/backend [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/home.php [200]
+    [!] Found likely admin: http://preview.claude.ai/panel [200]
+    [!] Found likely admin: http://preview.claude.ai/backoffice [200]
+    [!] Found likely admin: http://preview.claude.ai/bb-admin/ [200]
+    [!] Found likely admin: http://preview.claude.ai/login [200]
+    [!] Found likely admin: http://preview.claude.ai/login/ [200]
+    [!] Found likely admin: http://preview.claude.ai/controlpanel [200]
+    [!] Found likely admin: http://preview.claude.ai/login.php [200]
+    [!] Found likely admin: http://preview.claude.ai/control [200]
+    [!] Found likely admin: http://preview.claude.ai/administrator/ [200]
+    [!] Found likely admin: http://preview.claude.ai/adminpanel.php [200]
+    [!] Found likely admin: http://preview.claude.ai/management [200]
+    [!] Found likely admin: http://preview.claude.ai/sign-in [200]
+    [!] Found likely admin: http://preview.claude.ai/back-office [200]
+    [!] Found likely admin: http://preview.claude.ai/auth/login [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/manage [200]
+    [!] Found likely admin: http://preview.claude.ai/signin.php [200]
+    [!] Found likely admin: http://preview.claude.ai/user/login [200]
+    [!] Found likely admin: http://preview.claude.ai/backend/admin [200]
+    Progress: 4100/8100 URLs checked (50%)
+    [!] Found likely admin: http://preview.claude.ai/signin [200]
+    [!] Found likely admin: http://preview.claude.ai/dash [200]
+    [!] Found likely admin: http://preview.claude.ai/account/login [200]
+    [!] Found likely admin: http://preview.claude.ai/pma [200]
+    [!] Found likely admin: http://preview.claude.ai/dashboard [200]
+    [!] Found likely admin: http://preview.claude.ai/dashboard/ [200]
+    [!] Found likely admin: http://preview.claude.ai/phpmyadmin/index.php [200]
+    [!] Found likely admin: http://preview.claude.ai/phpmyadmin [200]
+    [!] Found likely admin: http://preview.claude.ai/dashboard/index.php [200]
+    [!] Found likely admin: http://preview.claude.ai/manager/html [200]
+    [!] Found likely admin: http://preview.claude.ai/phpMyAdmin [200]
+    [!] Found likely admin: http://preview.claude.ai/mysql [200]
+    [!] Found likely admin: http://preview.claude.ai/dashboard.php [200]
+    [!] Found likely admin: http://preview.claude.ai/system [200]
+    [!] Found likely admin: http://preview.claude.ai/dbadmin [200]
+    [!] Found likely admin: http://preview.claude.ai/myadmin [200]
+    [!] Found likely admin: http://preview.claude.ai/cpanel [200]
+    [!] Found likely admin: http://preview.claude.ai/system-admin [200]
+    [!] Found likely admin: http://preview.claude.ai/sysadmin [200]
+    [!] Found likely admin: http://preview.claude.ai/yonetim [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/api [200]
+    [!] Found likely admin: https://preview.claude.ai/admin.php [200]
+    [!] Found likely admin: http://preview.claude.ai/moderator [200]
+    [!] Found likely admin: http://preview.claude.ai/admin/sysadmin [200]
+    [!] Found likely admin: https://preview.claude.ai/admin.html [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/ [200]
+    [!] Found likely admin: http://preview.claude.ai/webmaster [200]
+    [!] Found likely admin: http://preview.claude.ai/admin1 [200]
+    [!] Found likely admin: http://preview.claude.ai/adminer.php [200]
+    [!] Found likely admin: http://preview.claude.ai/admin_backup [200]
+    [!] Found likely admin: http://preview.claude.ai/admin2 [200]
+    [!] Found likely admin: http://preview.claude.ai/serveradmin [200]
+    [!] Found likely admin: http://preview.claude.ai/adm [200]
+    [!] Found likely admin: https://preview.claude.ai/admin [200]
+    [!] Found likely admin: http://preview.claude.ai/plesk [200]
+    [!] Found likely admin: http://preview.claude.ai/webadmin [200]
+    [!] Found likely admin: http://preview.claude.ai/yonetici [200]
+    [!] Found likely admin: https://preview.claude.ai/administrator [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/cp [200]
+    [!] Found likely admin: http://preview.claude.ai/secret [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/panel [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/dashboard [200]
+    [!] Found likely admin: http://preview.claude.ai/admin_console [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/controlpanel [200]
+    [!] Found likely admin: http://preview.claude.ai/adminer [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/index.php [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/login.php [200]
+    [!] Found likely admin: http://preview.claude.ai/console [200]
+    Progress: 4150/8100 URLs checked (51%)
+    [!] Found likely admin: https://preview.claude.ai/wp-admin [200]
+    [!] Found likely admin: https://preview.claude.ai/wp-admin/ [200]
+    [!] Found likely admin: https://preview.claude.ai/bb-admin/ [200]
+    [!] Found likely admin: https://preview.claude.ai/administrator/ [200]
+    [!] Found likely admin: http://preview.claude.ai/private [200]
+    [!] Found likely admin: https://preview.claude.ai/admin_area/ [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/login.html [200]
+    [!] Found likely admin: https://preview.claude.ai/adminarea/ [200]
+    [!] Found likely admin: https://preview.claude.ai/administrator/index.php [200]
+    [!] Found likely admin: https://preview.claude.ai/management [200]
+    [!] Found likely admin: https://preview.claude.ai/control [200]
+    [!] Found likely admin: https://preview.claude.ai/controlpanel [200]
+    [!] Found likely admin: http://preview.claude.ai/consola [200]
+    [!] Found likely admin: https://preview.claude.ai/adminLogin/ [200]
+    [!] Found likely admin: https://preview.claude.ai/wp-login.php [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/home.php [200]
+    [!] Found likely admin: https://preview.claude.ai/panel/ [200]
+    [!] Found likely admin: https://preview.claude.ai/manager [200]
+    [!] Found likely admin: https://preview.claude.ai/adminpanel.html [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/admin.php [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/index.html [200]
+    [!] Found likely admin: https://preview.claude.ai/adminpanel.php [200]
+    [!] Found likely admin: https://preview.claude.ai/wordpress/wp-admin [200]
+    [!] Found likely admin: https://preview.claude.ai/login/ [200]
+    [!] Found likely admin: https://preview.claude.ai/backoffice [200]
+    [!] Found likely admin: https://preview.claude.ai/login [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/manage [200]
+    [!] Found likely admin: https://preview.claude.ai/login.html [200]
+    [!] Found likely admin: https://preview.claude.ai/admin_login.php [200]
+    [!] Found likely admin: https://preview.claude.ai/backend/ [200]
+    [!] Found likely admin: https://preview.claude.ai/signin [200]
+    [!] Found likely admin: https://preview.claude.ai/manager/html [200]
+    [!] Found likely admin: https://preview.claude.ai/dashboard [200]
+    [!] Found likely admin: https://preview.claude.ai/admin_login.html [200]
+    [!] Found likely admin: https://preview.claude.ai/auth/login [200]
+    [!] Found likely admin: https://preview.claude.ai/dashboard/index.php [200]
+    [!] Found likely admin: https://preview.claude.ai/dbadmin [200]
+    [!] Found likely admin: https://preview.claude.ai/account/login [200]
+    [!] Found likely admin: https://preview.claude.ai/sign-in [200]
+    [!] Found likely admin: https://preview.claude.ai/back-office [200]
+    [!] Found likely admin: https://preview.claude.ai/phpMyAdmin [200]
+    [!] Found likely admin: https://preview.claude.ai/dash [200]
+    [!] Found likely admin: https://preview.claude.ai/myadmin [200]
+    [!] Found likely admin: https://preview.claude.ai/login.php [200]
+    [!] Found likely admin: https://preview.claude.ai/mysql [200]
+    [!] Found likely admin: https://preview.claude.ai/system-admin [200]
+    [!] Found likely admin: https://preview.claude.ai/signin.php [200]
+    [!] Found likely admin: https://preview.claude.ai/phpmyadmin [200]
+    [!] Found likely admin: https://preview.claude.ai/sysadmin [200]
+    [!] Found likely admin: https://preview.claude.ai/user/login [200]
+    Progress: 4200/8100 URLs checked (51%)
+    [!] Found likely admin: https://preview.claude.ai/dashboard/ [200]
+    [!] Found likely admin: https://preview.claude.ai/backend [200]
+    [!] Found likely admin: https://preview.claude.ai/backend/admin [200]
+    [!] Found likely admin: https://preview.claude.ai/serveradmin [200]
+    [!] Found likely admin: https://preview.claude.ai/dashboard.php [200]
+    [!] Found likely admin: https://preview.claude.ai/pma [200]
+    [!] Found likely admin: https://preview.claude.ai/admin1 [200]
+    [!] Found likely admin: https://preview.claude.ai/webadmin [200]
+    [!] Found likely admin: https://preview.claude.ai/yonetici [200]
+    [!] Found likely admin: https://preview.claude.ai/system [200]
+    [!] Found likely admin: https://preview.claude.ai/webmaster [200]
+    [!] Found likely admin: https://preview.claude.ai/adminer.php [200]
+    [!] Found likely admin: https://preview.claude.ai/panel [200]
+    [!] Found likely admin: https://preview.claude.ai/phpmyadmin/index.php [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/api [200]
+    [!] Found likely admin: https://preview.claude.ai/moderator [200]
+    [!] Found likely admin: https://preview.claude.ai/admin/sysadmin [200]
+    [!] Found likely admin: https://preview.claude.ai/adminer [200]
+    [!] Found likely admin: https://preview.claude.ai/cpanel [200]
+    [!] Found likely admin: https://preview.claude.ai/admin2 [200]
+    [!] Found likely admin: https://preview.claude.ai/plesk [200]
+    [!] Found likely admin: https://preview.claude.ai/secret [200]
+    [!] Found likely admin: https://preview.claude.ai/adm [200]
+    [!] Found likely admin: https://preview.claude.ai/admin_console [200]
+    [!] Found likely admin: https://preview.claude.ai/admin_backup [200]
+    [!] Found likely admin: https://preview.claude.ai/yonetim [200]
+    [!] Found likely admin: https://preview.claude.ai/console [200]
+    [!] Found likely admin: https://preview.claude.ai/private [200]
+    [!] Found likely admin: https://preview.claude.ai/consola [200]
+    Progress: 4250/8100 URLs checked (52%)
+    Progress: 4300/8100 URLs checked (53%)
+    [!] Found likely admin: https://preview.claude.ai:8443/admin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/administrator [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/login.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin.html [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/login.html [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/index.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/dashboard [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/controlpanel [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/wordpress/wp-admin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/index.html [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/wp-admin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/cp [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/wp-login.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/panel [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/administrator/index.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/bb-admin/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/administrator/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/adminLogin/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/wp-admin/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/adminpanel.html [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/home.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin_area/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/adminarea/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin_login.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin_login.html [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/adminpanel.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/management [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/manage [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/manager [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/backend [200]
+    Progress: 4350/8100 URLs checked (53%)
+    [!] Found likely admin: https://preview.claude.ai:8443/panel [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/manager/html [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/controlpanel [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/admin.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/backend/admin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/login [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/backoffice [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/backend/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/login.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/back-office [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/panel/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/login/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/control [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/signin.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/signin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/login.html [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/account/login [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/auth/login [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/dashboard [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/dashboard.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/phpmyadmin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/dash [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/dashboard/index.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/sign-in [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/user/login [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/phpMyAdmin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/dbadmin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/dashboard/ [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/pma [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/mysql [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/adminer.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/myadmin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/system [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/phpmyadmin/index.php [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/sysadmin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/system-admin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/cpanel [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/sysadmin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/adminer [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/plesk [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/moderator [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/webadmin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/webmaster [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin1 [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/serveradmin [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin/api [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin2 [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin_backup [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/secret [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/private [200]
+    Progress: 4400/8100 URLs checked (54%)
+    [!] Found likely admin: https://preview.claude.ai:8443/consola [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/console [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/adm [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/yonetim [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/yonetici [200]
+    [!] Found likely admin: https://preview.claude.ai:8443/admin_console [200]
+    Progress: 4450/8100 URLs checked (54%)
+    Progress: 4500/8100 URLs checked (55%)
+    Progress: 4550/8100 URLs checked (56%)
+    Progress: 4600/8100 URLs checked (56%)
+    Progress: 4650/8100 URLs checked (57%)
+    Progress: 4700/8100 URLs checked (58%)
+    Progress: 4750/8100 URLs checked (58%)
+    Progress: 4800/8100 URLs checked (59%)
+    Progress: 4850/8100 URLs checked (59%)
+    Progress: 4900/8100 URLs checked (60%)
+    Progress: 4950/8100 URLs checked (61%)
+    Progress: 5000/8100 URLs checked (61%)
+    Progress: 5050/8100 URLs checked (62%)
+    Progress: 5100/8100 URLs checked (62%)
+    Progress: 5150/8100 URLs checked (63%)
+    Progress: 5200/8100 URLs checked (64%)
+    Progress: 5250/8100 URLs checked (64%)
+    Progress: 5300/8100 URLs checked (65%)
+    Progress: 5350/8100 URLs checked (66%)
+    Progress: 5400/8100 URLs checked (66%)
+    Progress: 5450/8100 URLs checked (67%)
+    Progress: 5500/8100 URLs checked (67%)
+    Progress: 5550/8100 URLs checked (68%)
+    Progress: 5600/8100 URLs checked (69%)
+    Progress: 5650/8100 URLs checked (69%)
+    [!] Found likely admin: https://status.claude.ai/account/login [200]
+    [!] Found likely admin: https://status.claude.ai/user/login [200]
+    [!] Found likely admin: https://status.claude.ai/api/admin [200]
+    [!] Found likely admin: http://status.claude.ai:8080/auth/login [200]
+    [!] Found likely admin: http://status.claude.ai:8080/admin/login.html [200]
+    [!] Found likely admin: http://status.claude.ai:8080/admin/index.html [200]
+    [!] Found likely admin: http://status.claude.ai:8080/backend/admin [200]
+    [!] Found likely admin: http://status.claude.ai:8080/login [200]
+    [!] Found likely admin: http://status.claude.ai:8080/account/login [200]
+    [!] Found likely admin: http://status.claude.ai:8080/login.html [200]
+    [!] Found likely admin: http://status.claude.ai:8080/user/login [200]
+    [!] Found likely admin: http://status.claude.ai:8080/login/ [200]
+    Progress: 5700/8100 URLs checked (70%)
+    [!] Found likely admin: http://status.claude.ai:8080/admin/api [200]
+    [!] Found likely admin: http://status.claude.ai:8080/api/admin [200]
+    [!] Found likely admin: http://status.claude.ai:8080/api/v1/admin [200]
+    [!] Found likely admin: https://status.claude.ai:8443/admin/login.html [200]
+    Progress: 5750/8100 URLs checked (70%)
+    [!] Found likely admin: https://status.claude.ai:8443/login/ [200]
+    [!] Found likely admin: https://status.claude.ai:8443/admin/index.html [200]
+    [!] Found likely admin: https://status.claude.ai:8443/login [200]
+    [!] Found likely admin: https://status.claude.ai:8443/api/admin [200]
+    [!] Found likely admin: https://status.claude.ai:8443/account/login [200]
+    [!] Found likely admin: https://status.claude.ai:8443/login.html [200]
+    [!] Found likely admin: https://status.claude.ai:8443/admin/api [200]
+    [!] Found likely admin: https://status.claude.ai:8443/auth/login [200]
+    [!] Found likely admin: https://status.claude.ai:8443/user/login [200]
+    [!] Found likely admin: https://status.claude.ai:8443/backend/admin [200]
+    [!] Found likely admin: https://status.claude.ai:8443/api/v1/admin [200]
+    Progress: 5800/8100 URLs checked (71%)
+    Progress: 5850/8100 URLs checked (72%)
+    Progress: 5900/8100 URLs checked (72%)
+    Progress: 5950/8100 URLs checked (73%)
+    Progress: 6000/8100 URLs checked (74%)
+    Progress: 6050/8100 URLs checked (74%)
+    Progress: 6100/8100 URLs checked (75%)
+    Progress: 6150/8100 URLs checked (75%)
+    Progress: 6200/8100 URLs checked (76%)
+    Progress: 6250/8100 URLs checked (77%)
+    Progress: 6300/8100 URLs checked (77%)
+    Progress: 6350/8100 URLs checked (78%)
+    Progress: 6400/8100 URLs checked (79%)
+    Progress: 6450/8100 URLs checked (79%)
+    Progress: 6500/8100 URLs checked (80%)
+    Progress: 6550/8100 URLs checked (80%)
+    Progress: 6600/8100 URLs checked (81%)
+    Progress: 6650/8100 URLs checked (82%)
+    Progress: 6700/8100 URLs checked (82%)
+    Progress: 6750/8100 URLs checked (83%)
+    Progress: 6800/8100 URLs checked (83%)
+    Progress: 6850/8100 URLs checked (84%)
+    Progress: 6900/8100 URLs checked (85%)
+    Progress: 6950/8100 URLs checked (85%)
+    Progress: 7000/8100 URLs checked (86%)
+    Progress: 7050/8100 URLs checked (87%)
+    Progress: 7100/8100 URLs checked (87%)
+    Progress: 7150/8100 URLs checked (88%)
+    Progress: 7200/8100 URLs checked (88%)
+    Progress: 7250/8100 URLs checked (89%)
+    Progress: 7300/8100 URLs checked (90%)
+    Progress: 7350/8100 URLs checked (90%)
+    Progress: 7400/8100 URLs checked (91%)
+    Progress: 7450/8100 URLs checked (91%)
+    Progress: 7500/8100 URLs checked (92%)
+    Progress: 7550/8100 URLs checked (93%)
+    Progress: 7600/8100 URLs checked (93%)
+    Progress: 7650/8100 URLs checked (94%)
+    Progress: 7700/8100 URLs checked (95%)
+    Progress: 7750/8100 URLs checked (95%)
+    Progress: 7800/8100 URLs checked (96%)
+    Progress: 7850/8100 URLs checked (96%)
+    Progress: 7900/8100 URLs checked (97%)
+    Progress: 7950/8100 URLs checked (98%)
+    Progress: 8000/8100 URLs checked (98%)
+    Progress: 8050/8100 URLs checked (99%)
+    Progress: 8100/8100 URLs checked (100%)
+[+] Admin discovery complete: Found 295 potential admin panels
+[AI] Validando admin panels com Ollama...
+  [AI] Falso positivo removido: http://preview.claude.ai/admin (The page title and body contain 'sign in' and the presence of a login form suggests it's likely a regular user login page rather than an admin panel. Additionally, the Cloudflare Access branding is a common indicator of a WAF/CDN login page.)
+  [AI] Falso positivo removido: http://preview.claude.ai/admin/admin.php (The page title and body contain 'sign in' which is a common keyword for regular user login pages. Additionally, the presence of Cloudflare Access suggests it's likely a CDN/WAF login page rather than an admin panel.)
+  [AI] Falso positivo removido: http://preview.claude.ai/admin/dashboard (The page title and body contain 'sign in' and 'dashboard', which are common keywords found in regular user login pages or CDN/WAF login pages. Additionally, the presence of a login form suggests it's likely a user-facing authentication page rather than an admin panel.)
+  [AI] Falso positivo removido: http://preview.claude.ai/admin/login.html (The page title and body contain 'sign in' which is a common keyword for regular user login pages. Additionally, the presence of Cloudflare Access suggests it's likely a CDN/WAF login page rather than an admin panel.)
+  [AI] Falso positivo removido: http://preview.claude.ai/admin_login.html (The page title and body contain 'sign in' and the presence of a login form suggests it's likely a regular user login page rather than an admin panel. The fact that it's hosted on Cloudflare also increases the likelihood of it being a CDN/WAF login page.)
+  [AI] Falso positivo removido: http://preview.claude.ai/manager (The page title and body contain 'sign in' and the presence of a login form suggests it's likely a regular user login page rather than an admin panel. Additionally, the Cloudflare Access branding is a common indicator of a CDN/WAF login page.)
+  [AI] Falso positivo removido: http://preview.claude.ai/backend (The page title and body contain 'sign in' and the presence of a login form suggests it's likely a regular user login page rather than an admin panel. The fact that it's hosted on Cloudflare Access also increases the likelihood of it being a CDN/WAF login page.)
+  [AI] Falso positivo removido: http://preview.claude.ai/panel (The page title and body contain 'sign in' and the presence of a login form suggests it's likely a regular user login page rather than an admin panel. Although it contains Cloudflare Access branding, this is not uncommon for WAF/CDN login pages.)
+  [AI] Falso positivo removido: http://preview.claude.ai/login.php (The page title and body contain 'sign in' which is a common keyword for regular user login pages. Additionally, the presence of Cloudflare Access suggests it's likely a CDN/WAF login page rather than an admin panel.)

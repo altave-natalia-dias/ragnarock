@@ -1,0 +1,28 @@
+[ * ] Fingerprints found; checking integrity with an upstream
+[ * ] Loaded 99 targets
+[ * ] Loaded 76 fingerprints
+[ No ] HTTPS by default (--https)
+[ 10 ] Concurrent requests (--concurrency)
+[ No ] Check target only if SSL is valid (--verify_ssl)
+[ 10 ] HTTP request timeout (in seconds) (--timeout)
+[ Yes ] Show only potentially vulnerable subdomains (--hide_fails)
+-----------------
+[ [32mVULNERABLE[0m ]  -  legal.anthropic.com  [ Gemfury ]
+[ [34mDISCUSSION[0m ]  -  [Issue #154](https://github.com/EdOverflow/can-i-take-over-xyz/issues/154)
+[ [34mDOCUMENTATION[0m ]  -  [Article](https://khaledibnalwalid.wordpress.com/2020/06/25/gemfury-subdomain-takeover/)
+-----------------
+-----------------
+[ [32mVULNERABLE[0m ]  -  red.anthropic.com  [ Gemfury ]
+[ [34mDISCUSSION[0m ]  -  [Issue #154](https://github.com/EdOverflow/can-i-take-over-xyz/issues/154)
+[ [34mDOCUMENTATION[0m ]  -  [Article](https://khaledibnalwalid.wordpress.com/2020/06/25/gemfury-subdomain-takeover/)
+-----------------
+-----------------
+[ [32mVULNERABLE[0m ]  -  resources.anthropic.com  [ Gemfury ]
+[ [34mDISCUSSION[0m ]  -  [Issue #154](https://github.com/EdOverflow/can-i-take-over-xyz/issues/154)
+[ [34mDOCUMENTATION[0m ]  -  [Article](https://khaledibnalwalid.wordpress.com/2020/06/25/gemfury-subdomain-takeover/)
+-----------------
+-----------------
+[ [32mVULNERABLE[0m ]  -  url8792.mail.anthropic.com  [ Cargo Collective ]
+[ [34mDISCUSSION[0m ]  -  [Issue #152](https://github.com/EdOverflow/can-i-take-over-xyz/issues/152)
+[ [34mDOCUMENTATION[0m ]  -  [Cargo Support Page](https://support.2.cargocollective.com/Using-a-Third-Party-Domain)
+-----------------

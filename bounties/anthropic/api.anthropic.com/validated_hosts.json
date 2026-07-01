@@ -1,0 +1,253 @@
+[
+  {
+    "subdomain": "api.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 193,
+    "cname": null
+  },
+  {
+    "subdomain": "sandbox.staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 192,
+    "cname": null
+  },
+  {
+    "subdomain": "sandbox-chs2.staging.api.anthropic.com",
+    "resolved_ips": [
+      "242.243.0.66"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 192,
+    "cname": null
+  },
+  {
+    "subdomain": "sandbox.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 192,
+    "cname": null
+  },
+  {
+    "subdomain": "internal.api.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 193,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-a100.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 192,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-multi-a100.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 192,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-a100.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 192,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-multi.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 192,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-multi-a100.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 192,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-multi.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 177,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 178,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 178,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s0.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 178,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s0.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 180,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s1.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 180,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s2.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 183,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s1.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 183,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s2.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 183,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s3.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 183,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s3.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 144,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s4.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 143,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s5.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 143,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s6.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 141,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s5.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 142,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s4.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 144,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s6.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 138,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s7.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 138,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s7.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 138,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s8.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 138,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 295,
+    "cname": null
+  },
+  {
+    "subdomain": "stt.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 294,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s8.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 295,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 295,
+    "cname": null
+  },
+  {
+    "subdomain": "stt.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 294,
+    "cname": null
+  }
+]

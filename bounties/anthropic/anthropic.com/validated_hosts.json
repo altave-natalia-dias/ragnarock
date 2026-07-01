@@ -1,0 +1,1090 @@
+[
+  {
+    "subdomain": "a-api.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 214,
+    "cname": null
+  },
+  {
+    "subdomain": "a-cdn.anthropic.com",
+    "resolved_ips": [
+      "34.36.57.103"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 215,
+    "cname": null
+  },
+  {
+    "subdomain": "alignment.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 215,
+    "cname": null
+  },
+  {
+    "subdomain": "anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 217,
+    "cname": null
+  },
+  {
+    "subdomain": "api-backend.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 216,
+    "cname": null
+  },
+  {
+    "subdomain": "api-release-candidate-2.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 220,
+    "cname": null
+  },
+  {
+    "subdomain": "api-backend-frontend.n.anthropic.com",
+    "resolved_ips": [
+      "34.107.201.223"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 236,
+    "cname": null
+  },
+  {
+    "subdomain": "analytics-cdn.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 441,
+    "cname": null
+  },
+  {
+    "subdomain": "api.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 224,
+    "cname": null
+  },
+  {
+    "subdomain": "api-staging.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 226,
+    "cname": null
+  },
+  {
+    "subdomain": "analytics-api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 442,
+    "cname": null
+  },
+  {
+    "subdomain": "api.console.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 220,
+    "cname": null
+  },
+  {
+    "subdomain": "api-production.product-internal.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 635,
+    "cname": null
+  },
+  {
+    "subdomain": "api-release-candidate.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 426,
+    "cname": null
+  },
+  {
+    "subdomain": "argocd-bo-backend.bo.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 405,
+    "cname": null
+  },
+  {
+    "subdomain": "assets-proxy.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 199,
+    "cname": null
+  },
+  {
+    "subdomain": "api-test.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 424,
+    "cname": null
+  },
+  {
+    "subdomain": "assets.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 199,
+    "cname": null
+  },
+  {
+    "subdomain": "artifactory.he.anthropic.com",
+    "resolved_ips": [
+      "44.209.94.176",
+      "44.206.152.233",
+      "3.212.170.218",
+      "52.204.183.194"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 199,
+    "cname": null
+  },
+  {
+    "subdomain": "atlantis-sandbox.c.anthropic.com",
+    "resolved_ips": [
+      "13.59.243.181",
+      "18.226.99.84",
+      "3.137.116.113"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 199,
+    "cname": null
+  },
+  {
+    "subdomain": "api-staging.product-internal.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 426,
+    "cname": null
+  },
+  {
+    "subdomain": "atlantis-staging.c.anthropic.com",
+    "resolved_ips": [
+      "18.116.101.143",
+      "18.190.127.130",
+      "3.13.144.59"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 67,
+    "cname": null
+  },
+  {
+    "subdomain": "atlantis.c.anthropic.com",
+    "resolved_ips": [
+      "18.116.186.192",
+      "18.220.53.192",
+      "18.226.194.246"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 363,
+    "cname": null
+  },
+  {
+    "subdomain": "brand.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 363,
+    "cname": null
+  },
+  {
+    "subdomain": "argocd.c.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 563,
+    "cname": null
+  },
+  {
+    "subdomain": "billing.anthropic.com",
+    "resolved_ips": [
+      "172.64.152.100",
+      "104.18.35.156"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 363,
+    "cname": null
+  },
+  {
+    "subdomain": "bo.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 478,
+    "cname": null
+  },
+  {
+    "subdomain": "atlas.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 478,
+    "cname": null
+  },
+  {
+    "subdomain": "c.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 483,
+    "cname": null
+  },
+  {
+    "subdomain": "auth.console.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 483,
+    "cname": null
+  },
+  {
+    "subdomain": "claude.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 119,
+    "cname": null
+  },
+  {
+    "subdomain": "dns-staging.c.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 119,
+    "cname": null
+  },
+  {
+    "subdomain": "claude-staging.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 420,
+    "cname": null
+  },
+  {
+    "subdomain": "console.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 122,
+    "cname": null
+  },
+  {
+    "subdomain": "auth.console-staging.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 490,
+    "cname": null
+  },
+  {
+    "subdomain": "dns.c.anthropic.com",
+    "resolved_ips": [
+      "100.84.57.12"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 173,
+    "cname": null
+  },
+  {
+    "subdomain": "docs.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 173,
+    "cname": null
+  },
+  {
+    "subdomain": "economic-research.anthropic.com",
+    "resolved_ips": [
+      "34.111.105.183"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 168,
+    "cname": null
+  },
+  {
+    "subdomain": "earlyaccess.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 168,
+    "cname": null
+  },
+  {
+    "subdomain": "feedback.anthropic.com",
+    "resolved_ips": [
+      "34.160.232.196"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 168,
+    "cname": null
+  },
+  {
+    "subdomain": "console-staging.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 288,
+    "cname": null
+  },
+  {
+    "subdomain": "grafana.c.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 311,
+    "cname": null
+  },
+  {
+    "subdomain": "go.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 316,
+    "cname": null
+  },
+  {
+    "subdomain": "evals.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 318,
+    "cname": null
+  },
+  {
+    "subdomain": "events.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 318,
+    "cname": null
+  },
+  {
+    "subdomain": "internal.api.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 149,
+    "cname": null
+  },
+  {
+    "subdomain": "institute.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 149,
+    "cname": null
+  },
+  {
+    "subdomain": "ilinks.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 149,
+    "cname": null
+  },
+  {
+    "subdomain": "kwpop.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 365,
+    "cname": null
+  },
+  {
+    "subdomain": "links.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 215,
+    "cname": null
+  },
+  {
+    "subdomain": "legal.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 215,
+    "cname": null
+  },
+  {
+    "subdomain": "mcp-proxy.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 215,
+    "cname": null
+  },
+  {
+    "subdomain": "mcp-proxy-staging.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 215,
+    "cname": null
+  },
+  {
+    "subdomain": "learn.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 538,
+    "cname": null
+  },
+  {
+    "subdomain": "llmglobalvalues.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 538,
+    "cname": null
+  },
+  {
+    "subdomain": "notebook.anthropic.com",
+    "resolved_ips": [
+      "172.64.151.232",
+      "104.18.36.24"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 322,
+    "cname": null
+  },
+  {
+    "subdomain": "partnerhub.anthropic.com",
+    "resolved_ips": [
+      "104.20.25.123",
+      "172.66.167.209"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 322,
+    "cname": null
+  },
+  {
+    "subdomain": "partner-sso.anthropic.com",
+    "resolved_ips": [
+      "104.18.35.233",
+      "172.64.152.23"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 322,
+    "cname": null
+  },
+  {
+    "subdomain": "metrics.anthropic.com",
+    "resolved_ips": [
+      "34.123.83.248",
+      "35.239.79.203",
+      "136.113.71.169"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 322,
+    "cname": null
+  },
+  {
+    "subdomain": "media.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 415,
+    "cname": null
+  },
+  {
+    "subdomain": "portal.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 92,
+    "cname": null
+  },
+  {
+    "subdomain": "partnerportal.anthropic.com",
+    "resolved_ips": [
+      "2.18.20.133",
+      "2.18.20.145"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 92,
+    "cname": null
+  },
+  {
+    "subdomain": "privacy.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 92,
+    "cname": null
+  },
+  {
+    "subdomain": "platform.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 97,
+    "cname": null
+  },
+  {
+    "subdomain": "prod-rudolph.he.anthropic.com",
+    "resolved_ips": [
+      "18.235.65.67",
+      "3.232.44.166",
+      "100.51.221.214"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 100,
+    "cname": null
+  },
+  {
+    "subdomain": "red.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 75,
+    "cname": null
+  },
+  {
+    "subdomain": "resources.anthropic.com",
+    "resolved_ips": [
+      "199.60.103.2",
+      "199.60.103.254"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 75,
+    "cname": null
+  },
+  {
+    "subdomain": "s-cdn.anthropic.com",
+    "resolved_ips": [
+      "34.54.194.141"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 75,
+    "cname": null
+  },
+  {
+    "subdomain": "li.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 711,
+    "cname": null
+  },
+  {
+    "subdomain": "receive2.c.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 173,
+    "cname": null
+  },
+  {
+    "subdomain": "s3-frontend.he.anthropic.com",
+    "resolved_ips": [
+      "18.233.42.54",
+      "3.233.101.118",
+      "44.205.140.101",
+      "34.200.100.194"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 76,
+    "cname": null
+  },
+  {
+    "subdomain": "sandbox-chs2.staging.api.anthropic.com",
+    "resolved_ips": [
+      "242.243.0.66"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 79,
+    "cname": null
+  },
+  {
+    "subdomain": "he.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 1046,
+    "cname": null
+  },
+  {
+    "subdomain": "s3-frontend.c.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 265,
+    "cname": null
+  },
+  {
+    "subdomain": "sandbox.staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 190,
+    "cname": null
+  },
+  {
+    "subdomain": "sandbox.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 190,
+    "cname": null
+  },
+  {
+    "subdomain": "slackbot.anthropic.com",
+    "resolved_ips": [
+      "34.110.210.69"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 184,
+    "cname": null
+  },
+  {
+    "subdomain": "scim.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 344,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-multi-a100.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 154,
+    "cname": null
+  },
+  {
+    "subdomain": "staging.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 340,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-a100.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 155,
+    "cname": null
+  },
+  {
+    "subdomain": "staging.tunnel.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 338,
+    "cname": null
+  },
+  {
+    "subdomain": "server.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 347,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-a100.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 161,
+    "cname": null
+  },
+  {
+    "subdomain": "status.anthropic.com",
+    "resolved_ips": [
+      "52.84.80.85",
+      "52.84.80.112",
+      "52.84.80.88",
+      "52.84.80.120"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 162,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 13,
+    "cname": null
+  },
+  {
+    "subdomain": "statsig.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 327,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-multi.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 172,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-multi-a100.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 173,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux-multi.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 171,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s0.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 165,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-flux.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 165,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s0.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 165,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s1.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 165,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s1.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 158,
+    "cname": null
+  },
+  {
+    "subdomain": "hfi-gateway-staging.bo.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 1444,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s2.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 357,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s6.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 356,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s3.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 356,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s2.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 356,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s4.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 356,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s5.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 356,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s5.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 356,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s3.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 356,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s4.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 356,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s6.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 289,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s7.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 93,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s7.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 93,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s8.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 93,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 97,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3-s8.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 98,
+    "cname": null
+  },
+  {
+    "subdomain": "stt-nova3.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 99,
+    "cname": null
+  },
+  {
+    "subdomain": "stt.titanium.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 99,
+    "cname": null
+  },
+  {
+    "subdomain": "stt.titanium-staging.api.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 100,
+    "cname": null
+  },
+  {
+    "subdomain": "support.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 100,
+    "cname": null
+  },
+  {
+    "subdomain": "url8792.mail.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 9,
+    "cname": null
+  },
+  {
+    "subdomain": "tai.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 237,
+    "cname": null
+  },
+  {
+    "subdomain": "url6646.mail.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 230,
+    "cname": null
+  },
+  {
+    "subdomain": "website.anthropic.com",
+    "resolved_ips": [
+      "198.202.211.1"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 234,
+    "cname": null
+  },
+  {
+    "subdomain": "systems.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 335,
+    "cname": null
+  },
+  {
+    "subdomain": "www-cdn.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 234,
+    "cname": null
+  },
+  {
+    "subdomain": "trust.anthropic.com",
+    "resolved_ips": [
+      "104.18.27.175",
+      "104.18.26.175"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 248,
+    "cname": null
+  },
+  {
+    "subdomain": "test000000000.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 356,
+    "cname": null
+  },
+  {
+    "subdomain": "test.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 358,
+    "cname": null
+  },
+  {
+    "subdomain": "tunnel.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 355,
+    "cname": null
+  },
+  {
+    "subdomain": "www.anthropic.com",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 117,
+    "cname": null
+  },
+  {
+    "subdomain": "www-files.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 356,
+    "cname": null
+  },
+  {
+    "subdomain": "www-images.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 196,
+    "cname": null
+  },
+  {
+    "subdomain": "www-staging.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 196,
+    "cname": null
+  },
+  {
+    "subdomain": "www.atlas.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 196,
+    "cname": null
+  },
+  {
+    "subdomain": "www.docs.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 196,
+    "cname": null
+  },
+  {
+    "subdomain": "www.claude.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 207,
+    "cname": null
+  },
+  {
+    "subdomain": "www.evals.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 219,
+    "cname": null
+  },
+  {
+    "subdomain": "www.earlyaccess.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 220,
+    "cname": null
+  },
+  {
+    "subdomain": "www.test.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 217,
+    "cname": null
+  },
+  {
+    "subdomain": "www.legal.anthropic.com",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 217,
+    "cname": null
+  }
+]

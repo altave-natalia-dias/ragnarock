@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://34.50.145.103:443/robots.txt",
+    "status_code": 200,
+    "content_length": 281,
+    "content_type": "text/plain; charset=UTF-8",
+    "title": null,
+    "redirect_url": null
+  },
+  {
+    "url": "https://34.50.145.103:443/health",
+    "status_code": 200,
+    "content_length": 15,
+    "content_type": "application/json; charset=utf-8",
+    "title": null,
+    "redirect_url": null
+  }
+]

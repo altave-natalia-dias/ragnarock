@@ -1,0 +1,34 @@
+[
+  {
+    "url": "http://34.123.83.248:80/healthz",
+    "status_code": 200,
+    "content_length": 2,
+    "content_type": "text/plain; charset=utf-8",
+    "title": null,
+    "redirect_url": null
+  },
+  {
+    "url": "http://136.113.71.169:80/healthz",
+    "status_code": 200,
+    "content_length": 2,
+    "content_type": "text/plain; charset=utf-8",
+    "title": null,
+    "redirect_url": null
+  },
+  {
+    "url": "https://34.36.57.103:443/soap",
+    "status_code": 200,
+    "content_length": 0,
+    "content_type": "",
+    "title": null,
+    "redirect_url": null
+  },
+  {
+    "url": "http://35.239.79.203:80/healthz",
+    "status_code": 200,
+    "content_length": 2,
+    "content_type": "text/plain; charset=utf-8",
+    "title": null,
+    "redirect_url": null
+  }
+]

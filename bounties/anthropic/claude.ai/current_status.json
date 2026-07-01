@@ -1,0 +1,12 @@
+{
+  "current_message": "🔧 Iniciando ferramenta: Admin Panel Finder",
+  "event_type": {
+    "tool_name": "Admin Panel Finder",
+    "type": "ToolStarted"
+  },
+  "last_update": "2026-06-29T01:29:18.149018086Z",
+  "progress": 0.0,
+  "scan_id": "bba68f8e-8a17-4ed7-a1cd-02670eddc1cb",
+  "target": "claude.ai",
+  "total_events": 32
+}

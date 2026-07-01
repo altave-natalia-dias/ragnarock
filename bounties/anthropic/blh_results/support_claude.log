@@ -1,0 +1,32 @@
+
+    ____  __    __  __   __  __            __
+   / __ )/ /   / / / /  / / / /_  ______  / /____  _____
+  / __  / /   / /_/ /  / /_/ / / / / __ \/ __/ _ \/ ___/
+ / /_/ / /___/ __  /  / __  / /_/ / / / / /_/  __/ /
+/_____/_____/_/ /_/  /_/ /_/\__,_/_/ /_/\__/\___/_/
+
+    
+  Broken Link Hijacking Hunter v1.2.0
+  Find & validate broken links for takeover
+  Anti-Block | Proxy | UA Rotation | Rate Limit
+
+[*] Client: 1 endpoint(s), 100ms delay, 2 retries, UA rotation ON
+[*] Running subfinder on support.claude.com...
+[+] Found 0 subdomains
+[*] Probing 1 targets with httpx...
+[+] 0 live URLs found
+
+[*] Found 0 social/platform links — will validate directly
+[*] Found 0 other external links — checking for broken status
+
+[*] Checking 0 links for hijackability (social media + broken)...
+  0 unique URLs to validate (from 0 total references)
+
+======================================================================
+[+] Scan complete!
+    0 Unique broken URLs checked
+    0 Hijackable
+    0 Confirmed (body fingerprint)
+======================================================================
+
+[+] JSON report saved to blh_report.json

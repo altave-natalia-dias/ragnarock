@@ -1,0 +1,15 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║                    OPEN REDIRECT SCAN REPORT                            ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+  Target          : unknown
+  Date            : 2026-06-29T01:20:27.398536464+00:00
+  Subdomains      : 0
+  Live Hosts      : 0
+  URLs Crawled    : 0
+  Hidden Params   : 0
+  Total Requests  : 0
+  Vulnerabilities : 0
+  Elapsed         : 0.0s
+
+  No open redirect vulnerabilities found.

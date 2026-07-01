@@ -1,0 +1,14 @@
+{
+  "target": "unknown",
+  "scan_date": "2026-06-29T01:20:27.398536464+00:00",
+  "stats": {
+    "subdomains_found": 0,
+    "live_hosts": 0,
+    "urls_crawled": 0,
+    "hidden_params_found": 0,
+    "total_tests": 0,
+    "vulnerabilities_found": 0,
+    "elapsed_seconds": 0.011623624
+  },
+  "vulnerabilities": []
+}

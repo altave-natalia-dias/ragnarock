@@ -1,0 +1,12 @@
+{
+  "current_message": "🔧 Iniciando ferramenta: Admin Panel Finder",
+  "event_type": {
+    "tool_name": "Admin Panel Finder",
+    "type": "ToolStarted"
+  },
+  "last_update": "2026-06-29T01:32:40.046543486Z",
+  "progress": 0.0,
+  "scan_id": "8e4b0491-7c3a-4947-8ca9-4d5290f64735",
+  "target": "anthropic.com",
+  "total_events": 32
+}

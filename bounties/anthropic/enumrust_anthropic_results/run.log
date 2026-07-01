@@ -1,0 +1,509 @@
+═══════════════════════════════════════════════════════════════
+  ███████╗███╗   ██╗██╗   ██╗███╗   ███╗██████╗ ██╗   ██╗███████╗████████╗
+  ██╔════╝████╗  ██║██║   ██║████╗ ████║██╔══██╗██║   ██║██╔════╝╚══██╔══╝
+  █████╗  ██╔██╗ ██║██║   ██║██╔████╔██║██████╔╝██║   ██║███████╗   ██║   
+  ██╔══╝  ██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██╗██║   ██║╚════██║   ██║   
+  ███████╗██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║╚██████╔╝███████║   ██║   
+  ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   
+═══════════════════════════════════════════════════════════════
+  EnumRust v2.3.0 - Advanced Security Reconnaissance
+  Offensive Security | OSINT | Vulnerability Assessment
+═══════════════════════════════════════════════════════════════
+
+[+] Tools validated (cached) - PATH configured.
+
+🔍 Detectado scan CLI - Iniciando em modo TMUX persistente...
+   Isso garante que o scan continue mesmo se você desconectar SSH!
+
+⚠️  AVISO: tmux não está instalado!
+   O scan rodará normalmente, mas será interrompido se desconectar SSH.
+   Instale tmux com: apt-get install tmux
+
+[*] Starting domain scan for: anthropic.com
+[*] Output directory: anthropic.com/
+[*] Scan ID: 8e4b0491-7c3a-4947-8ca9-4d5290f64735
+
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║  🤖 AI ENGINE: Ollama Auto-Setup                                              ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+[AI] Ollama binario encontrado
+[AI] Ollama server ja esta rodando
+[AI] Modelo 'llama3' disponivel
+[AI] Filtro inteligente ATIVO | Modelo: llama3 | URL: http://localhost:11434
+
+
+═══════════════════════════════════════════════════════════════
+  STAGE 2: SUBDOMAIN ENUMERATION (5-30%)
+═══════════════════════════════════════════════════════════════
+[*] Running subfinder for subdomain discovery...
+platform.anthropic.com
+staging.tunnel.anthropic.com
+slackbot.anthropic.com
+stt-nova3-s8.titanium-staging.api.anthropic.com
+stt-flux-multi.titanium-staging.api.anthropic.com
+claude.anthropic.com
+notebook.anthropic.com
+test000000000.anthropic.com
+stt-nova3-s0.titanium.api.anthropic.com
+partnerhub.anthropic.com
+bo.anthropic.com
+staging.anthropic.com
+assets-proxy.anthropic.com
+tai.anthropic.com
+www.test.anthropic.com
+stt-flux.titanium-staging.api.anthropic.com
+trust.anthropic.com
+www.legal.anthropic.com
+analytics-cdn.anthropic.com
+stt-nova3-s8.titanium.api.anthropic.com
+mcp-proxy-staging.anthropic.com
+www-cdn.anthropic.com
+legal.anthropic.com
+www.earlyaccess.anthropic.com
+institute.anthropic.com
+s-cdn.anthropic.com
+www-files.anthropic.com
+brand.anthropic.com
+atlantis-staging.c.anthropic.com
+alignment.anthropic.com
+api-staging.anthropic.com
+privacy.anthropic.com
+stt-nova3-s5.titanium.api.anthropic.com
+stt-nova3-s6.titanium.api.anthropic.com
+metrics.anthropic.com
+c.anthropic.com
+learn.anthropic.com
+stt-flux-multi.titanium.api.anthropic.com
+red.anthropic.com
+test.anthropic.com
+stt.titanium-staging.api.anthropic.com
+stt-flux-multi-a100.titanium.api.anthropic.com
+api-release-candidate-2.anthropic.com
+stt-nova3-s3.titanium.api.anthropic.com
+links.anthropic.com
+url8792.mail.anthropic.com
+llmglobalvalues.anthropic.com
+scim.anthropic.com
+sandbox.staging.api.anthropic.com
+ilinks.anthropic.com
+www.atlas.anthropic.com
+api-staging.product-internal.anthropic.com
+sandbox.api.anthropic.com
+stt-nova3-s3.titanium-staging.api.anthropic.com
+economic-research.anthropic.com
+api-production.product-internal.anthropic.com
+a-api.anthropic.com
+a-cdn.anthropic.com
+stt-nova3-s6.titanium-staging.api.anthropic.com
+stt-flux-a100.titanium.api.anthropic.com
+partnerportal.anthropic.com
+api.console.anthropic.com
+auth.console-staging.anthropic.com
+www-images.anthropic.com
+auth.console.anthropic.com
+www.docs.anthropic.com
+www.claude.anthropic.com
+stt-flux-a100.titanium-staging.api.anthropic.com
+stt-nova3-s0.titanium-staging.api.anthropic.com
+stt-nova3-s1.titanium.api.anthropic.com
+stt-nova3-s7.titanium.api.anthropic.com
+api.anthropic.com
+mcp-proxy.anthropic.com
+www.anthropic.com
+stt-nova3-s2.titanium-staging.api.anthropic.com
+atlantis.c.anthropic.com
+website.anthropic.com
+tunnel.anthropic.com
+analytics-api.anthropic.com
+claude-staging.anthropic.com
+atlantis-sandbox.c.anthropic.com
+stt.titanium.api.anthropic.com
+stt-nova3-s4.titanium.api.anthropic.com
+prod-rudolph.he.anthropic.com
+hfi-gateway-staging.bo.anthropic.com
+li.anthropic.com
+evals.anthropic.com
+portal.anthropic.com
+url6646.mail.anthropic.com
+earlyaccess.anthropic.com
+stt-nova3.titanium.api.anthropic.com
+console.anthropic.com
+api-backend-frontend.n.anthropic.com
+docs.anthropic.com
+support.anthropic.com
+api-test.anthropic.com
+argocd-bo-backend.bo.anthropic.com
+api-backend.anthropic.com
+stt-nova3.titanium-staging.api.anthropic.com
+stt-nova3-s1.titanium-staging.api.anthropic.com
+status.anthropic.com
+internal.api.anthropic.com
+stt-nova3-s5.titanium-staging.api.anthropic.com
+stt-nova3-s2.titanium.api.anthropic.com
+resources.anthropic.com
+stt-flux-multi-a100.titanium-staging.api.anthropic.com
+feedback.anthropic.com
+go.anthropic.com
+assets.anthropic.com
+dns-staging.c.anthropic.com
+api-release-candidate.anthropic.com
+he.anthropic.com
+stt-nova3-s7.titanium-staging.api.anthropic.com
+stt-nova3-s4.titanium-staging.api.anthropic.com
+console-staging.anthropic.com
+partner-sso.anthropic.com
+statsig.anthropic.com
+atlas.anthropic.com
+receive2.c.anthropic.com
+sandbox-chs2.staging.api.anthropic.com
+billing.anthropic.com
+events.anthropic.com
+www-staging.anthropic.com
+dns.c.anthropic.com
+stt-flux.titanium.api.anthropic.com
+[+] Subfinder results added (total: 125)
+[*] Extracting certificate SANs with tlsx...
+anthropic.com
+[+] Certificate SANs extracted
+[*] Enriching subdomains with native passive sources (crt.sh, bufferover)...
+[+] Native passive sources added 0 unique subdomains
+[*] Mining subdomains from historical URL archives (gau, waybackurls)...
+[+] Archive sources added 10 unique subdomains
+[+] Total unique subdomains found: 136
+
+═══════════════════════════════════════════════════════════════
+  STAGE 3: DNS RESOLUTION (30-40%)
+═══════════════════════════════════════════════════════════════
+[*] Resolving subdomains to IPs with dnsx...
+160.79.104.10
+172.20.0.20
+160.79.104.10
+160.79.104.10
+10.104.0.6
+10.104.0.5
+160.79.104.10
+160.79.104.10
+160.79.104.10
+160.79.104.10
+34.111.105.183
+10.104.0.6
+242.243.0.66
+44.209.94.176
+10.104.0.5
+10.104.0.6
+10.17.0.92
+10.104.0.6
+172.64.152.100
+160.79.104.10
+160.79.104.10
+160.79.104.10
+44.205.140.101
+10.104.0.6
+10.104.0.8
+10.104.0.5
+160.79.104.10
+160.79.104.10
+10.104.0.117
+160.79.104.10
+34.110.210.69
+3.232.44.166
+10.104.0.5
+160.79.104.10
+52.204.183.194
+160.79.104.10
+3.212.170.218
+104.18.35.156
+3.233.101.118
+100.84.57.12
+160.79.104.10
+18.235.65.67
+18.190.127.130
+34.36.57.103
+172.64.151.232
+10.104.0.6
+10.104.0.5
+160.79.104.10
+160.79.104.10
+160.79.104.10
+10.104.0.5
+199.60.103.2
+34.54.194.141
+10.104.0.6
+10.104.0.5
+2.18.20.145
+10.104.0.5
+160.79.104.10
+160.79.104.10
+100.51.221.214
+104.18.36.24
+3.13.144.59
+160.79.104.10
+44.206.152.233
+34.160.232.196
+34.200.100.194
+160.79.104.10
+199.60.103.254
+18.226.99.84
+2.18.20.133
+34.107.201.223
+18.116.101.143
+18.233.42.54
+3.137.116.113
+104.20.25.123
+13.59.243.181
+172.66.167.209
+52.84.80.88
+52.84.80.112
+52.84.80.85
+52.84.80.120
+160.79.104.10
+10.104.0.6
+18.220.53.192
+18.226.194.246
+104.18.35.233
+18.116.186.192
+172.64.152.23
+160.79.104.10
+160.79.104.10
+10.104.0.6
+160.79.104.10
+10.104.0.5
+10.104.0.5
+10.104.0.6
+160.79.104.10
+10.104.0.5
+160.79.104.10
+10.104.0.6
+10.104.0.5
+10.104.0.5
+198.202.211.1
+10.104.0.5
+160.79.104.10
+10.104.0.6
+10.104.0.5
+160.79.104.10
+10.104.0.6
+10.104.0.6
+10.104.0.6
+104.18.27.175
+104.18.26.175
+35.239.79.203
+136.113.71.169
+34.123.83.248
+[+] Resolved 115 unique IP addresses
+
+═══════════════════════════════════════════════════════════════
+  STAGE 4: DOMAIN VALIDATION (48-52%)
+═══════════════════════════════════════════════════════════════
+[*] Validating domains with trust-dns-resolver...
+[+] Validated 136 domains: 55 resolvable, 81 non-resolvable
+[+] Results saved to: anthropic.com/validated_hosts.json
+
+═══════════════════════════════════════════════════════════════
+  STAGE 5: PORT SCANNING (48-60%)
+═══════════════════════════════════════════════════════════════
+[*] Scanning ports with masscan (this may take a while)...
+[+] Masscan completed: 31 port entries found
+[*] Validating open ports with httpx...
+Usage: httpx [OPTIONS] URL
+
+Error: No such option: -s
+[!] Port validation failed
+
+═══════════════════════════════════════════════════════════════
+  STAGE 6: HTTP VALIDATION (60-70%)
+═══════════════════════════════════════════════════════════════
+[*] Resolving alive hosts with httpx...
+Usage: httpx [OPTIONS] URL
+
+Error: No such option: -s
+[!] HTTP validation failed
+[*] Discovering URLs with URLFinder...
+
+═══════════════════════════════════════════════════════════════
+  STAGE 6.5: JS FILE DISCOVERY (68-70%)
+═══════════════════════════════════════════════════════════════
+[*] Discovering JavaScript files with ffuf...
+[+] ffuf discovered 0 JS files
+
+═══════════════════════════════════════════════════════════════
+  STAGE 7: JAVASCRIPT ANALYSIS (70-79%)
+═══════════════════════════════════════════════════════════════
+[*] Crawling and analyzing JavaScript files...
+[*] Phase 1: Extracting JS from ffuf discovery...
+[+] Found 0 JS files via ffuf
+[*] Phase 2: Extracting JS from URLFinder...
+[+] Found 0 JS files in URLFinder
+[*] Phase 3: Extracting JS from HTTP200...
+[+] Found 0 JS files in HTTP200
+[*] Phase 4: Discovering JS from HTML pages...
+[+] Discovered 0 additional JS files from HTML
+[*] Total unique JS files to analyze: 0
+[*] Phase 5: Analyzing JS files for secrets and endpoints...
+[*] Extracting S3 buckets from JavaScript files...
+[*] Scanning JavaScript files for S3 buckets...
+[+] Total S3 buckets discovered: 0
+[+] Discovered 0 JavaScript files
+[+] Found 0 secrets in JS files
+[+] Extracted 0 API endpoints
+[+] Found 0 cloud storage URLs
+[+] Discovered 0 S3 buckets
+
+═══════════════════════════════════════════════════════════════
+  STAGE 7.5: ADMIN PANEL DISCOVERY (79-81%)
+═══════════════════════════════════════════════════════════════
+[*] Discovering administrative panels across multiple ports...
+[*] Starting admin panel discovery...
+    Checking 15 ports per host
+    Checking 90 admin paths
+    Baseline 404 detection: status=404, size=61364 bytes
+    Baseline title: "Not Found \ Anthropic"
+[*] Testing 6750 unique URLs...
+    Using 30 concurrent workers for faster scanning
+    Progress: 50/6750 URLs checked (0%)
+    Progress: 100/6750 URLs checked (1%)
+    Progress: 150/6750 URLs checked (2%)
+    Progress: 200/6750 URLs checked (2%)
+    Progress: 250/6750 URLs checked (3%)
+    Progress: 300/6750 URLs checked (4%)
+    Progress: 350/6750 URLs checked (5%)
+    Progress: 400/6750 URLs checked (5%)
+    Progress: 450/6750 URLs checked (6%)
+    Progress: 500/6750 URLs checked (7%)
+    Progress: 550/6750 URLs checked (8%)
+    Progress: 600/6750 URLs checked (8%)
+    Progress: 650/6750 URLs checked (9%)
+    Progress: 700/6750 URLs checked (10%)
+    Progress: 750/6750 URLs checked (11%)
+    Progress: 800/6750 URLs checked (11%)
+    Progress: 850/6750 URLs checked (12%)
+    Progress: 900/6750 URLs checked (13%)
+    Progress: 950/6750 URLs checked (14%)
+    Progress: 1000/6750 URLs checked (14%)
+    Progress: 1050/6750 URLs checked (15%)
+    Progress: 1100/6750 URLs checked (16%)
+    Progress: 1150/6750 URLs checked (17%)
+    Progress: 1200/6750 URLs checked (17%)
+    Progress: 1250/6750 URLs checked (18%)
+    Progress: 1300/6750 URLs checked (19%)
+    Progress: 1350/6750 URLs checked (20%)
+    Progress: 1400/6750 URLs checked (20%)
+    Progress: 1450/6750 URLs checked (21%)
+    Progress: 1500/6750 URLs checked (22%)
+    Progress: 1550/6750 URLs checked (22%)
+    Progress: 1600/6750 URLs checked (23%)
+    Progress: 1650/6750 URLs checked (24%)
+    Progress: 1700/6750 URLs checked (25%)
+    Progress: 1750/6750 URLs checked (25%)
+    Progress: 1800/6750 URLs checked (26%)
+    Progress: 1850/6750 URLs checked (27%)
+    Progress: 1900/6750 URLs checked (28%)
+    Progress: 1950/6750 URLs checked (28%)
+    Progress: 2000/6750 URLs checked (29%)
+    Progress: 2050/6750 URLs checked (30%)
+    Progress: 2100/6750 URLs checked (31%)
+    Progress: 2150/6750 URLs checked (31%)
+    Progress: 2200/6750 URLs checked (32%)
+    Progress: 2250/6750 URLs checked (33%)
+    Progress: 2300/6750 URLs checked (34%)
+    Progress: 2350/6750 URLs checked (34%)
+    Progress: 2400/6750 URLs checked (35%)
+    Progress: 2450/6750 URLs checked (36%)
+    Progress: 2500/6750 URLs checked (37%)
+    Progress: 2550/6750 URLs checked (37%)
+    Progress: 2600/6750 URLs checked (38%)
+    Progress: 2650/6750 URLs checked (39%)
+    Progress: 2700/6750 URLs checked (40%)
+    Progress: 2750/6750 URLs checked (40%)
+    Progress: 2800/6750 URLs checked (41%)
+    Progress: 2850/6750 URLs checked (42%)
+    Progress: 2900/6750 URLs checked (42%)
+    Progress: 2950/6750 URLs checked (43%)
+    Progress: 3000/6750 URLs checked (44%)
+    Progress: 3050/6750 URLs checked (45%)
+    Progress: 3100/6750 URLs checked (45%)
+    Progress: 3150/6750 URLs checked (46%)
+    Progress: 3200/6750 URLs checked (47%)
+    Progress: 3250/6750 URLs checked (48%)
+    Progress: 3300/6750 URLs checked (48%)
+    Progress: 3350/6750 URLs checked (49%)
+    Progress: 3400/6750 URLs checked (50%)
+    Progress: 3450/6750 URLs checked (51%)
+    Progress: 3500/6750 URLs checked (51%)
+    Progress: 3550/6750 URLs checked (52%)
+    Progress: 3600/6750 URLs checked (53%)
+    Progress: 3650/6750 URLs checked (54%)
+    Progress: 3700/6750 URLs checked (54%)
+    Progress: 3750/6750 URLs checked (55%)
+    Progress: 3800/6750 URLs checked (56%)
+    Progress: 3850/6750 URLs checked (57%)
+    Progress: 3900/6750 URLs checked (57%)
+    Progress: 3950/6750 URLs checked (58%)
+    Progress: 4000/6750 URLs checked (59%)
+    Progress: 4050/6750 URLs checked (60%)
+    Progress: 4100/6750 URLs checked (60%)
+    Progress: 4150/6750 URLs checked (61%)
+    Progress: 4200/6750 URLs checked (62%)
+    Progress: 4250/6750 URLs checked (62%)
+    Progress: 4300/6750 URLs checked (63%)
+    Progress: 4350/6750 URLs checked (64%)
+    Progress: 4400/6750 URLs checked (65%)
+    Progress: 4450/6750 URLs checked (65%)
+    Progress: 4500/6750 URLs checked (66%)
+    Progress: 4550/6750 URLs checked (67%)
+    Progress: 4600/6750 URLs checked (68%)
+    Progress: 4650/6750 URLs checked (68%)
+    Progress: 4700/6750 URLs checked (69%)
+    Progress: 4750/6750 URLs checked (70%)
+    Progress: 4800/6750 URLs checked (71%)
+    Progress: 4850/6750 URLs checked (71%)
+    Progress: 4900/6750 URLs checked (72%)
+    Progress: 4950/6750 URLs checked (73%)
+    Progress: 5000/6750 URLs checked (74%)
+    Progress: 5050/6750 URLs checked (74%)
+    Progress: 5100/6750 URLs checked (75%)
+    Progress: 5150/6750 URLs checked (76%)
+    Progress: 5200/6750 URLs checked (77%)
+    Progress: 5250/6750 URLs checked (77%)
+    Progress: 5300/6750 URLs checked (78%)
+    Progress: 5350/6750 URLs checked (79%)
+    Progress: 5400/6750 URLs checked (80%)
+    Progress: 5450/6750 URLs checked (80%)
+    Progress: 5500/6750 URLs checked (81%)
+    Progress: 5550/6750 URLs checked (82%)
+    Progress: 5600/6750 URLs checked (82%)
+    Progress: 5650/6750 URLs checked (83%)
+    Progress: 5700/6750 URLs checked (84%)
+    Progress: 5750/6750 URLs checked (85%)
+    Progress: 5800/6750 URLs checked (85%)
+    Progress: 5850/6750 URLs checked (86%)
+    Progress: 5900/6750 URLs checked (87%)
+    Progress: 5950/6750 URLs checked (88%)
+    Progress: 6000/6750 URLs checked (88%)
+    Progress: 6050/6750 URLs checked (89%)
+    Progress: 6100/6750 URLs checked (90%)
+    Progress: 6150/6750 URLs checked (91%)
+    Progress: 6200/6750 URLs checked (91%)
+    Progress: 6250/6750 URLs checked (92%)
+    Progress: 6300/6750 URLs checked (93%)
+    Progress: 6350/6750 URLs checked (94%)
+    Progress: 6400/6750 URLs checked (94%)
+    Progress: 6450/6750 URLs checked (95%)
+    Progress: 6500/6750 URLs checked (96%)
+    Progress: 6550/6750 URLs checked (97%)
+    Progress: 6600/6750 URLs checked (97%)
+    Progress: 6650/6750 URLs checked (98%)
+    Progress: 6700/6750 URLs checked (99%)
+    Progress: 6750/6750 URLs checked (100%)
+[+] Admin discovery complete: Found 360 potential admin panels
+[AI] Validando admin panels com Ollama...
+  [AI] Falso positivo removido: http://alignment.anthropic.com/admin (The page title suggests it's a blog, and the excerpt doesn't indicate any admin-specific functionality. The URL also seems generic and not specific to an admin panel.)
+  [AI] Falso positivo removido: http://alignment.anthropic.com/admin.html (The page title suggests it's a blog, and the excerpt doesn't indicate any admin-specific functionality. The URL also seems generic, which is uncommon for an admin panel.)
+  [AI] Falso positivo removido: http://alignment.anthropic.com/admin/ (The page title suggests it's a blog, and the excerpt doesn't indicate any admin-specific functionality. The URL path '/admin/' is suspiciously straightforward, which is uncommon for real admin panels.)
+  [AI] Falso positivo removido: http://alignment.anthropic.com/admin.php (The page title suggests it's a blog, and the excerpt doesn't indicate any admin-specific functionality. The URL path '/admin.php' is suspiciously straightforward, which is uncommon for real admin panels.)
+  [AI] Falso positivo removido: http://alignment.anthropic.com/administrator/index.php (The page title suggests it's a blog, and the excerpt doesn't indicate any admin-specific functionality. The URL structure also seems unusual for an admin panel.)
+  [AI] Falso positivo removido: http://alignment.anthropic.com/admin/index.html (The page title suggests it's a blog, and the excerpt doesn't indicate any admin-specific functionality. The URL also seems generic, not typical of an admin panel.)
+  [AI] Falso positivo removido: http://alignment.anthropic.com/adminpanel.html (The page title suggests it's a blog, and the excerpt doesn't indicate any admin-specific functionality. The URL path also seems unusual for an admin panel.)
+  [AI] Falso positivo removido: http://alignment.anthropic.com/panel/ (The page title suggests it's a blog, and the excerpt doesn't indicate any admin-specific functionality. The URL path '/panel/' is also unusual for an admin panel.)
+  [AI] Falso positivo removido: http://alignment.anthropic.com/adminarea/ (The page title suggests it's a blog, and the excerpt doesn't indicate any admin-specific functionality. The URL path also seems unusual for an admin panel.)
+  [AI] Falso positivo removido: http://alignment.anthropic.com/dashboard/ (The page title suggests it's a blog, and the excerpt doesn't indicate any admin-specific functionality. The URL path also seems unusual for an admin panel.)

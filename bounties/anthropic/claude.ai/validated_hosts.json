@@ -1,0 +1,120 @@
+[
+  {
+    "subdomain": "a-cdn.claude.ai",
+    "resolved_ips": [
+      "13.224.252.60",
+      "13.224.252.12",
+      "13.224.252.55",
+      "13.224.252.28"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 83,
+    "cname": null
+  },
+  {
+    "subdomain": "livepreview.claude.ai",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 106,
+    "cname": null
+  },
+  {
+    "subdomain": "pivot.claude.ai",
+    "resolved_ips": [
+      "34.50.145.103"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 148,
+    "cname": null
+  },
+  {
+    "subdomain": "preview.claude.ai",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 164,
+    "cname": null
+  },
+  {
+    "subdomain": "status.claude.ai",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 11,
+    "cname": null
+  },
+  {
+    "subdomain": "www.claude.ai",
+    "resolved_ips": [
+      "160.79.104.10"
+    ],
+    "is_resolvable": true,
+    "resolution_time_ms": 36,
+    "cname": null
+  },
+  {
+    "subdomain": "a.claude.ai",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 5000,
+    "cname": null
+  },
+  {
+    "subdomain": "a.preview.claude.ai",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 5000,
+    "cname": null
+  },
+  {
+    "subdomain": "api.claude.ai",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 5000,
+    "cname": null
+  },
+  {
+    "subdomain": "assets.claude.ai",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 5000,
+    "cname": null
+  },
+  {
+    "subdomain": "claude.ai",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 5000,
+    "cname": null
+  },
+  {
+    "subdomain": "console.claude.ai",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 5000,
+    "cname": null
+  },
+  {
+    "subdomain": "downloads.claude.ai",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 5000,
+    "cname": null
+  },
+  {
+    "subdomain": "downloads.preview.claude.ai",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 5000,
+    "cname": null
+  },
+  {
+    "subdomain": "staging.claude.ai",
+    "resolved_ips": [],
+    "is_resolvable": false,
+    "resolution_time_ms": 5000,
+    "cname": null
+  }
+]
