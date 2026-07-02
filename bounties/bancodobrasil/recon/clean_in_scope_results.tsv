@@ -1,0 +1,156 @@
+host	ip	scheme	status	server	title	content_length
+accounts-piloto.bb.com.br	170.66.14.11	https	503			2503
+acesso.bb.com.br	170.66.14.91	https	200		Banco do Brasil	5000
+acl-cipr2c3.bb.com.br	170.66.14.144	https	401			303
+adapter-tw.nia.servicos.bb.com.br	170.66.14.91	http	302			0
+agn-ar.nxr.bb.com.br	170.66.14.91	http	302			0
+agrobot-api.bb.com.br	170.66.14.91	http	302			0
+agrobot-calculadora-fotovoltaica-cse.servicos.bb.com.br	170.66.14.91	http	302			0
+agrobot-media.bb.com.br	170.66.14.91	http	302			0
+agrohelp-teams.bb.com.br	170.66.14.136	https	503			2503
+analise-comentarios.cse.bb.com.br	170.66.14.91	http	302			0
+api-dadosabertos-ws.bb.com.br	170.66.221.27	https	500	openresty		33
+api-developers.bb.com.br	170.66.14.68	http	302			94
+api-voucher.rcp.bb.com.br	170.66.14.91	http	302			0
+api.ana.painel.bb.com.br	170.66.14.91	https	500			325
+api.encontre.o.bb.web.bb.com.br	170.66.192.4	https	404			21
+api.exno.painel.bb.com.br	170.66.14.91	http	302			0
+api.ite.painel.bb.com.br	170.66.14.91	https	401			0
+api.merge.bb.com.br	170.66.14.91	http	302			0
+api.opf.painel.bb.com.br	170.66.14.91	https	401			0
+api.painel.bb.com.br	170.66.14.91	https	401			0
+api.sandbox.bb.com.br	170.66.14.91	https	401			110
+api.vantagens.rcp.bb.com.br	170.66.14.91	https	200			193
+apigw.api.bb.com.br	170.66.196.16	https	503			2503
+apis.deveurope.bb.com.br	170.66.17.25	https	502	nginx	502 Bad Gateway	150
+app-cartao-bundle.vip.servicos.bb.com.br	170.66.14.91	http	302			0
+app.merge.bb.com.br	170.66.14.91	http	302			0
+app.painel.bb.com.br	170.66.14.91	https	200		Painel - Sua Plataforma Financeira	1131
+appdipes.bb.com.br	170.66.1.22	https	200	nginx/1.29.4	Welcome to nginx!	615
+apps.bb.com.br	170.66.14.11	https	200	nginx/1.24.0	Mosaik Core Nginx	615
+aso-digital.arh.bb.com.br	170.66.14.91	http	302			0
+assistentevirtual.bb.com.br	170.66.14.161	https	404			21
+assistentevirtual2.bb.com.br	170.66.14.161	https	404			21
+autenticacao.bb.com.br	170.66.14.91	https	404			85
+auth.merge.bb.com.br	170.66.14.91	http	302			0
+auth.painel.bb.com.br	170.66.14.91	https	403			89
+authn.bb.com.br	170.66.14.91	https	302			0
+bbpay.apps.bb.com.br	170.66.14.11	https	200		BB Pay | Banco do Brasil	4649
+bbr-enviodearquivos.apps.bb.com.br	170.66.14.176	https	503			2503
+bbusa.bb.com.br	170.66.17.1	https	200			248
+bifrost.cmu.servicos.bb.com.br	170.66.14.150	http	308		308 Permanent Redirect	164
+blog.api.bb.com.br	170.66.11.27	https	401			40
+blog.api.search.bb.com.br	170.66.11.27	https	200			50
+blog.bb.com.br	170.66.11.27	https	200		Home	65211
+boleto.apps.bb.com.br	170.66.14.118	https	200	nginx/1.26.3	Banco do Brasil	2419
+bot-cloud-piloto.bb.com.br	170.66.14.140	https	503		503 Service Temporarily Unavailable	190
+bot-cloud.bb.com.br	170.66.196.73	https	503		503 Service Temporarily Unavailable	190
+bot.bb.com.br	170.66.14.86	https	503			62
+bpr-venda.bb.com.br	170.66.103.8	https	400			89
+cadastro-parceiro-bbseguros.apps.bb.com.br	170.66.14.11	https	200		Banco do Brasil	4046
+calculadora-fotovoltaica.nuvem.bb.com.br	170.66.14.91	http	302			0
+cashbbe.bb.com.br	170.66.14.91	http	302			0
+compe-executante.dc.bb.com.br	170.66.14.47	https	200		Portal do Executante da Compe	5183
+comunica-backend.miv.bb.com.br	170.66.14.91	http	302			0
+connection-broker-api.ndp.bb.com.br	170.66.14.91	http	302			0
+consultaparceiro.cnv.servicos.bb.com.br	170.66.14.11	https	200		Consulta Parceiros	250
+contestacao.apps.bb.com.br	170.66.14.118	https	200		Banco do Brasil	4056
+convenios.bb.com.br	170.66.14.11	https	503			2503
+cupom.vantagens.bb.com.br	170.66.14.91	http	302			0
+cx.bb.com.br	170.66.14.91	http	302			0
+demonstrativos.apps.bb.com.br	170.66.14.11	https	200		Banco do Brasil	4012
+developers-api.bb.com.br	170.66.14.68	http	302			94
+developers-forum.bb.com.br	170.66.14.71	http	302			100
+developers-forum.dc.bb.com.br	170.66.14.71	http	302			100
+digital.bb.com.br	170.66.43.11	https	200	nginx/1.14.1		263
+djows.bb.com.br	170.66.52.39	https	404		Error 404--Not Found	1164
+djowsdes.bb.com.br	201.33.147.8	https	404		Error 404--Not Found	1164
+ds.bb.com.br	170.66.14.176	https	302	Apache/2.4.38 (Debian)		0
+dsmidias.bb.com.br	170.66.14.224	https	200	Apache/2.4.62 (Red Hat Enterprise Linux) OpenSSL/3.5.5		0
+envio-embaixadores.bb.com.br	170.66.14.91	http	302			0
+estatico-externo.wbb.bb.com.br	170.66.14.91	http	302			0
+evdi.bb.com.br	170.66.59.1	https	303			0
+events-callback.eni.bb.com.br	170.66.72.7	https	403		403 Forbidden	146
+extrato-cartao.apps.bb.com.br	170.66.14.91	http	302			0
+fornecedor.bb.com.br	170.66.196.124	https	200		   	5793
+forum.developers.bb.com.br	170.66.14.91	https	302			112
+gamepensa.bb.com.br	170.66.43.1	https	404	nginx/1.21.5	404 Not Found	153
+geracao-informes-externo-estatico.aeb.internet.bb.com.br	170.66.14.91	https	200		Informe de Ativos Escriturais	1361
+gestao.spid.bb.com.br	170.66.14.150	https	200		Spid | Gestão	708
+gestaoagil-extratos.api.bb.com.br	170.66.14.11	https	404			21
+gmtedi.bb.com.br	170.66.14.85	https	200	nginx/1.15.5	SIA-WEB	6000
+governanca2.bb.com.br	170.66.14.172	https	302			14
+hotsite-api.wbb.bb.com.br	170.66.14.91	http	302			0
+ingress-bot-apps.nuvem.dc.bb.com.br	170.66.14.161	https	404			21
+ingress-k8s-canais-prd-portalbb.nuvem.dc.bb.com.br	170.66.11.27	https	404			21
+ingress.intersolucoes.svc.nuvem.bb.com.br	170.66.14.91	http	302			0
+ingress.intersolucoes.svc.nuvem.dc.bb.com.br	170.66.14.91	http	302			0
+ingress.svc-outros.nuvem.bb.com.br	170.66.14.91	http	302			0
+integracao-educa.bb.com.br	170.66.14.91	http	302			0
+internacional.bb.com.br	170.66.17.3	https	302		302 Moved Temporarily	275
+ir-pdf-generator.aeb.internet.bb.com.br	170.66.14.11	https	500			325
+kodiak-engine.mov.bb.com.br	170.66.196.32	https	404			21
+leads.api.web.bb.com.br	170.66.14.11	https	401			40
+login.bb.com.br	170.66.14.193	https	302		302 Found	306
+login.extranet.bb.com.br	170.66.14.207	https	302		302 Found	328
+loginapi.bb.com.br	170.66.14.91	https	200		gcs-login-api	182
+logincdg.bb.com.br	170.66.14.93	https	302		302 Found	294
+loginweb.bb.com.br	170.66.14.14	https	302		302 Found	301
+logonpj.bb.com.br	170.66.14.41	http	302			91
+loja.bb.back.ndp.bb.com.br	170.66.14.91	http	302			0
+loja.bb.banner.ndp.bb.com.br	170.66.14.91	http	302			0
+m.bb.com.br	170.66.11.21	https	302			0
+mad.bb.com.br	170.66.14.91	https	200		Modulo de Assinatura Digital - Diagnostico	744
+mapa.rcp.bb.com.br	170.66.14.91	http	302			0
+merge.bb.com.br	170.66.14.91	http	302			0
+merlin.bb.com.br	170.66.14.91	http	302			0
+meusuporte.bb.com.br	170.66.14.118	https	301	nginx	301 Moved Permanently	162
+mobile-api.bb.com.br	170.66.14.91	http	302			0
+mobile.bb.com.br	170.66.17.2	https	302		302 Moved Temporarily	293
+mobile.dc.bb.com.br	170.66.17.2	https	302		302 Moved Temporarily	299
+mobilecoban2.bb.com.br	170.66.210.24	https	503			62
+mobipj2.dc.bb.com.br	170.66.2.146	https	404		Error 404--Not Found	1164
+netbol.bb.com.br	170.66.14.174	https	503			62
+oauth.sandbox.bb.com.br	170.66.14.91	https	404			63
+opendata.api.bb.com.br	170.66.196.134	https	404	openresty		23
+operacoes.mov.bb.com.br	170.66.102.9	http	308		308 Permanent Redirect	164
+pagaroureceber.bb.com.br	170.66.14.91	http	302			0
+painel.bb.com.br	170.66.14.91	http	302			0
+pesquisa.bb.com.br	170.66.14.91	http	302			0
+pesquisa.suporte.bb.com.br	170.66.14.118	https	200	nginx/1.21.0	BB Survey	23151
+plataforma-gam.bb.com.br	170.66.14.211	https	401			188
+portal.api.web.bb.com.br	170.66.11.27	https	401			40
+portal.deveurope.bb.com.br	170.66.17.25	https	200	nginx	aplonAPI developers portal	3516
+portaldsextranet.dsc.bb.com.br	170.66.14.91	http	302			0
+prov.plataforma-gam.bb.com.br	170.66.14.206	https	403			65
+publicador.developers.bb.com.br	170.66.14.91	https	200		Welcome to your Strapi app	3290
+qrcodepix-h.bb.com.br	201.33.148.156	https	503			2503
+qrcodepix.bb.com.br	170.66.14.11	http	308		308 Permanent Redirect	164
+redirect.of.bb.com.br	170.66.14.150	http	308		308 Permanent Redirect	164
+research.bb.com.br	170.66.14.91	https	200		Pesquisa BB	4519
+sandbox.bb.com.br	170.66.14.91	http	302			0
+sandboxapis.deveurope.bb.com.br	170.66.17.25	https	502	nginx	502 Bad Gateway	150
+show.zeneto.bb.com.br	170.66.14.91	http	302			0
+solbot.bb.com.br	201.33.148.156	https	200	Python/3.11 aiohttp/3.8.5		34
+solicitacao-patrocinio.bb.com.br	170.66.14.91	http	302			0
+space.bb.com.br	170.66.14.78	https	200	nginx	Cisco Meeting Server web app	991
+spid.bb.com.br	170.66.14.150	https	200		Spid	27460
+status.bb.com.br	170.66.14.118	https	302	nginx	302 Found	138
+survey.bb.com.br	170.66.14.91	http	302			0
+svc-outros.nuvem.dc.bb.com.br	170.66.14.91	http	302			0
+trabalhoremoto.bb.com.br	170.66.1.22	https	200	nginx/1.29.4	Welcome to nginx!	615
+valordebensrurais.bb.com.br	170.66.14.91	https	200		BB Valor de Bens Imóveis Rurais	2780
+vantagens-api.apps.bb.com.br	170.66.14.91	http	302			0
+vantagens-cadastro-api.rcp.bb.com.br	170.66.14.91	http	302			0
+vantagens-gateway-api.rcp.bb.com.br	170.66.14.91	http	302			0
+vantagens-integracao-iib-api.rcp.bb.com.br	170.66.14.91	http	302			0
+web.deveurope.bb.com.br	170.66.17.25	https	403	nginx		24
+web.search.api.bb.com.br	170.66.11.27	https	200			28
+www.dc.bb.com.br	170.66.11.10	https	200	Oracle-HTTP-Server	[bb.com.br]	281
+www.ingress.svc-outros.nuvem.bb.com.br	170.66.14.91	http	302			0
+www.pagaroureceber.bb.com.br	170.66.14.91	http	302			0
+www14.bb.com.br	170.66.212.5	https	403	nginx	403 Forbidden	162
+www14.dc.bb.com.br	170.66.212.5	https	403	nginx	403 Forbidden	162
+www18.bb.com.br	170.66.14.186	https	503			62
+www30.bb.com.br	170.66.17.1	https	200			248
+www46.bb.com.br	170.66.11.24	https	200		Banco do Brasil	3508
