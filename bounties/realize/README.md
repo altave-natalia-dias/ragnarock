@@ -21,10 +21,13 @@
 
 | ID | Arquivo | Sev | CVSS | Impacto Negócio | Target | Status |
 |----|---------|-----|------|-----------------|--------|--------|
-| R1 | `R1_openfinance_cors_wildcard_and_stack_trace.md` | MEDIUM | 6.1 | **ALTO** (FAPI server) | `openfinance.*` | Pronto |
-| R2 | `R2_fapi_compliance_violations.md` | MEDIUM | 5.3 | **ALTO** (BCB regulatório) | `openfinance.*` | Pronto |
+| R1 | `R1_openfinance_cors_wildcard_and_stack_trace.md` | MEDIUM | 6.1 | **ALTO** (FAPI server) | `openfinance.*` | Pronto — checar scope antes de enviar |
+| R2 | `R2_fapi_compliance_violations.md` | MEDIUM | 5.3 | **ALTO** (BCB regulatório) | `openfinance.*` | Pronto — checar scope antes de enviar |
 | R3 | `R3_swagger_ui_exposed_production.md` | LOW | 5.3 | Médio | `api.*` | Pronto |
-| R4 | `R4_zendesk_dangling_cname.md` | LOW | 3.7 | Baixo | `parceiros.*` | Pronto |
+| R4 | `R4_zendesk_dangling_cname.md` | LOW | 3.7 | Baixo | `parceiros.*` | Pronto — checar scope antes de enviar |
+| R5 | `R5_hardcoded_channel_credentials_in_js_bundle.md` | MEDIUM | 6.5 | Alto (habilita R6/R7) | `www.*` + `api.*` | **Texto de submissão pronto** (`R5_SUBMISSION.md`) |
+| R6 | `R6_portal_negociacao_cpf_birthdate_auth.md` | **CRITICAL** (corrigido de HIGH/8.1 → 9.1, ver submission) | 9.1 | **CRÍTICO** (fraude em dívida, boleto) | `api.*` | **Texto de submissão pronto** (`R6_SUBMISSION.md`) |
+| R7 | `R7_preauth_token_any_cpf_user_enumeration.md` | MEDIUM/HIGH (potencial) | 7.5 | Alto | `api.*` | **Texto de submissão pronto** (`R7_SUBMISSION.md`) |
 
 ---
 
@@ -88,6 +91,8 @@ www.realizesolucoesfinanceiras.com.br:
 
 ## Próximos Passos
 
+- [x] Redigir texto de submissão para R5, R6, R7 (`*_SUBMISSION.md`) — prontos para envio na plataforma
+- [ ] **Enviar R5, R6, R7 na BugPay Haven** (todos em escopo explícito, sem ressalva)
 - [ ] Submeter R1 e R2 (notar scope de openfinance na submissão)
 - [ ] R3 e R4 submeter como LOW
 - [ ] Investigar `api.realizesolucoesfinanceiras.com.br` endpoints financeiros (Spring Boot)
@@ -95,6 +100,7 @@ www.realizesolucoesfinanceiras.com.br:
 - [ ] Testar `/meu-cartao` authentication flow para logic flaws
 - [ ] Analisar bundle sc-openfinance Angular mais profundamente (`sc_main.js` 1.6MB)
 - [ ] Verificar se `implicit` flow é realmente aceito pelo servidor (validação R2)
+- [ ] Auditar `/home/altave/realize/findings.md` (achados soltos contra `openfinance-hml` — OOS por regra do programa; ver se reproduzem em produção antes de descartar)
 
 ---
 
