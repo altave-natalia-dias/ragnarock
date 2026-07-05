@@ -1,0 +1,12 @@
+https://brasilescola.uol.com.br/busca/?q=
+https://brasilescola.uol.com.br/busca/?q={search_term_string}
+https://impresso.jc.uol.com.br/index.php?id=/banca.php&utm_source=site_jc&utm_medium=imagem_capa&utm_campaign=chama_flip
+https://interior.ne10.uol.com.br/?utm_source=https://ne10.uol.com.br&utm_medium=barra-parceiros&utm_campaign=barra-ne10
+https://jc.ne10.uol.com.br/?utm_source=https://ne10.uol.com.br&utm_medium=barra-parceiros&utm_campaign=barra-ne10
+https://ne10.uol.com.br/blogs/?utm_source=https://ne10.uol.com.br&utm_medium=barra-parceiros&utm_campaign=barra-ne10
+https://ne10.uol.com.br/dist/assets/css/app.min.css?v=2.2.3
+https://ne10.uol.com.br/dist/assets/js/app.min.js?v=2.2.3
+https://ne10.uol.com.br/dist/assets/js/vendors.min.js?v=2.2.3
+https://radiojornal.ne10.uol.com.br/?utm_source=https://ne10.uol.com.br&utm_medium=barra-parceiros&utm_campaign=barra-ne10
+https://tm.jsuol.com.br/uoltm.js?id=1wrw5p
+https://tvjornal.ne10.uol.com.br/?utm_source=https://ne10.uol.com.br&utm_medium=barra-parceiros&utm_campaign=barra-ne10
