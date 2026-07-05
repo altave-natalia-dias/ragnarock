@@ -1,0 +1,13 @@
+api-der-fn-dev.crt4.com.br -> 100.72.97.20
+api-derivativos.hext.crt4.com.br -> 172.19.160.172
+api-dev.nucleachain.com.br -> 172.19.170.37
+api-hint.nucleachain.com.br -> 172.19.176.213
+api-rendafixa.hext.crt4.com.br -> 172.19.162.155
+api-rfx-fn-dev.crt4.com.br -> 100.72.97.248
+hext-api.crt4.com.br -> 10.250.254.21
+hext.crt4.com.br -> 10.250.254.21
+hmlcrt4.crt4.com.br -> 10.250.254.21
+pcrt4.crt4.com.br -> 10.250.254.11
+prd-api.crt4.com.br -> 10.250.254.11
+prd.crt4.com.br -> 10.250.254.11
+rayls-blockroma-explorer-1-dev.nucleachain.com.br -> 172.19.165.216

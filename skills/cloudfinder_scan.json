@@ -1,0 +1,12 @@
+{
+  "name": "cloudfinder_scan",
+  "description": "Executa o CloudFinder para recon e busca de segredos",
+  "command": "/home/altave/lovableExpl/tools/cloudfinder/target/release/cloud_finder {target} --mcp",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "target": { "type": "string", "description": "Alvo para varredura" }
+    },
+    "required": ["target"]
+  }
+}

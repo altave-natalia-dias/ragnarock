@@ -1,0 +1,284 @@
+<style>
+  :root{
+    --ink:#0c0f14; --panel:#141a22; --panel2:#1b2330; --line:#273140;
+    --text:#c9d4e1; --muted:#8592a6; --accent:#5b9dff;
+    --ok:#3fb950; --warn:#d8a72a; --info:#6b7688; --crit:#f0563f;
+    --ok-bg:rgba(63,185,80,.12); --warn-bg:rgba(216,167,42,.13);
+    --info-bg:rgba(107,118,136,.14); --crit-bg:rgba(240,86,63,.12); --accent-bg:rgba(91,157,255,.12);
+    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --maxw:920px;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --ink:#eef1f5; --panel:#ffffff; --panel2:#f5f7fa; --line:#dde3ec;
+      --text:#1e2733; --muted:#5c6675; --accent:#2f6fe0;
+      --ok:#1a7f37; --warn:#8a5b00; --info:#5c6675; --crit:#c5341f;
+      --ok-bg:rgba(26,127,55,.10); --warn-bg:rgba(138,91,0,.10);
+      --info-bg:rgba(92,102,117,.10); --crit-bg:rgba(197,52,31,.09); --accent-bg:rgba(47,111,224,.09);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#0c0f14; --panel:#141a22; --panel2:#1b2330; --line:#273140;
+    --text:#c9d4e1; --muted:#8592a6; --accent:#5b9dff;
+    --ok:#3fb950; --warn:#d8a72a; --info:#6b7688; --crit:#f0563f;
+    --ok-bg:rgba(63,185,80,.12); --warn-bg:rgba(216,167,42,.13);
+    --info-bg:rgba(107,118,136,.14); --crit-bg:rgba(240,86,63,.12); --accent-bg:rgba(91,157,255,.12);
+  }
+  :root[data-theme="light"]{
+    --ink:#eef1f5; --panel:#ffffff; --panel2:#f5f7fa; --line:#dde3ec;
+    --text:#1e2733; --muted:#5c6675; --accent:#2f6fe0;
+    --ok:#1a7f37; --warn:#8a5b00; --info:#5c6675; --crit:#c5341f;
+    --ok-bg:rgba(26,127,55,.10); --warn-bg:rgba(138,91,0,.10);
+    --info-bg:rgba(92,102,117,.10); --crit-bg:rgba(197,52,31,.09); --accent-bg:rgba(47,111,224,.09);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--ink);color:var(--text);font-family:var(--sans);line-height:1.6;
+    margin:0;-webkit-font-smoothing:antialiased;font-size:16px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 96px}
+  .mono{font-family:var(--mono)}
+  a{color:var(--accent);text-decoration:none}
+
+  /* classification bar */
+  .classif{border-bottom:1px solid var(--line);background:var(--panel);
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);padding:9px 0}
+  .classif .wrap{padding-top:0;padding-bottom:0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .dot{color:var(--warn)}
+
+  /* header */
+  header{padding:52px 0 30px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 16px}
+  h1{font-size:clamp(28px,5vw,44px);line-height:1.08;margin:0;font-weight:680;letter-spacing:-.02em;
+    text-wrap:balance}
+  h1 .sub{display:block;color:var(--muted);font-weight:500;font-size:clamp(15px,2.4vw,19px);
+    letter-spacing:0;margin-top:12px}
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;
+    margin-top:30px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .meta div{background:var(--panel);padding:13px 16px}
+  .meta dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+  .meta dd{margin:5px 0 0;font-size:14px}
+
+  /* scorecard */
+  .score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:32px 0 8px}
+  .tile{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;
+    position:relative;overflow:hidden}
+  .tile::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+  .tile.ok::before{background:var(--ok)} .tile.warn::before{background:var(--warn)}
+  .tile .n{font-family:var(--mono);font-size:30px;font-weight:600;letter-spacing:-.02em;
+    line-height:1;font-variant-numeric:tabular-nums}
+  .tile .l{font-size:12.5px;color:var(--muted);margin-top:9px;line-height:1.35}
+
+  /* sections */
+  section{margin-top:52px}
+  .sechead{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);
+    padding-bottom:12px;margin-bottom:22px;flex-wrap:wrap}
+  .sechead .idx{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em}
+  h2{font-size:clamp(21px,3.4vw,27px);margin:0;font-weight:640;letter-spacing:-.01em}
+  h3{font-size:15px;font-family:var(--mono);letter-spacing:.02em;text-transform:none;
+    color:var(--text);margin:26px 0 12px;font-weight:600}
+  h3::before{content:"› ";color:var(--accent)}
+  p{margin:0 0 14px}
+
+  /* chips */
+  .chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;
+    font-weight:600;letter-spacing:.03em;padding:3px 9px;border-radius:999px;white-space:nowrap;
+    border:1px solid transparent;text-transform:uppercase}
+  .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+  .c-ok{color:var(--ok);background:var(--ok-bg);border-color:var(--ok)}
+  .c-warn{color:var(--warn);background:var(--warn-bg);border-color:var(--warn)}
+  .c-info{color:var(--info);background:var(--info-bg);border-color:var(--info)}
+  .c-crit{color:var(--crit);background:var(--crit-bg);border-color:var(--crit)}
+  .c-accent{color:var(--accent);background:var(--accent-bg);border-color:var(--accent)}
+
+  /* tables */
+  .tbl{border:1px solid var(--line);border-radius:11px;overflow-x:auto;margin:8px 0 6px;background:var(--panel)}
+  table{width:100%;border-collapse:collapse;min-width:520px}
+  th,td{text-align:left;padding:11px 15px;border-bottom:1px solid var(--line);vertical-align:top;font-size:13.5px}
+  th{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;background:var(--panel2)}
+  tr:last-child td{border-bottom:none}
+  td.k{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+  td .s{color:var(--muted);font-size:12.5px}
+
+  /* callouts */
+  .call{border:1px solid var(--line);border-left-width:3px;border-radius:9px;background:var(--panel);
+    padding:16px 18px;margin:18px 0}
+  .call.warn{border-left-color:var(--warn)}
+  .call.ok{border-left-color:var(--ok)}
+  .call.key{border-left-color:var(--accent)}
+  .call .t{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 8px}
+  .call.warn .t{color:var(--warn)} .call.ok .t{color:var(--ok)} .call.key .t{color:var(--accent)}
+  .call p:last-child{margin-bottom:0}
+
+  /* apk panel */
+  .panel{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:18px 20px;margin:16px 0}
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px 24px;margin-top:6px}
+  .kv .row{display:flex;gap:8px;font-size:13px;align-items:baseline}
+  .kv .row b{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em;
+    text-transform:uppercase;flex:none;min-width:96px}
+
+  code{font-family:var(--mono);font-size:.88em;background:var(--panel2);border:1px solid var(--line);
+    padding:1px 5px;border-radius:4px;color:var(--text);word-break:break-word}
+  ul{margin:6px 0 14px;padding-left:20px}li{margin:5px 0}
+  .ops{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+  .op{font-family:var(--mono);font-size:11.5px;padding:4px 9px;border-radius:6px;background:var(--panel2);
+    border:1px solid var(--line);color:var(--text)}
+  .op.hot{border-color:var(--warn);color:var(--warn)}
+
+  footer{margin-top:56px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);
+    font-size:12.5px;font-family:var(--mono);line-height:1.7}
+  @media (max-width:600px){ th,td{padding:9px 11px} header{padding:36px 0 22px} }
+</style>
+
+<div class="classif"><div class="wrap">
+  <span>Confidencial <span class="dot">●</span> Sob NDA / regras de sigilo BugHunt</span>
+  <span>Não divulgar sem consentimento expresso</span>
+</div></div>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Relatório Consolidado de Pesquisa de Segurança</p>
+    <h1>Núclea / CIP-BANCOS &amp; OLX Brasil
+      <span class="sub">Avaliação de superfície não-autenticada · Plataforma BugHunt</span>
+    </h1>
+    <dl class="meta">
+      <div><dt>Pesquisadora</dt><dd>Natalia A. S. Dias</dd></div>
+      <div><dt>Data</dt><dd class="mono">2026-07-05</dd></div>
+      <div><dt>Metodologia</dt><dd>RAG-First → Recon → Superfície → Validação manual</dd></div>
+      <div><dt>Alvos</dt><dd>2 programas públicos (financeiro / marketplace)</dd></div>
+    </dl>
+  </header>
+
+  <div class="score">
+    <div class="tile"><div class="n">2</div><div class="l">Alvos avaliados end-to-end</div></div>
+    <div class="tile"><div class="n">56</div><div class="l">Hosts in-scope mapeados</div></div>
+    <div class="tile ok"><div class="n">0</div><div class="l">Vulns submissíveis confirmadas (janela não-autenticada)</div></div>
+    <div class="tile warn"><div class="n">5+</div><div class="l">Avenidas testadas rigorosamente · leads documentados</div></div>
+  </div>
+
+  <div class="call key">
+    <p class="t">Achado estratégico central</p>
+    <p>Ambos os alvos apresentam <b>postura de segurança madura</b>. A superfície não-autenticada foi esgotada com evidência — nenhum finding fabricado. O padrão convergente: as classes de maior severidade (<b>IDOR/BOLA, ATO</b>) residem <b>atrás de autenticação</b>, e o único bloqueio para validá-las é a ausência de uma sessão/conta de teste que as regras/circunstâncias impedem de estabelecer com segurança.</p>
+  </div>
+
+  <!-- NÚCLEA -->
+  <section>
+    <div class="sechead"><span class="idx">ALVO A</span><h2>Núclea / CIP-BANCOS</h2>
+      <span class="chip c-ok" style="margin-left:auto">AWS-hardened</span></div>
+
+    <p><b>Escopo:</b> 17 domínios wildcard. <b>Regras críticas:</b> <code>12 req/min</code>, sem scanners automáticos, sem brute-force, <b>sem contas de teste e criação de contas proibida</b>. Crítico = R$2.500.</p>
+
+    <h3>Reconhecimento &amp; stack</h3>
+    <p>Enum passiva (crt.sh) nos 17 domínios → <b>83 hosts únicos, 58 resolvíveis, 45 públicos</b>. Stack <b>100% AWS-nativa</b>: Cognito (Hosted UI), API Gateway, gRPC-gateway custom "MobiUp" (NChain/NCotas), SPAs Angular em S3 (blockchain <b>Rayls</b>), Akamai na borda. <b>13 hosts</b> expõem DNS interno (RFC1918/CGNAT, não-roteável).</p>
+
+    <h3>Testes &amp; verdictos</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Vetor</th><th>Resultado</th><th style="width:150px">Status</th></tr></thead>
+      <tbody>
+        <tr><td class="k">S3 buckets (nucleachain, crcp, phd-*)</td><td class="s">403 AccessDenied em listagem — sem takeover</td><td><span class="chip c-ok">Endurecido</span></td></tr>
+        <tr><td class="k">Segredos em bundles JS (4 SPAs)</td><td class="s">Nenhum — <code>webhookSecret</code> era ref. de código minificado</td><td><span class="chip c-ok">Limpo</span></td></tr>
+        <tr><td class="k">Cognito / API GW / gRPC</td><td class="s">Todos auth-gated (401/403)</td><td><span class="chip c-ok">Endurecido</span></td></tr>
+        <tr><td class="k">remoteEntry <code>localhost:5101</code> (prod)</td><td class="s">Config dev vazada — não explorável (localhost)</td><td><span class="chip c-info">Não reportável</span></td></tr>
+        <tr><td class="k">Vazamento de DNS interno (13 hosts)</td><td class="s">Info sem risco significativo</td><td><span class="chip c-info">Provável OOS</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="call warn">
+      <p class="t">Lead documentado — não testável sob as regras</p>
+      <p><b>saopauloconsig.com.br — "Serviço de Controle Consignação" (SCC)</b>, portal de consignado em <b>Apache Wicket / IBM WebSphere</b>. O fluxo público <code>servidor/ativar</code> (primeiro acesso) oferece desbloqueio via <b>E-mail</b> ou <b>Perguntas e Respostas</b> (recuperação fraca) → superfície clássica de <b>ATO</b>. Validar exigiria um CPF real (sem contas de teste) → tocaria conta de pessoa real e recorreria a brute-force — ambos proibidos. <b>Requer identidade de teste autorizada.</b></p>
+    </div>
+    <p style="color:var(--muted);font-size:13.5px"><b>Veredito:</b> alvo AWS bem endurecido; sem vuln não-autenticada; todo o valor Alto/Crítico exige sessão bloqueada pela regra de sem-contas.</p>
+  </section>
+
+  <!-- OLX -->
+  <section>
+    <div class="sechead"><span class="idx">ALVO B</span><h2>OLX Brasil</h2>
+      <span class="chip c-ok" style="margin-left:auto">Endurecido</span></div>
+
+    <p><b>Escopo:</b> lista explícita de 11 hosts (apigw, conta, wallet, wallet-api, payment, goldpayments, payment-by-chat-api, api-transaction, delivery-tracking, delivery-quote, olx.com.br) + <b>app Android</b>. Programa <b>encoraja criar conta</b> (sessão em <code>loginIdentifier</code>). Crítico = R$2.000; <b>bônus Log4j = R$4.000</b>.</p>
+
+    <div class="call key">
+      <p class="t">Descoberta-chave · bypass do Cloudflare</p>
+      <p>O CF Bot Management bloqueia <code>curl</code> por fingerprint JA3 (403). <b>Headless Chrome / Playwright PASSA o CF</b> (DOM real recuperado). IP de egress aparenta ser BR (<code>179.94.127.251</code>) → o bloqueio é anti-bot, não geo. Infra Playwright reutilizável foi estabelecida para todo o hunt.</p>
+    </div>
+
+    <h3>Análise do APK · com.schibsted.bomnegocio v26.26.0</h3>
+    <div class="panel">
+      <div class="kv">
+        <div class="row"><b>Decompilação</b><span>62MB base → jadx 42.830 arquivos + apktool</span></div>
+        <div class="row"><b>Firebase</b><span><code>olxapps-aa7fd</code> — RTDB off, Firestore inexistente, Storage-list off <span class="chip c-ok">Endurecido</span></span></div>
+        <div class="row"><b>Segredos</b><span>Nenhum hardcoded (chaves AIza = padrão-Android)</span></div>
+        <div class="row"><b>API</b><span><code>apigw.olx.com.br/graphql</code> (Apollo) + <code>/delivery/</code></span></div>
+        <div class="row"><b>Auth</b><span><code>conta.olx.com.br</code> OAuth/OIDC + PKCE</span></div>
+        <div class="row"><b>GraphQL</b><span>31 operações mapeadas (candidatos BOLA)</span></div>
+      </div>
+      <div class="ops">
+        <span class="op hot">GetChat</span><span class="op hot">GetChatList</span><span class="op hot">GetMessagesWithAd</span>
+        <span class="op hot">MakeOffer</span><span class="op hot">ApproveOffer</span><span class="op">getAdFromId</span>
+        <span class="op">getSellerAds</span><span class="op">query delivery</span>
+      </div>
+    </div>
+
+    <h3>Avenidas não-autenticadas testadas</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Avenida</th><th>Método</th><th>Resultado</th><th style="width:130px">Status</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Firebase</td><td class="s">Leitura RTDB/Firestore/Storage (não-destrutiva)</td><td class="s">Sem exposição</td><td><span class="chip c-ok">Endurecido</span></td></tr>
+        <tr><td class="k">OAuth / JWT <code>returnToToken</code></td><td class="s">Crack HS256 (rockyou 14,3M), alg:none, cunhagem</td><td class="s">Segredo forte; claim <code>url</code> sempre same-origin</td><td><span class="chip c-ok">Sem open-redirect</span></td></tr>
+        <tr><td class="k">APIs delivery</td><td class="s">OPTIONS/GET/POST + paths + gau/wayback</td><td class="s">POST opacas s/ rota; IDOR real fora de escopo</td><td><span class="chip c-info">Sem foothold</span></td></tr>
+        <tr><td class="k">Log4Shell (R$4.000)</td><td class="s">interactsh OOB (self-test ✓) + 8 headers, bypass</td><td class="s">Zero callback; CF WAF bloqueia toda variante</td><td><span class="chip c-ok">Não vulnerável</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="call ok">
+      <p class="t">Log4Shell · evidência conclusiva</p>
+      <p>Controle limpo em <code>apigw</code> → <b>401</b> (chega à origem). Toda variante (<code>${lower:j}</code>, <code>${::-j}</code>, <code>${env}</code>, <code>${date}</code>, <code>${upper}</code>) → <b>403</b>: o WAF Managed do Cloudflare bloqueia no edge. Hosts nginx-direto receberam payloads e <b>não geraram callback</b>. OLX não é demonstravelmente vulnerável — 4,5 anos pós-CVE + defesa-em-profundidade.</p>
+    </div>
+    <p style="color:var(--muted);font-size:13.5px"><b>Veredito:</b> CF contornável via Chrome, APK totalmente mapeado, Firebase/JWT/Log4j endurecidos. As 4 avenidas independentes confirmam: o valor (BOLA GraphQL, IDOR wallet/payment) está auth-gated.</p>
+  </section>
+
+  <!-- LEADS / NEXT -->
+  <section>
+    <div class="sechead"><span class="idx">PRÓXIMO</span><h2>Leads que exigem acesso autorizado</h2></div>
+    <p>Não é ausência de trabalho — é o resultado honesto de esgotar a superfície acessível. O desbloqueio de maior alavancagem em ambos:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Ação</th><th>Destrava</th><th style="width:130px">Severidade alvo</th></tr></thead>
+      <tbody>
+        <tr><td class="k">OLX — conta de teste (<code>loginIdentifier</code>)</td><td class="s">Teste BOLA nas 31 operações GraphQL (ler chat/ofertas de terceiros), IDOR wallet/payment/transaction, rotas reais de delivery</td><td><span class="chip c-warn">Alto / Crítico</span></td></tr>
+        <tr><td class="k">Núclea — identidade/CPF de teste autorizado</td><td class="s">Fluxo primeiro-acesso do SCC (ATO) + APIs <code>servico_phd</code>/gRPC autenticadas</td><td><span class="chip c-warn">Crítico R$2.500</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section>
+    <div class="sechead"><span class="idx">ANEXOS</span><h2>Entregáveis &amp; recomendações defensivas</h2></div>
+    <h3>Inventário</h3>
+    <ul>
+      <li><b>Núclea</b> <code>bounties/nuclea/</code> — SCOPE, SURFACE, enum crt.sh, hosts resolvidos, 4 SPAs minerados, páginas SCC.</li>
+      <li><b>OLX</b> <code>bounties/olx/</code> — SCOPE, SURFACE, APK completo (jadx+apktool+strings), <code>graphql_ops.txt</code>, 8 scripts Playwright, <code>returnToToken.jwt</code>, screenshot.</li>
+      <li><b>RAG</b> — 8 entradas retroalimentadas (recon-intel + leads), consultáveis via <code>bountyrag query/plan</code>.</li>
+    </ul>
+    <h3>Recomendações aos programas</h3>
+    <ul>
+      <li><b>Núclea:</b> remover DNS interno público (13 hosts); remover <code>remoteEntry: localhost</code> de builds prod; revisar recuperação por perguntas de segurança no SCC (fraca).</li>
+      <li><b>OLX:</b> manter regra WAF Log4j do Cloudflare (funcionando); postura Firebase/JWT/S3 exemplar; considerar reduzir exposição de nomes de bucket/API-GW nos bundles do app.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Metodologia RAG-First + validação manual · Todas as afirmações baseadas em evidência capturada · Nenhum finding fabricado<br>
+    Nenhuma atividade destrutiva, brute-force ou fora de escopo foi conduzida · Rate limits e regras de engajamento respeitados
+  </footer>
+</div>
+
+<script>
+  (function(){
+    var r=document.documentElement;
+    function apply(t){ if(t==='dark'||t==='light') r.setAttribute('data-theme',t); }
+    try{ var m=new MutationObserver(function(){}); }catch(e){}
+  })();
+</script>

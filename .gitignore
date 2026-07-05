@@ -17,3 +17,14 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Bug bounty heavy APK artifacts (rebuild via apk-redteam-pipeline)
+bounties/*/apk/decoded/
+bounties/*/apk/decompiled/
+bounties/*/apk/xapk_extract/
+bounties/*/apk/base/
+bounties/*/apk/*.xapk
+bounties/*/apk/*.apk
+bounties/*/apk/*_strings.txt
+# Playwright profiles / interactsh logs
+bounties/*/recon/*interactsh*.log

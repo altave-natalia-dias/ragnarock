@@ -1,0 +1,22 @@
+HTTP/1.1 400 Bad Request
+Content-Type: text/html;charset=UTF-8
+x-amz-cognito-request-id: 67ddd02a-abeb-45ba-90e5-57f763ba8032
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Allow: POST
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Server: Server
+Content-Language: en-US
+Content-Length: 2981
+X-EdgeConnect-MidMile-RTT: 9
+X-EdgeConnect-Origin-MEX-Latency: 302
+Date: Sun, 05 Jul 2026 17:23:18 GMT
+Connection: keep-alive
+

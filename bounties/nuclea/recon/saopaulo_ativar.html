@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head><script type="text/javascript" src="../wicket/resource/org.apache.wicket.resource.JQueryResourceReference/jquery/jquery-3.5.1-ver-755F2A0D2C6301AE69D7F218656C7C0A.js"></script>
+<script type="text/javascript" src="../wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/res/js/wicket-event-jquery-ver-C3754B973B77810139CEB050DAFE9A6A.js"></script>
+<script type="text/javascript" src="../wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/res/js/wicket-ajax-jquery-ver-A08AA77086E32F0F43ACA0DA87065D4C.js"></script>
+<script type="text/javascript" id="wicket-ajax-base-url">
+/*<![CDATA[*/
+Wicket.Ajax.baseUrl="servidor/ativar?2";
+/*]]>*/
+</script>
+
+    <title>Serviço de Controle de Consignação</title>
+
+    <link href="../static/css/sefaz.css?20140731" rel="stylesheet" type="text/css"/>
+
+    <script src="../static/js/sl-dynatabsModificado.js"></script>
+
+
+
+
+
+    <style type="text/css">
+/*<![CDATA[*/
+
+        .dados {
+            float: none !important;
+        }
+
+        .dados input {
+            float: none !important;
+        }
+
+        .captchaPanelClass input.caixaTextoLogin {
+            float: left !important;
+        }
+
+    
+/*]]>*/
+</style>
+
+<script type="text/javascript" src="/csrfTokenS"></script>
+<script type="text/javascript" >
+/*<![CDATA[*/
+Wicket.Event.add(window, "domready", function(event) { 
+Wicket.Ajax.ajax({"u":"./ativar?2-1.IBehaviorListener.0-formFirstAccess-divFirstAccess-passoEtapa1Button","m":"POST","c":"ide","f":"idd","sc":"divFirstAccess:passoEtapa1Button","e":"click","ch":"blocking|a","pd":true});;
+Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
+;});
+/*]]>*/
+</script>
+</head>
+<body>
+<form id="idd" method="post" action="./ativar?2-1.IFormSubmitListener-formFirstAccess"><div style="width:0px;height:0px;position:absolute;left:-100px;top:-100px;overflow:hidden" class="hidden-fields"><input type="hidden" name="idd_hf_0" id="idd_hf_0" /></div>
+    <div id="main">
+            <div id="corpo">
+                <div id="blocoLogin" style="min-height: 400px; padding: 20px 0 0 0">
+
+                    <div id="divMessage" style="display:none"></div>
+
+                    <div id="divMessage" style="display:none"></div>
+
+                    <input type="hidden" id="inputToken" value="7V4E-6AWR-17ZF-E1AS-K5CX-ZQQC-8XD4-QFJN-T92P-KX8E-3HZ8-T1M6-JOBT-9F9Q-1X5M-XYX2" name="inputToken"/>
+
+                    <div id="divFirstAccess" style="width: 800px; text-align: left">
+                        <div class="titulo"><span>PASSO 1 - PRIMEIRO ACESSO</span></div>
+                        <div class="dados" style="text-align: left; white-space: normal; font-weight: normal " >
+                            Bem vindo, este &eacute; seu primeiro acesso ao SCC!<br>
+                            Em seu primeiro acesso, voc&ecirc; dever&aacute; selecionar o m&eacute;todo de desbloqueio/reset de senha.
+                            S&atilde;o duas op&ccedil;&otilde;es:
+                            </div>
+                        <div class="dados" style="text-align: left; white-space: normal; font-weight: normal; font-weight: normal   ">
+                            <br>
+                            <strong>Primeira:</strong> Perguntas e respostas, onde o servidor responde duas perguntas.
+                            Acertando as perguntas, pode seguir com o processo de desbloqueio e troca de senha.
+
+                            Ap&oacute;s o preenchimento destas 2 perguntas, o sistema solicitar&aacute; a confer&ecirc;ncia de
+                            algumas perguntas cadastrais, junto com seu e-mail.<br>
+                        </div>
+                        <div class="dados" style="text-align: left; white-space: normal; font-weight: normal ">
+                            <strong>Segunda:</strong> Link de ativa&ccedil;&atilde;o por e-mail. Quando solicitado o
+                            desbloqueio, um e-mail com um link &eacute; enviado e o servidor deve clicar no link para seguir
+                            o processo de desbloqueio e troca de senha.
+                        </div>
+                        <div class="dados" style="text-align: center; white-space: normal; font-weight: normal; width: 100% ">
+                        Selecionar o m&eacute;todo de desbloqueio:
+                            <br />
+                            <br />
+                            <div style="width: 18%; margin: 0 auto">
+                                <div style="width: 100%; text-align: left" id="idf"><input name="divFirstAccess:metodoDesbloqueio" type="radio" value="0" id="idf-0"/><label for="idf-0"> Perguntas e Respostas</label><input name="divFirstAccess:metodoDesbloqueio" type="radio" value="1" id="idf-1"/><label for="idf-1"> E-mail</label></div>
+                            </div>
+                        </div>
+                        <div class="dados" style="text-align: center; width: 100%">
+                            <input type="button" class="botaoAcessar" value="Próximo" name="divFirstAccess:passoEtapa1Button" id="ide"/>
+                        </div>
+                        <br class="clr">
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div>
+                        <input id="id10" style="display:none"></input>
+                    </div>
+
+                    <footer>
+                        <hr>
+                        <a href="#">Quem somos</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+                        <a href="#">Termos de uso</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+                        <a href="#">Política de privacidade</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+                        <a href="#">Manuais e Download de conteúdo</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+                        </hr>
+                    </footer>
+
+                </div>
+            </div>
+            
+    </div>
+    
+</form>
+</body>
+</html>

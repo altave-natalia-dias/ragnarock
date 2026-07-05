@@ -1,0 +1,12 @@
+{
+  "name": "rag_query",
+  "description": "Consulta a base de dados RAG (ChromaDB + Neo4j) para encontrar técnicas e vulnerabilidades",
+  "command": "/home/altave/venv/bin/python3 -m rag.cli query {query}",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "query": { "type": "string", "description": "A consulta para a RAG" }
+    },
+    "required": ["query"]
+  }
+}

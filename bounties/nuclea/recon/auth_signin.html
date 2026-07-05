@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://dgay0d1ozp68.cloudfront.net/20240614193835/css/bootstrap.min.css" rel="stylesheet"
+        media="screen" />
+    <link href="https://dgay0d1ozp68.cloudfront.net/20240614193835/css/cognito-login.css" rel="stylesheet"
+        media="screen" />
+    
+    <title>Signin</title>
+
+    <script src="https://dgay0d1ozp68.cloudfront.net/20240614193835/js/amazon-cognito-advanced-security-data.min.js" ></script>
+    <script>
+    function getAdvancedSecurityData(formReference) {
+        if (typeof AmazonCognitoAdvancedSecurityData === "undefined") {
+            return true;
+        }
+
+        // UserpoolId is not available on frontend for springboard. We do not use userPoolId
+        // anyway other than put in context data. 
+        var userPoolId = "";
+        var clientId = getUrlParameter("client_id");
+
+        var username = "";
+        var usernameInput = document.getElementsByName("username")[0];
+        if (usernameInput && usernameInput.value) {
+            username = usernameInput.value;
+        }
+
+        var asfData = AmazonCognitoAdvancedSecurityData.getData(username, userPoolId, clientId);
+        if (typeof asfData === "undefined") {
+            return true;
+        }
+
+        if (formReference && formReference.cognitoAsfData) {
+            formReference.cognitoAsfData.value = asfData
+        }
+
+        return true;
+    }
+
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    function onSubmit(evt, formRef) {
+        formRef.querySelector('button[type="submit"]').disabled = true;
+        if (!!formRef.submitted) {
+            evt.preventDefault();
+            return false;
+        } else {
+            formRef.submitted = true;
+            return getAdvancedSecurityData(formRef);
+        }
+    }
+
+    function onSubmitLoginForm (formRef) {
+        formRef.querySelector('input[name="signInSubmitButton"]').disabled = true;
+        getAdvancedSecurityData(formRef)
+    }
+</script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body spellcheck="false">
+    <div class="container">
+        <div class="modal-dialog">
+            <div class="modal-content background-customizable modal-content-mobile">
+                <div>
+                    <div class="banner-customizable">
+                        <center>
+                            
+                        </center>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <p align="center">An error was encountered with the requested page.</p>
+                    <br>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
