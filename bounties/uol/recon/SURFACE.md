@@ -36,3 +36,10 @@
 
 ## Verdito parcial (não-auth)
 SSO conta.uol.com.br bem endurecido (postMessage + dest validados). Superfície não-auth madura. Todo o valor Medium+ (webmail XSS/read, painel host) está auth-gated — precisa da conta de teste.
+
+## Content sites hunt (no-account) — 2026-07-05
+- **brasilescola** (Vite/Laravel SPA): `/busca?q=` reflects query **double-HTML-encoded** (`&amp;lt;img`) — proper output encoding, no XSS. Articles = static `.htm` (no numeric-ID SQLi param). `/wp-json` 301.
+- **ne10** (v2.2.3): `/search/?q=` no reflection of query in rendered DOM. app.min.js DOM sinks `.html()`×11/`innerHTML`×4 consume JSON from *.ne10.uol.com.br subdomains (api.enem/jc/sjcc — OUT OF SCOPE, only ne10.uol.com.br listed). No injectable in-scope param.
+- **noticiasdatv** (Cloudflare): has /busca, /buscar.
+- **caras**: DNS 000 (not reachable).
+- Verdict: content sites use modern stacks with proper output encoding; no Medium+ reflected/DOM XSS or SQLi surfaced unauth. In-scope is strictly the apex host (subdomain feeds OOS).
