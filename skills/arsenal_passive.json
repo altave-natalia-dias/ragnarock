@@ -1,0 +1,15 @@
+{
+  "name": "arsenal_passive",
+  "description": "Passive, scope-gated, rate-limited recon: sensitive-file exposure, subdomain takeover fingerprints, cloud-bucket read. Reads hosts from stdin. NO brute-force/auth traffic. Requires an explicit scope suffix; refuses out-of-scope hosts.",
+  "command": "echo {targets} | /home/altave/.bughunter/skills/arsenal_passive.sh {scope} {checks} {rps}",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "targets": { "type": "string", "description": "Newline-separated hosts to scan" },
+      "scope":   { "type": "string", "description": "Comma-sep allowed host suffixes (hard gate)" },
+      "checks":  { "type": "string", "description": "files,takeover,buckets (default files,takeover)" },
+      "rps":     { "type": "string", "description": "Global requests/sec (default 0.5)" }
+    },
+    "required": ["targets", "scope"]
+  }
+}

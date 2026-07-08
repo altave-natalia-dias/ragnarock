@@ -464,6 +464,148 @@ Mobile API surface:
   APK decompile → jadx → find baseUrl + endpoints
 """, ["api", "graphql", "rest", "grpc", "mass-assignment", "parameter-pollution"], "api")
 
+# -------- Improper Authentication (deep) --------
+_kb("""
+IMPROPER AUTHENTICATION — Generic (CWE-287) Deep Testing
+
+Where it lives (server-side, never trust the client):
+  Route/middleware layer, token verification, session validation,
+  password-reset + email-change flows, refresh-token exchange,
+  admin/privileged endpoints, API gateways.
+  Common paths: /login /auth /api/authenticate /refresh-token
+  /api/user/:id /admin /api/change-password /oauth/callback
+
+Vulnerable code smells (grep for these):
+  - Route reads req.params.id and queries DB with NO auth middleware
+  - `if (token) { grant }` — presence check, no signature verify
+  - jwt.decode(t, {verify_signature:false}) used for authZ decisions
+  - session['user'] = username set WITHOUT password compare
+  - Hardcoded `if user=='admin' && pass=='admin123'`
+  - Missing rate-limit / lockout on the login + OTP + reset endpoints
+  - alg:none accepted, or HS256 verified with RS256 public key
+  - Authorization derived from a client-supplied header (X-User-Id)
+
+Non-destructive test matrix (auth on YOUR authorized target only):
+  1. Unauth access: GET protected endpoint with no token → expect 401/403
+  2. Empty/garbage bearer: "Bearer ", "Bearer null", "Bearer undefined"
+  3. JWT tamper: alg:none / role flip / RS256->HS256 confusion (jwt_tool.py)
+  4. Horizontal (IDOR): swap own id for a second TEST account you control
+  5. Step-up skip: hit /dashboard directly after /login pre-MFA
+  6. Reset-token: reuse, no-expiry, host-header redirect, low entropy
+  Validate with TWO accounts you own — prove A reads/acts as B.
+  For blind/token-leak steps use an OOB collaborator, never a third party.
+
+Impact ladder: unauth data read (High) < auth bypass to any account (Crit)
+  < privilege escalation to admin (Crit). CVSS 9.x when full ATO.
+
+Mitigation to cite in report: enforce auth middleware on every sensitive
+  route; verify JWT signature + alg allowlist + aud/iss; server-side session
+  validation w/ expiry + revocation; rate-limit & lockout on auth flows;
+  object-level authZ (own the resource) not just authN.
+""", ["auth", "improper-authentication", "cwe-287", "jwt", "idor", "ato", "owasp-a07"], "owasp")
+
+# -------- Security Misconfiguration — sensitive file exposure --------
+_kb("""
+SECURITY MISCONFIGURATION — Sensitive File / Source Exposure (CWE-16/CWE-538)
+
+Non-destructive detection = GET the path + confirm a CONTENT SIGNATURE
+(a 200 with a login page is NOT a finding — match real content):
+  .env / .env.production / .env.local  → signature: KEY=VALUE lines,
+      DB_PASSWORD=, AWS_SECRET_ACCESS_KEY=, SECRET_KEY=
+  .git/config + .git/HEAD              → signature: "[core]", "ref: refs/"
+      then git-dumper to reconstruct source
+  .DS_Store                            → directory listing leak
+  wp-config.php(.bak/.old/~)           → DB_PASSWORD, AUTH_KEY defines
+  web.config / appsettings.json        → connectionString, JwtSecret
+  application.properties               → spring.datasource.password
+  config.php / database.yml / settings → password/secret/api key
+  docker-compose.yml / Dockerfile      → ENV secrets, POSTGRES_PASSWORD
+  *.bak *.old *~ *.sql *.zip           → backups of the above
+  *.pem *.key *.pfx *.p12              → private keys (BEGIN ... PRIVATE KEY)
+  service-account.json                 → "type":"service_account" (GCP)
+  /server-status /actuator/env /debug  → framework info + env dump
+
+Per-stack hot files:
+  Django : settings.py, local_settings.py, .env  (DEBUG=True leaks stack)
+  Node   : .env, config/database.js, docker-compose.yml
+  PHP/WP : wp-config.php*, config.php, .htpasswd
+  Spring : application*.properties, /actuator/*, gradle.properties
+  .NET   : web.config, appsettings*.json, App_Data/
+
+What makes it VALID (not noise): the file returns real secret material
+  (not a template/example), OR reconstructs source, OR the leaked cred is
+  live. A .env.example with placeholders is informational at best.
+
+Server-side fix to cite: block dotfiles + backup extensions at the web
+  server; move secrets out of webroot; never commit .env/.git to the
+  deploy artifact; rotate any exposed credential immediately.
+""", ["misconfiguration", "env-exposure", "git-exposure", "source-leak", "secrets", "cwe-538", "owasp-a05"], "misconfig")
+
+# -------- Subdomain & Bucket Takeover fingerprints --------
+_kb("""
+SUBDOMAIN & BUCKET TAKEOVER — Fingerprint + Validation (CWE-350)
+
+Method: dnsx -cname over subdomains → find dangling CNAME → HTTP fetch →
+  match provider "unclaimed" signature → confirm you can CLAIM the resource.
+  Tools: subzy, nuclei -t takeovers/, dnsReaper. Cross-check can-i-take-over-xyz.
+
+Provider fingerprints (CNAME target → body signature = candidate):
+  *.github.io          "There isn't a GitHub Pages site here"
+  *.herokuapp.com      "No such app" / default Heroku welcome
+  *.netlify.app        "Site Not Found" / "Not Found - Request ID"
+  *.vercel.app         "DEPLOYMENT_NOT_FOUND" / "NOT_FOUND"
+  *.azurewebsites.net  "Web App - Unavailable" / 404 default
+  *.s3.amazonaws.com   "NoSuchBucket"
+  *.cloudfront.net     "Bad Request: ERROR: The request could not be..."
+  *.pantheonsite.io    "The gods are wise" / 404 project
+  *.zendesk.com        "Help Center closed" / no help center
+  *.wordpress.com      "Do you want to register"
+  *.ghost.io           "Domain error" / site not found
+  *.fastly / *.readme.io / *.surge.sh / *.bitbucket.io  — provider-specific
+
+VALIDATION (this is what separates real from theoretical):
+  - Only report if the dangling target is genuinely CLAIMABLE by anyone
+    (bucket free, app name free, Pages repo free). A parked/held name is N/A.
+  - Prove control by claiming and serving a benign marker file at a path
+    (e.g. /takeover-poc-<yourhandle>.txt). Never host malicious content.
+  - NS-takeover (dangling NS to expired zone) = higher impact, whole subtree.
+
+Severity: subdomain takeover on a trusted origin = High→Critical when the
+  origin is used for auth cookies, OAuth redirect_uri, or CSP allowlist
+  (chain: dangling redirect_uri → OAuth code theft → ATO).
+""", ["subdomain-takeover", "bucket-takeover", "dangling-cname", "cwe-350", "takeover", "oauth-chain"], "advanced")
+
+# -------- Cloud Storage exposure — multi-cloud enum --------
+_kb("""
+CLOUD STORAGE EXPOSURE — AWS / Azure / GCP / Oracle enumeration
+
+Bucket-name candidate generation from the org/domain root <name>:
+  <name> <name>-backup(s) <name>-assets <name>-uploads <name>-data
+  <name>-prod <name>-dev <name>-staging <name>-media backup-<name>
+  <name>-logs <name>-static <name>-public <name>-private
+  (Azure account = lowercase, no dashes, <=24 chars)
+
+Read-signatures (anonymous GET, then confirm real listing/objects):
+  AWS S3   GET https://<b>.s3.amazonaws.com/          → <ListBucketResult><Key>
+           aws s3 ls s3://<b> --no-sign-request
+           write test: aws s3 cp x s3://<b>/ --no-sign-request  (PutObject ACL)
+  GCP GCS  GET https://storage.googleapis.com/storage/v1/b/<b>/o → {"items":[..]}
+           gsutil ls -r gs://<b>  (or public list JSON)
+  Azure    GET https://<acct>.blob.core.windows.net/<c>?restype=container&comp=list
+           → <EnumerationResults><Blob><Name>  (container ACL = public)
+  Oracle   GET https://objectstorage.<region>.oraclecloud.com/n/<ns>/b/<b>/o
+           → {"objects":[..]}
+
+Triage what you find (impact = the data, not the open bucket):
+  Rank objects by name: *backup* *dump* *.sql* *cred* *secret* *.pem*
+  *config* *.env* *.bak* — those drive severity. An empty public bucket
+  or public CDN assets meant to be public = Info/N-A.
+  A public-WRITE bucket (PutObject/PutObjectAcl) is worse than read.
+
+Chain: leaked bucket → JS bundle / backup → hardcoded AWS key → IMDS/IAM
+  enum (enumerate-iam.py) → privilege escalation → account compromise.
+""", ["cloud", "s3", "gcs", "azure-blob", "oracle-oci", "bucket-enum", "secrets", "owasp-a05"], "cloud")
+
 # -------- CySA+ concepts --------
 CYSA_KB: list[tuple[str, dict]] = []
 
