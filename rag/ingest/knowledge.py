@@ -606,6 +606,182 @@ Chain: leaked bucket → JS bundle / backup → hardcoded AWS key → IMDS/IAM
   enum (enumerate-iam.py) → privilege escalation → account compromise.
 """, ["cloud", "s3", "gcs", "azure-blob", "oracle-oci", "bucket-enum", "secrets", "owasp-a05"], "cloud")
 
+# -------- JWT deep --------
+_kb("""
+JWT — Deep Analysis & Attack Matrix (CWE-347 / CWE-345)
+
+Decode first (never trust, always inspect):
+  jwt_tool.py <TOKEN>                 # full decode + automated checks
+  echo <part> | base64 -d             # header / payload by hand
+  Header: alg, kid, jku, x5u, jwk.  Claims: sub, role, aud, iss, exp, iat, nbf
+
+Attack matrix:
+  1. alg:none — {"alg":"none"} (also None/NONE/nOnE), drop signature, keep the
+     trailing dot.  jwt_tool -X a
+  2. Alg confusion RS256->HS256 — sign HS256 using the RSA PUBLIC key bytes as
+     the HMAC secret.  jwt_tool -X k -pk public.pem
+     (pubkey from /jwks.json, TLS cert, or recover w/ rsa_sign2n from 2 tokens)
+  3. kid injection — kid used as path / SQL / command:
+       kid: ../../../../dev/null  + sign with empty key
+       kid: nonexistent';<sqli>-- -     kid: |id
+     jwt_tool -I -hc kid -hv "../../../dev/null" -S hs256 -p ""
+  4. jku / x5u SSRF — point header URL at attacker-hosted JWKS you control,
+     sign with your key; chains with URL allow-list bypass (OOB confirm).
+  5. Embedded jwk — inject your own public key in the header (CVE-2018-0114).
+  6. Weak HMAC secret brute:
+       hashcat -a 0 -m 16500 token.txt jwt.secrets.list
+       jwt_tool -C -d /path/wordlist
+  7. Claim tamper (after any bypass above) — flip role/isAdmin/sub/tenant_id,
+     extend exp, swap aud/iss for cross-service token reuse.
+  8. Psychic signature — ES256/ECDSA with r=s=0 accepted (CVE-2022-21449).
+  9. No verification at all — app decodes but never verifies: just edit+resend.
+  10. exp/nbf not enforced — replay expired tokens; key-rotation/cache gaps.
+
+Validate: prove identity/privilege change on YOUR test account (read an
+  admin-only field, act as tenant B). jku/x5u = OOB host only.
+Fix to cite: alg allowlist, verify server-side, validate aud+iss+exp, reject
+  jku/x5u to untrusted hosts, high-entropy secret, rotate on leak.
+""", ["jwt", "jws", "cwe-347", "alg-confusion", "kid-injection", "jku-ssrf", "auth", "owasp-a02"], "owasp")
+
+# -------- JS recon: endpoint + secret mining --------
+_kb("""
+JAVASCRIPT RECON — Endpoint & Secret Mining from Bundles
+
+Collect every JS in scope:
+  katana -u https://target -jc -jsl -d 5 -o urls.txt
+  cat urls.txt | grep -Ei '\\.js(\\?|$)' | httpx -mc 200 -o js.txt
+  subjs -i live.txt | anew js.txt ; getJS --url URL ; gau '*.js'
+  while read u; do wget -q "$u"; done < js.txt
+
+Reconstruct real source (biggest win):
+  For each app.js try app.js.map — if 200, unpack original modules:
+    npx sourcemapper -url https://target/app.js.map -output src/
+    unwebpack-sourcemap app.js.map     (or webcrack / react-source recovery)
+  No map? deobfuscate: webcrack app.js > deobf.js ; js-beautify app.js
+
+Mine endpoints:
+  linkfinder -i app.js -o cli
+  xnLinkFinder -i js.txt -sf target.com -o endpoints.txt
+  grep -Eo '"/(api|v[0-9]|graphql|internal|admin)[^"]*"' *.js | sort -u
+  Hunt: hidden/admin routes, unreleased features, internal APIs, GraphQL
+  operation strings, upload + websocket URLs, deep-links.
+
+Mine secrets / config:
+  trufflehog filesystem ./js --only-verified
+  secretfinder -i app.js -o cli ; gf aws-keys ; gf api-keys
+  grep -EiI '(api[_-]?key|secret|token|bearer|firebase|apikey)["\\x27 :=]{1,4}[A-Za-z0-9_\\-\\.]{12,}' *.js
+  Firebase config, Google Maps key, Sentry DSN, Stripe pk_/sk_, Algolia,
+  Mapbox, Segment write key, hardcoded JWT, basic-auth in fetch().
+
+Triage: pk_/Firebase apiKey/Sentry DSN are usually Info (client-side by
+  design). sk_/service key/private token/DB creds = the finding. Verify live.
+""", ["javascript", "js-recon", "source-map", "secrets", "endpoint-discovery", "webpack", "recon"], "recon")
+
+# -------- JS function-level analysis --------
+_kb("""
+JAVASCRIPT FUNCTION-LEVEL ANALYSIS — Client-Side Logic & Sinks
+
+Read the bundle for LOGIC, not just strings. After beautify/deobf:
+
+Client-side access control (always bypassable — the finding is what it hides):
+  grep -nEi 'is_?admin|role|isStaff|hasPermission|canAccess|featureFlag|beta|internal|debug' deobf.js
+  A route/button gated only by `if(user.isAdmin)` -> call the API directly.
+  Feature flag flipped in JS -> the backend endpoint often does NOT re-check.
+
+Trace source -> sink (DOM XSS, function by function):
+  Sources: location.hash/search/href, document.referrer, window.name,
+    postMessage event.data, localStorage/sessionStorage, URLSearchParams
+  Sinks: innerHTML, outerHTML, insertAdjacentHTML, document.write, eval,
+    Function(), setTimeout(str), jQuery html()/$(), dangerouslySetInnerHTML,
+    location=, .src=, script.text
+  Follow the variable ACROSS functions; flag any reaching a sink unsanitized.
+
+postMessage handlers (high value):
+  grep -n 'addEventListener("message"' deobf.js
+  Does it check event.origin? If not and event.data hits a sink or a
+  privileged action (token relay, navigation, config write) -> exploitable.
+
+Client-side auth/crypto handling:
+  JWT in localStorage (XSS-stealable) vs httpOnly cookie? Hardcoded HMAC key
+  for request signing? Custom auth header (X-Signature) you can reproduce?
+
+Prototype pollution gadgets:
+  grep -nE '\\[[^]]+\\]\\s*=|Object.assign|merge\\(|deepmerge|extend\\(' deobf.js
+  A __proto__ sink reaching innerHTML/config/template -> PP -> XSS or RCE.
+
+Known-vuln libs:  retire.js --js app.js   (old jQuery/Angular/lodash CVEs)
+""", ["javascript", "dom-xss", "postmessage", "client-side", "prototype-pollution", "access-control", "advanced"], "advanced")
+
+# -------- Per-request scope analysis --------
+_kb("""
+PER-REQUEST ANALYSIS — Methodical Scope Request Triage
+
+Proxy everything (Burp/Caido). For EACH in-scope request, walk this grid:
+
+Method + path:
+  - Path IDs (numeric/UUID/slug) -> IDOR/BOLA: swap for a 2nd account's object
+  - Verb tampering: GET<->POST, PUT/PATCH/DELETE, OPTIONS(methods), TRACE
+  - Path normalization: //, /./, /..;/, %2e, trailing dot -> ACL bypass
+  - API version pivot: /v2 fixed? try /v1 /v3 /internal /beta
+
+Parameters (query + body):
+  - Hidden params: arjun -u URL ; x8 -u URL -w params.txt ; param-miner
+  - Mass assignment: add role/isAdmin/verified/price/user_id/tenant_id
+  - Type juggle / array: id=1 -> id[]=1 ; {"id":{"$gt":0}} (NoSQL)
+  - Parameter pollution: ?id=self&id=victim (front vs back parser differ)
+  - Injection surfaces: sqli/ssti/xss/ssrf per field (mark reflected ones)
+
+Headers + cookies:
+  - Auth: drop token / empty / other user's / expired -> still works?
+  - Custom X-* (X-User-Id, X-Forwarded-For, X-Original-URL, X-Debug) -> spoof
+  - CORS: Origin: evil.com -> ACAO reflected + ACAC:true = credentialed read
+  - Cookie flags (HttpOnly/Secure/SameSite), session fixation, JWT-in-cookie
+  - Content-Type switch: JSON<->form<->multipart (parsers/validation differ)
+
+Response signals (note, never skip):
+  - Status/length/TIMING deltas -> auth oracle, user enum, blind injection
+  - Reflected input -> XSS/injection candidate
+  - Verbose errors / stack traces / internal host+IP -> info leak
+  - Over-returned fields (other users' data, internal flags) -> BOLA/BOPLA
+  - Cache headers on personalized data -> web cache deception
+
+Discipline: one variable at a time, per-endpoint notes, rate-limit to the
+  program cap, confirm each candidate with a clean repro before reporting.
+""", ["request-analysis", "idor", "bola", "parameter-discovery", "verb-tampering", "cors", "methodology", "api"], "api")
+
+# -------- API authorization (OWASP API Top 10) --------
+_kb("""
+API AUTHORIZATION — BOLA / BFLA / BOPLA (OWASP API Security Top 10)
+
+BOLA (API1, object level = IDOR on APIs):
+  Every request referencing an object id -> test from account B.
+  /api/orders/{id}  /api/users/{id}/card  /files/{uuid}
+  GraphQL node(id:) and nested REST (/tenants/{t}/users/{u}).
+  Sources of ids: sequential, UUID swap, leaked in JS/another response,
+  id-in-JWT vs id-in-path mismatch.
+
+BFLA (API5, function level):
+  Low-priv user invokes an admin/privileged FUNCTION.
+  POST /api/admin/*, DELETE /api/users/{id}, role-change / impersonate.
+  Find admin routes in the JS bundle -> call them as a normal user; also
+  swap GET->POST/PUT on read endpoints.
+
+BOPLA / mass assignment (API3, property level):
+  Read side: response returns MORE fields than the UI shows (internal flags,
+    other users' PII) -> excessive data exposure.
+  Write side: PATCH accepts fields the UI never sends (role, balance,
+    is_verified, org_id) -> property-level escalation.
+
+Broken auth (API2):
+  Remove Authorization entirely on EACH endpoint — many APIs only enforce it
+  on the obvious routes. Test refresh/logout/2fa/export endpoints too.
+
+Method: build a 2-account matrix (A attacker, B victim, plus anon). Replay
+  each request as each identity; a 200 where 403 is expected is the bug.
+  Automate the swap with Burp Autorize / AuthMatrix, then hand-confirm.
+Impact: BOLA/BFLA over financial or PII objects = High -> Critical.
+""", ["api", "bola", "bfla", "bopla", "mass-assignment", "owasp-api", "authorization", "idor"], "api")
+
 # -------- CySA+ concepts --------
 CYSA_KB: list[tuple[str, dict]] = []
 
