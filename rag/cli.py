@@ -52,6 +52,10 @@ def cmd_build(args):
     from rag.ingest.knowledge import ingest_knowledge
     ingest_knowledge(r)
 
+    print("\n[3b] Web3 / smart-contract KB")
+    from rag.ingest.web3 import ingest_web3
+    ingest_web3(r)
+
     # Seed base vuln→vuln chains in Neo4j
     print("\n[4/4] Seeding exploit chains in Neo4j …")
     _seed_base_chains()
