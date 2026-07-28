@@ -60,6 +60,10 @@ def cmd_build(args):
     from rag.ingest.infra_methodology import ingest_infra_methodology
     ingest_infra_methodology(r)
 
+    print("\n[3d] Personal tool arsenal catalog (~/lovableExpl/tools)")
+    from rag.ingest.arsenal import ingest_arsenal
+    ingest_arsenal(r)
+
     # Seed base vuln→vuln chains in Neo4j
     print("\n[4/4] Seeding exploit chains in Neo4j …")
     _seed_base_chains()
