@@ -56,6 +56,10 @@ def cmd_build(args):
     from rag.ingest.web3 import ingest_web3
     ingest_web3(r)
 
+    print("\n[3c] Infra (messaging/containers/k8s/db) + elite methodology + playbook KB")
+    from rag.ingest.infra_methodology import ingest_infra_methodology
+    ingest_infra_methodology(r)
+
     # Seed base vuln→vuln chains in Neo4j
     print("\n[4/4] Seeding exploit chains in Neo4j …")
     _seed_base_chains()
